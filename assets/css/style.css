@@ -231,3 +231,12 @@ main {
     border-radius: .75rem;
     padding: 1rem
 }
+.footer-compact{border-top:1px solid rgba(255,255,255,.2)}
+main{padding-bottom:90px}
+.newsletter-form{min-width:min(100%,420px)}
+.newsletter-form .input-group-text{background:#40679f;color:#fff;border-color:#6e8fb8}
+.newsletter-form .form-control,.newsletter-form .btn{border-color:#6e8fb8}
+.image-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.image-grid .exam-thumb{width:100%;height:110px;object-fit:cover}
+.testcase-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:.75rem}
+.stat-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:.75rem;padding:.6rem}
