@@ -36,19 +36,20 @@ const card = i => {
           <div class="exam-problems mb-2">
             ${problems.map((n, idx) => `<span class="badge exam-chip">${idx + 1}. ${n}</span>`).join('') || '<span class="badge exam-chip">Chưa có problem_names</span>'}
           </div>
-        <div class="row exam-stats mb-2">
-          <div class="col-3"><i class="bi bi-file-earmark-pdf"></i> ${String(i.file_ext || 'pdf').toUpperCase()}</div>
-          <div class="col-3"><i class="bi bi-list-ol"></i> ${i.problem_count || 0} bài</div>
-          <div class="col-3"><i class="bi bi-clock"></i> ${i.duration || '-'}</div>
-          <div class="col-3"><i class="bi bi-mortarboard"></i> ${i.grade || 'Khác'}</div>
-        </div>
+          
+          <div class="row exam-stats mb-2">
+            <div class="col-3"><i class="bi bi-file-earmark-pdf"></i> ${String(i.file_ext || 'pdf').toUpperCase()}</div>
+            <div class="col-3"><i class="bi bi-list-ol"></i> ${i.problem_count || 0} bài</div>
+            <div class="col-3"><i class="bi bi-clock"></i> ${i.duration || '-'}</div>
+            <div class="col-3"><i class="bi bi-mortarboard"></i> ${i.grade || 'Khác'}</div>
+          </div>
 
-        <div class="row exam-stats mb-2">
-          <div class="col-3"><i class="bi bi-person"></i> ${i.contributor || 'admin'}</div>
-          <div class="col-3"><i class="bi bi-database"></i> ${i.file_size || '-'}</div>
-          <div class="col-3"><i class="bi bi-eye"></i> ${(i.view_count || 0).toLocaleString('vi-VN')}</div>
-          <div class="col-3"><i class="bi bi-download"></i> ${(i.download_count || 0).toLocaleString('vi-VN')}</div>
-        </div>
+          <div class="row exam-stats mb-2">
+            <div class="col-3"><i class="bi bi-person"></i> ${i.contributor || 'admin'}</div>
+            <div class="col-3"><i class="bi bi-database"></i> ${i.file_size || '-'}</div>
+            <div class="col-3"><i class="bi bi-eye"></i> ${(i.view_count || 0).toLocaleString('vi-VN')}</div>
+            <div class="col-3"><i class="bi bi-download"></i> ${(i.download_count || 0).toLocaleString('vi-VN')}</div>
+          </div>
 
           <div class="d-flex flex-wrap gap-2 exam-badges mb-2">
             <span class="badge text-bg-light border">${examTypeLabel(tags)}</span>
