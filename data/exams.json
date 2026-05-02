@@ -4,7 +4,7 @@
     "id": "exam-tinhoc-chondoituyen-hsgqg-thpt-sogddt-tiengiang-2024-2025",
     "related_ids": [],
     "type": "exam",
-    "title": "HSG - Chọn đội tuyển thi QG",
+    "title": "Đề thi Học sinh giỏi - Chọn đội tuyển thi QG",
     "description": "✍️ Đề thi chính thức kỳ thi lập đội tuyển học sinh giỏi dự thi cấp quốc gia (vòng tỉnh) tại Tiền Giang, tổ chức ngày 17/9/2024. Đề thi gồm 3 câu hỏi thuật toán chuyên sâu:\n1. PICKLEBALL (7,0 điểm): Bài toán xác định trạng thái ban đầu của quá trình lan truyền thông tin theo hàng ngang.\n2. MOONCAKE (7,0 điểm): Bài toán tối ưu hóa vị trí tập kết trên trục số để giảm thiểu chi phí vận chuyển rơi vãi với nhiều truy vấn.\n3. TREE (6,0 điểm): Bài toán về cấu trúc dữ liệu cây, yêu cầu tìm cây con nhỏ nhất chứa tất cả các đỉnh cùng màu với các thao tác cập nhật màu sắc và truy vấn.",
     "tags": [
       "hsg",
@@ -60,7 +60,7 @@
     "id": "exam-tinhoc-hsg-thcs-sogddt-vinhphuc-2020-2021",
     "related_ids": [],
     "type": "exam",
-    "title": "HSG",
+    "title": "Đề thi Học sinh giỏi",
     "description": "✍️ Nội dung gồm 4 bài:\n1️⃣ Bài 1: Chia hết\n2️⃣ Bài 2: Đếm kí tự\n3️⃣ Bài 3: Giảm cân\n4️⃣ Bài 4: Chọn mua sách\n⏱ Thời gian: 150 phút",
     "tags": [
       "hsg",
@@ -113,7 +113,7 @@
     "id": "exam-tinhoc-hsg-thcs-sogddt-vinhphuc-2021-2022",
     "related_ids": [],
     "type": "exam",
-    "title": "HSG",
+    "title": "Đề thi Học sinh giỏi",
     "description": "✍️ Nội dung gồm 3 bài:\n1️⃣ Bài 1: Số chia hết\n2️⃣ Bài 2: Số báo danh\n3️⃣ Bài 3: Chọn vị kem\n⏱ Thời gian: 150 phút",
     "tags": [
       "hsg",
@@ -163,7 +163,7 @@
     "id": "exam-tinhoc-hsg-thcs-sogddt-yenbai-2022-2023",
     "related_ids": [],
     "type": "exam",
-    "title": "HSG",
+    "title": "Đề thi Học sinh giỏi",
     "description": "✍️ Nội dung gồm 4 bài:\n1️⃣ Bài 1: Số phong phú\n2️⃣ Bài 2: Nhanh trí\n3️⃣ Bài 3: Khiêu vũ\n4️⃣ Bài 4: Dãy hình nón\n⏱ Thời gian: 150 phút",
     "tags": [
       "hsg",
@@ -216,7 +216,7 @@
     "id": "exam-tinhoc-hsg-thpt-sogddt-yenbai-2022-2023",
     "related_ids": [],
     "type": "exam",
-    "title": "HSG",
+    "title": "Đề thi Học sinh giỏi",
     "description": "✍️ Nội dung gồm 4 bài:\n1️⃣ Bài 1: Số nguyên tố\n2️⃣ Bài 2: Con đường đẹp\n3️⃣ Bài 3: Dãy ô liền kề\n4️⃣ Bài 4: Chọn quà\n⏱ Thời gian: 180 phút",
     "tags": [
       "hsg",
@@ -268,7 +268,7 @@
     "id": "exam-tinhoc-hsg-thpt-sogddt-yenbai-2023-2024",
     "related_ids": [],
     "type": "exam",
-    "title": "HSG",
+    "title": "Đề thi Học sinh giỏi",
     "description": "✍️ Nội dung gồm 5 bài:\n1️⃣ Bài 1: Hình vuông\n2️⃣ Bài 2: Cặp số bạn bè\n3️⃣ Bài 3: Chữ X may mắn\n4️⃣ Bài 4: Bộ ba nghịch thế\n5️⃣ Bài 5: Liên thông\n⏱ Thời gian: 180 phút",
     "tags": [
       "hsg",
@@ -324,7 +324,7 @@
     "id": "exam-tinhoc-tht-thcs-thanhphohanoi-2016",
     "related_ids": [],
     "type": "exam",
-    "title": "THT",
+    "title": "Đề thi Tin học trẻ",
     "description": "✍️ Nội dung gồm 3 bài:\n1️⃣ Bài 1: Dãy số\n2️⃣ Bài 2: Số hạnh phúc\n3️⃣ Bài 3: Số sinh\n⏱ Thời gian: 120 phút",
     "tags": [
       "tht",
@@ -374,7 +374,7 @@
     "id": "exam-tinhoc-tht-thcs-thanhphonhatrang-2024",
     "related_ids": [],
     "type": "exam",
-    "title": "THT",
+    "title": "Đề thi Tin học trẻ",
     "description": "✍️ Nội dung gồm 4 bài:\n1️⃣ Bài 1: Tiền mặt\n2️⃣ Bài 2: Quân hậu\n3️⃣ Bài 3: Tích lớn nhất\n4️⃣ Bài 4: Leo cầu thang\n⏱ Thời gian: 120 phút",
     "tags": [
       "tht",
@@ -427,7 +427,7 @@
     "id": "exam-tinhoc-tht-thcs-thixabuonho-2018",
     "related_ids": [],
     "type": "exam",
-    "title": "THT",
+    "title": "Đề thi Tin học trẻ",
     "description": "✍️ Nội dung gồm 4 bài:\n1️⃣ Bài 1: Fibonacci\n2️⃣ Bài 2: Số học\n3️⃣ Bài 3: Xử lý mảng\n4️⃣ Bài 4: Tổng chữ số và số đảo ngược\n⏱ Thời gian: 120 phút",
     "tags": [
       "tht",
