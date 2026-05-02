@@ -12,7 +12,7 @@ const gradeWeight = g => {
 };
 
 const examTypeClass = tags => (tags.includes('hsg') ? 'icon-hsg' : 'icon-tht');
-const examTypeLabel = tags => (tags.includes('hsg') ? 'Đề HSG' : 'Tin học trẻ');
+const examTypeLabel = tags => (tags.includes('hsg') ? 'HSG' : 'THT');
 
 const card = i => {
   const tags = (i.tags || []).join(' ').toLowerCase();
@@ -28,7 +28,7 @@ const card = i => {
           <div class="d-flex align-items-start gap-3 mb-2">
             <div class="exam-doc-icon ${examTypeClass(tags)}"><i class="bi bi-patch-check"></i></div>
             <div class="flex-grow-1">
-              <h2 class="h5 mb-1">${i.title}</h2>
+              <h2 class="h5 mb-1">${i.title} năm ${i.year || '...'}</h2>
               <p class="meta mb-0">${i.organization || 'CodeHSG'}</p>
             </div>
           </div>
@@ -36,23 +36,23 @@ const card = i => {
           <div class="exam-problems mb-2">
             ${problems.map((n, idx) => `<span class="badge exam-chip">${idx + 1}. ${n}</span>`).join('') || '<span class="badge exam-chip">Chưa có problem_names</span>'}
           </div>
-
-          <div class="exam-info-inline mb-2">
-            <span><i class="bi bi-file-earmark"></i> ${String(i.file_ext || 'pdf').toUpperCase()}</span>
-            <span><i class="bi bi-list-ol"></i> ${i.problem_count || 0} bài</span>
-            <span><i class="bi bi-clock"></i> ${i.duration || '-'}</span>
-            <span><i class="bi bi-mortarboard"></i> ${i.grade || 'Khác'}</span>
+          <div class="row exam-stats mb-2">
+            <div class="col-3"><i class="bi bi-file-earmark-pdf"></i> ${String(i.file_ext || 'pdf').toUpperCase()}</div>
+            <div class="col-3"><i class="bi bi-list-ol"></i> ${i.problem_count || 0} bài</div>
+            <div class="col-3"><i class="bi bi-clock"></i> ${i.duration || '-'}</div>
+            <div class="col-3"><i class="bi bi-mortarboard"></i> ${i.grade || 'Khác'}</div>
           </div>
 
-          <div class="exam-stats d-flex justify-content-between mb-2">
-            <span><i class="bi bi-hdd"></i> ${i.file_size || '-'}</span>
-            <span><i class="bi bi-eye"></i> ${(i.view_count || 0).toLocaleString('vi-VN')}</span>
-            <span><i class="bi bi-download"></i> ${(i.download_count || 0).toLocaleString('vi-VN')}</span>
+          <div class="row exam-stats mb-2">
+            <div class="col-3"><i class="bi bi-person"></i> ${i.contributor || 'admin'}</div>
+            <div class="col-3"><i class="bi bi-database"></i> ${i.file_size || '-'}</div>
+            <div class="col-3"><i class="bi bi-eye"></i> ${(i.view_count || 0).toLocaleString('vi-VN')}</div>
+            <div class="col-3"><i class="bi bi-download"></i> ${(i.download_count || 0).toLocaleString('vi-VN')}</div>
           </div>
 
           <div class="d-flex flex-wrap gap-2 exam-badges mb-2">
             <span class="badge text-bg-light border">${examTypeLabel(tags)}</span>
-            ${hasSolution ? '<span class="badge text-bg-success">Có lời giải</span>' : ''}
+            ${hasSolution ? '<span class="badge text-bg-success">Lời giải</span>' : ''}
             ${hasTestcase ? '<span class="badge text-bg-info">Chấm điểm</span>' : ''}
             ${isFeatured ? '<span class="badge text-bg-warning">Nổi bật</span>' : ''}
           </div>
@@ -61,8 +61,8 @@ const card = i => {
 
           <div class="d-grid exam-actions">
             <a class="btn btn-sm btn-outline-primary" href="exam-detail.html?id=${encodeURIComponent(i.id)}"><i class="bi bi-info-circle me-1"></i> Chi tiết</a>
-            <a class="btn btn-sm btn-primary" target="_blank" href="${i.drive_view || '#'}"><i class="bi bi-eye me-1"></i> Làm bài</a>
-            <a class="btn btn-sm btn-outline-secondary" target="_blank" href="${i.drive_download || i.drive_view || '#'}"><i class="bi bi-download me-1"></i> Tải</a>
+            <a class="btn btn-sm btn-primary" target="_blank" href="${i.drive_view || '#'}"><i class="bi bi-eye me-1"></i> Xem nhanh</a>
+            <a class="btn btn-sm btn-outline-secondary" target="_blank" href="${i.drive_download || i.drive_view || '#'}"><i class="bi bi-download me-1"></i> Tải về</a>
           </div>
         </div>
       </div>
