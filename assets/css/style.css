@@ -12,3 +12,7 @@ body{color:var(--text);background:#f8fafc}
 .footer a{color:#e2e8f0;text-decoration:none}
 .pagination .page-link{border-radius:.6rem;margin:0 .15rem}
 .highlight{background:linear-gradient(transparent 62%,#ffe066 0)}
+
+.exam-thumb{cursor:zoom-in;transition:transform .2s ease}
+.exam-thumb:hover{transform:scale(1.03)}
+.navbar{backdrop-filter:saturate(140%) blur(2px)}
