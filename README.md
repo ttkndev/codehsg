@@ -14,7 +14,7 @@ pip install docx2pdf pdf2image python-dotenv
 Gọi API:
 Mã
 https://graph.facebook.com/me/accounts?access_token=USER_ACCESS_TOKEN
-https://graph.facebook.com/me/accounts?access_token=EAAV4wG2RmoIBRZA6mMy7X4Ae70W9LjJfKl54yI4cpVvsVFKcY8wyWEcOZBOSg4jd8lOqLvvgERl1trKEqONBSo7fZCaGa7hFsdjtyzCiQgriKJPHD9l8KRs7l0RJvFln8t1nv4FHfUhe6Mk3oldZAGZB3ELyfTwEot159StDdEa0ZCt3cz9BLdUQi4yM2ZBB9zIcZACxQBcq5Q9RYp3YurlZBb3bpJOTIekrMcnPmngZDZD
+https://graph.facebook.com/me/accounts?access_token=EAAWJa9ThkNUBRXmhe6s94c3VLLyzas1h4UZCjZCfAPg4PJjLGgFzlwgsgoKoZAzIpHk7pYLiJBg4onGe3ZA4vd9MwERAyp9UXRVOgZAP3sirbaU56a4YerbZAhHXGuiIFsHfwA8LCDvnXL90ctROfLz5E5ebjATtyGcOXUPSthqTViZBeZAyBhzIzRJo45iVYB7HFZBxPw5AZCLs5ksvSI5Uns9KfJNkChB0X3pXJn6JjYnxRFZBA6519yPYcEKUs3II4jSA4oUqtZAiJLYzACt6yRf6wd3nIAZDZD
 
 
 Tạo token dài hạn (long-lived)
@@ -28,6 +28,11 @@ https://graph.facebook.com/oauth/access_token?
 
 https://graph.facebook.com/oauth/access_token?
     grant_type=fb_exchange_token&
-    client_id=1540142750866050&
-    client_secret=8857984b3037f4851ca8de3a59bb37f2&
-    fb_exchange_token=EAAV4wG2RmoIBRSqIiXezZCvopwHhqfZBcjlZBPO8MkHr2HH3ycZBNrcBVfpxEBd039MuE6XmTaCCKAX2dZCIrWZCKxlm5cfOLcoHZCuCwegn8ZAhZCcIfH6s3vMR0q3AbXWZBO3y66Um57WNVm4INRpJeadhxsP1YXvXi6ZBYlt409ZC8JkQU1gp2p42c0imi23eAlwoH2tJ2mWqXywm4fbs85pZBEyg3eprn30Oo3xwJlBTrTWG3
+    client_id=1558471109611733&
+    client_secret=b963c518b92d990f31662a4f0b8ac74d&
+    fb_exchange_token=EAAWJa9ThkNUBRQBhu2egJ8XwL52K4u499clkUBR5oa7mxpITJEhVLZBEyJyDXA8ZCRWbBkgWfKn0fiR8aNDE7ESylM6HIVvqGaWWm3nc2KhaQ8SCdPd7Mn2BAheXq4jQUjBNQciwmuZByjL0dkDGMoPmJkGiRibm297to8cjJMhge26xrsk56Rr9ddfhHv8pGeP0j8or2yZCVPbu5HgYuX80YHuSlnxTq9QrkdP2ZCxy3
+
+
+Subcategory : Các mục tiêu biểu: sgk, sgv, sbt, cau-truc-du-lieu, giai-thuat, hsg-tinh, hsg-quoc-gia, tin-hoc-tre, olympic-sinh-vien.
+
+Level: Tự đánh giá từ 1 đến 5 (1: Tiểu học, 2: THCS, Level 3: THPT cơ bản / Nâng cao mức độ tỉnh., Level 4: Chuyên Tin / Sách chuyên đề nâng cao. 5: Quốc gia/Olympic).
