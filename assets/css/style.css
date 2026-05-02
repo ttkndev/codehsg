@@ -9,10 +9,8 @@ body {
     color: var(--text);
     background: #f8fafc;
     min-height: 100vh;
-    height: 100vh;
     display: flex;
-    flex-direction: column;
-    overflow: hidden
+    flex-direction: column
 }
 
 .site-header {
@@ -75,11 +73,7 @@ body {
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1030
+    margin-top: auto
 }
 
 .footer a {
@@ -227,9 +221,7 @@ body {
 }
 
 main {
-    flex: 1;
-    overflow-y: auto;
-    padding-bottom: 6.5rem
+    flex: 1
 }
 
 .detail-kv {
@@ -256,5 +248,5 @@ main {
 .testcase-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:.75rem}
 .stat-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:.75rem;padding:.6rem}
 
-.exam-problems--fixed{min-height:3.3rem}
-.problem-chip{width:calc(50% - .2rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exam-problems--fixed{max-height:3.4rem;overflow:hidden;align-content:flex-start}
+.problem-chip{width:auto;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
