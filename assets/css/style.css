@@ -232,8 +232,11 @@ main {
     padding: 1rem
 }
 .footer-compact{border-top:1px solid rgba(255,255,255,.2)}
-main{padding-bottom:90px}
 .newsletter-form{min-width:min(100%,420px)}
+.footer-layout{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.75rem}
+.footer-layout>:last-child{justify-self:end}
+.footer-layout .newsletter-form{justify-self:center}
+@media (max-width:992px){.footer-layout{grid-template-columns:1fr}.footer-layout>:last-child,.footer-layout .newsletter-form{justify-self:start}}
 .newsletter-form .input-group-text{background:#40679f;color:#fff;border-color:#6e8fb8}
 .newsletter-form .form-control,.newsletter-form .btn{border-color:#6e8fb8}
 .image-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
