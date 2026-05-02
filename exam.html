@@ -1,61 +1,12 @@
-<!doctype html>
-<html lang="vi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Đề thi | CodeHSG</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg bg-white border-bottom">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">CodeHSG</a>
-      <div class="navbar-nav">
-        <a class="nav-link" href="index.html">Trang chủ</a>
-        <a class="nav-link" href="book.html">Sách</a>
-        <a class="nav-link active" href="exam.html">Đề thi</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container py-4">
-    <h1 class="h3 mb-3">Danh sách đề thi</h1>
-    <input id="q" class="form-control mb-3" placeholder="Tìm theo đơn vị, năm học, cấp học..." />
-    <div class="row g-3" id="examList"></div>
-  </main>
-
-  <script>
-    let exams = [];
-    function card(item) {
-      const image = item.images?.[0] || '';
-      return `<div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          ${image ? `<img src="${image}" class="card-img-top" alt="${item.id}">` : ''}
-          <div class="card-body d-flex flex-column">
-            <h2 class="h6 mb-1">${item.title} - ${item.organization || ''}</h2>
-            <p class="small text-muted mb-1">Năm học: ${item.year || '-'} | Khối: ${item.grade || '-'}</p>
-            <p class="small text-muted mb-1">Số bài: ${item.problem_count || '-'} | Thời gian: ${item.duration || '-'}</p>
-            <div class="mt-auto d-flex gap-2">
-              <a class="btn btn-sm btn-success" target="_blank" href="${item.drive_view}">Xem</a>
-              <a class="btn btn-sm btn-outline-success" target="_blank" href="${item.drive_download}">Tải</a>
-            </div>
-          </div>
-        </div>
-      </div>`;
-    }
-    function render(list) {
-      document.getElementById('examList').innerHTML = list.map(card).join('') || '<p>Không có dữ liệu phù hợp.</p>';
-    }
-    async function init() {
-      exams = (await fetch('data/exams.json').then(r => r.json())).filter(i => i.is_ready);
-      render(exams);
-      document.getElementById('q').addEventListener('input', e => {
-        const q = e.target.value.toLowerCase().trim();
-        const filtered = exams.filter(i => [i.title, i.organization, i.grade, i.year, ...(i.problem_names || [])].join(' ').toLowerCase().includes(q));
-        render(filtered);
-      });
-    }
-    init();
-  </script>
-</body>
-</html>
+<!doctype html><html lang="vi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Đề thi | CodeHSG</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"><link href="assets/css/style.css" rel="stylesheet"></head><body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top"><div class="container"><a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-1 text-primary"></i>CodeHSG</a><div class="navbar-nav"><a class="nav-link" href="index.html">Trang chủ</a><a class="nav-link" href="book.html">Học liệu</a><a class="nav-link active" href="exam.html">Đề thi</a></div></div></nav>
+<header class="site-header py-5"><div class="container"><h1 class="display-6 fw-bold">Kho đề thi Tin học</h1><p class="lead">Bộ sưu tập đề thi được cập nhật mới nhất để luyện tập theo từng cấp học.</p><div class="row g-3" id="stats"></div></div></header>
+<main class="container py-4"><div class="row g-2 align-items-end mb-3"><div class="col-md-5"><label class="form-label">Tìm kiếm</label><input id="q" class="form-control" placeholder="Tên đề, đơn vị, năm học, bài toán..."></div><div class="col-md-3"><label class="form-label">Cấp học</label><select id="grade" class="form-select"><option value="">Tất cả</option></select></div><div class="col-md-2"><label class="form-label">Sắp xếp</label><select id="sort" class="form-select"><option value="new">Mới nhất</option><option value="down">Tải nhiều</option></select></div><div class="col-md-2"><div id="count" class="record-chip"></div></div></div><div class="row g-3" id="list"></div><nav class="mt-4"><ul class="pagination justify-content-center" id="paging"></ul></nav></main>
+<footer class="footer py-4 mt-4"><div class="container d-flex justify-content-between"><span>© 2026 CodeHSG</span><span>CodeHSG Exam Library</span></div></footer>
+<script>
+let data=[],filtered=[],page=1;const size=6;
+const card=i=>`<div class="col-12"><div class="card content-card"><div class="row g-0"><div class="col-md-3">${i.images?.[0]?`<img src="${i.images[0]}" class="w-100 h-100" style="object-fit:cover">`:''}</div><div class="col-md-9"><div class="card-body"><h2 class="h5">${i.title} <span class="text-muted">- ${i.organization||''}</span></h2><p class="meta"><i class="bi bi-mortarboard"></i> ${i.grade||'-'} • <i class="bi bi-calendar2"></i> ${i.year||'-'} • <i class="bi bi-list-check"></i> ${i.problem_count||0} bài • <i class="bi bi-clock"></i> ${i.duration||'-'}</p><p class="meta"><i class="bi bi-download"></i> ${(i.download_count||0).toLocaleString('vi-VN')} • Cập nhật: ${i.last_updated||'-'}</p><a class="btn btn-success btn-sm" target="_blank" href="${i.drive_view}"><i class="bi bi-eye"></i> Xem</a> <a class="btn btn-outline-success btn-sm" target="_blank" href="${i.drive_download}"><i class="bi bi-cloud-download"></i> Tải</a></div></div></div></div></div>`;
+function apply(){const q=document.getElementById('q').value.toLowerCase().trim(),g=document.getElementById('grade').value,s=document.getElementById('sort').value;filtered=data.filter(i=>(!g||i.grade===g)&&[i.title,i.organization,i.grade,i.year,...(i.problem_names||[])].join(' ').toLowerCase().includes(q));filtered.sort((a,b)=>s==='new'?new Date(b.last_updated)-new Date(a.last_updated):(b.download_count||0)-(a.download_count||0));page=1;render();}
+function render(){const total=filtered.length,pages=Math.max(1,Math.ceil(total/size)),slice=filtered.slice((page-1)*size,page*size);document.getElementById('list').innerHTML=slice.map(card).join('')||'<p>Không có dữ liệu phù hợp.</p>';document.getElementById('count').textContent=`Hiển thị ${slice.length}/${total} bản ghi`;document.getElementById('paging').innerHTML=Array.from({length:pages},(_,k)=>`<li class="page-item ${page===k+1?'active':''}"><button class="page-link" onclick="page=${k+1};render()">${k+1}</button></li>`).join('');}
+(async()=>{data=(await fetch('data/exams.json').then(r=>r.json())).filter(i=>i.is_ready);document.getElementById('stats').innerHTML=[['bi-file-earmark-text','Tổng đề thi',data.length],['bi-building','Đơn vị ra đề',new Set(data.map(i=>i.organization)).size],['bi-download','Lượt tải',data.reduce((s,i)=>s+(i.download_count||0),0).toLocaleString('vi-VN')],['bi-calendar-check','Mới cập nhật',data[0]?.last_updated||'-']].map(s=>`<div class="col-6 col-lg-3"><div class="hero-stat"><i class="bi ${s[0]} me-1"></i><div class="small">${s[1]}</div><div class="h4 mb-0">${s[2]}</div></div></div>`).join('');document.getElementById('grade').innerHTML+=[...new Set(data.map(i=>i.grade).filter(Boolean))].map(g=>`<option>${g}</option>`).join('');['q','grade','sort'].forEach(id=>document.getElementById(id).addEventListener('input',apply));filtered=[...data];apply();})();
+</script></body></html>
