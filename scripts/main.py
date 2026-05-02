@@ -13,7 +13,7 @@ def run_pipeline():
 
     drive = init_drive()
 
-    exams, books = [], []
+    exams, books, contributors = [], [], Counter()
     num, index = 0, 0  # 👈 dùng để schedule post
 
     for file in list_pdf():
@@ -28,8 +28,12 @@ def run_pipeline():
         # 👇 chỉ tăng index khi thực sự ready (tránh lệch lịch)
         if meta.get("is_ready"):
             index += 1
+        
+        # 👈 cập nhật contributor ngay khi duyệt
+        if meta.get("contributor"):
+            contributors[meta["contributor"]] += 1
 
-    build_data(exams, books)
+    build_data(exams, books, contributors)
     
 def list_pdf():
     return [f for f in os.listdir(config.INPUT_DIR) if f.endswith(".pdf")]
@@ -142,11 +146,19 @@ def handle_upload(drive, meta, local_pdf):
             meta["uploaded_drive"] = True
     return meta
 
-def build_data(exams, books):
+def build_data(exams, books, contributors):
     os.makedirs(config.DATA_DIR, exist_ok=True)
 
     json.dump(exams, open(f"{config.DATA_DIR}/exams.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     json.dump(books, open(f"{config.DATA_DIR}/books.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+
+    # Đếm số lượng đóng góp
+    counter = Counter(contributors)
+    contributors_data = [
+        {"name": name, "counts": counts, "bio": None}
+        for name, counts in counter.items()
+    ]
+    json.dump(contributors_data, open(f"{config.DATA_DIR}/contributors.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     run_pipeline()
