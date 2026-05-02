@@ -9,8 +9,10 @@ body {
     color: var(--text);
     background: #f8fafc;
     min-height: 100vh;
+    height: 100vh;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    overflow: hidden
 }
 
 .site-header {
@@ -70,6 +72,14 @@ body {
 .navbar {
     background: #2d4f80 !important;
     color: #dbe7f5
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1030
 }
 
 .footer a {
@@ -217,7 +227,9 @@ body {
 }
 
 main {
-    flex: 1
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 6.5rem
 }
 
 .detail-kv {
@@ -243,3 +255,6 @@ main {
 .image-grid .exam-thumb{width:100%;height:110px;object-fit:cover}
 .testcase-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:.75rem}
 .stat-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:.75rem;padding:.6rem}
+
+.exam-problems--fixed{min-height:3.3rem}
+.problem-chip{width:calc(50% - .2rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

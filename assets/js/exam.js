@@ -33,8 +33,8 @@ const card = i => {
             </div>
           </div>
 
-          <div class="exam-problems mb-2">
-            ${problems.map((n, idx) => `<span class="badge exam-chip">${idx + 1}. ${n}</span>`).join('') || '<span class="badge exam-chip">Chưa có problem_names</span>'}
+          <div class="exam-problems exam-problems--fixed mb-2">
+            ${problems.map((n, idx) => `<span class="badge exam-chip problem-chip">${idx + 1}. ${n}</span>`).join('') || '<span class="badge exam-chip">Chưa có problem_names</span>'}
           </div>
 
        <div class="row exam-stats mb-2">
