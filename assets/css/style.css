@@ -30,3 +30,10 @@ body{color:var(--text);background:#f8fafc}
 .exam-doc-icon.icon-hsg{background:#ede9fe;color:#6d28d9}
 .exam-doc-icon.icon-tht{background:#dcfce7;color:#15803d}
 #paging .page-link{min-width:2.4rem;text-align:center}
+.exam-toolbar-card{border:1px solid #e2e8f0}
+.exam-toolbar-card .input-group-text{background:#eef2ff;color:#4338ca;border-color:#c7d2fe}
+.exam-card .h5{font-size:1rem}
+.exam-thumb-icon{width:2.25rem;height:2.25rem;border-radius:.6rem;background:#eff6ff;color:#2563eb;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.exam-panel{border-top:1px solid rgba(148,163,184,.35);padding-top:.6rem}
+.exam-actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem;min-width:0}
+.exam-actions .btn{display:flex;align-items:center;justify-content:center}
