@@ -67,7 +67,7 @@ const id = new URLSearchParams(location.search).get('id');
           <span><i class="bi bi-file-earmark"></i> ${String(data.file_ext || 'pdf').toUpperCase()} • ${data.file_size || '-'}</span>
           <span><i class="bi bi-clock"></i> ${data.duration || '-'}</span>
           <span><i class="bi bi-code-square"></i> ${data.language || 'C/C++'}</span>
-          <span><i class="bi bi-diagram-3"></i> ${(data.level || []).join(', ') || '-'}</span>
+          <span><i class="bi bi-diagram-3"></i> ${Array.isArray(data.level) ? (data.level.join(', ') || '-') : (data.level || '-')}</span>
         </div>
         <div class="d-grid gap-2 mt-3"><a class="btn btn-primary btn-sm" target="_blank" href="${data.drive_view || '#'}"><i class="bi bi-eye"></i> Làm bài</a><a class="btn btn-outline-primary btn-sm" target="_blank" href="${data.drive_download || data.drive_view || '#'}"><i class="bi bi-download"></i> Tải PDF</a></div>
       </div></div>
