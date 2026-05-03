@@ -155,8 +155,8 @@ def build_data(exams, books, contributors):
     # Đếm số lượng đóng góp
     counter = Counter(contributors)
     contributors_data = [
-        {"name": name, "counts": counts, "bio": None}
-        for name, counts in counter.items()
+        {"name": name, "resources": resources, "bio": None}
+        for name, resources in counter.items()
     ]
     json.dump(contributors_data, open(f"{config.DATA_DIR}/contributors.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
