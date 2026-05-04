@@ -152,6 +152,17 @@ let currentView = 'grid';
 const PAGE_SIZE = 6;
 
 // ── Hero stats ─────────────────────────────────────────────────
+function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = `${formatNumber(value)}+`;
+        if (progress < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+}
 
 /** Render thống kê nhanh trong page-hero của book.html */
 function renderHeroStats(books) {
@@ -162,17 +173,28 @@ function renderHeroStats(books) {
     const totalViews = ready.reduce((s, b) => s + (b.view_count || 0), 0);
     const totalDl    = ready.reduce((s, b) => s + (b.download_count || 0), 0);
 
-    el.innerHTML = `
-        <span class="me-3"><i class="bi bi-book me-1 text-warning"></i>
-            <strong>${ready.length}</strong> học liệu
-        </span>
-        <span class="me-3"><i class="bi bi-eye me-1 text-warning"></i>
-            <strong>${formatNumber(totalViews)}</strong> lượt xem
-        </span>
-        <span><i class="bi bi-download me-1 text-warning"></i>
-            <strong>${formatNumber(totalDl)}</strong> lượt tải
-        </span>
-    `;
+    const stats = [
+        { icon: 'bi bi-book', value: ready.length, title: 'Học liệu' },
+        { icon: 'bi bi-eye', value: totalViews, title: 'Lượt xem' },
+        { icon: 'bi bi-download', value: totalDl, title: 'Lượt tải' }
+    ];
+
+    el.innerHTML = '';
+    stats.forEach(stat => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 col-6 mb-3';
+        col.innerHTML = `
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <i class="${stat.icon} fs-2 mb-2"></i>
+                    <h3 class="fw-bold stat-value">0+</h3>
+                    <p class="text-muted mb-0">${stat.title}</p>
+                </div>
+            </div>
+        `;
+        el.appendChild(col);
+        animateValue(col.querySelector('.stat-value'), 0, stat.value, 1200);
+    });
 }
 
 // ── Category filter (dynamic) ──────────────────────────────────
