@@ -130,24 +130,42 @@ function renderDetail(exam, allExams) {
         <!-- Page Hero -->
         <div class="page-hero">
             <div class="container py-4">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-modern mb-2">
-                        <li class="breadcrumb-item">
-                            <a href="index.html" class="text-warning text-decoration-none breadcrumb-home-link"><i class="bi bi-house-door-fill me-1"></i>Trang chủ</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="exam.html" class="text-warning text-decoration-none">Đề thi</a>
-                        </li>
-                        <li class="breadcrumb-item active text-white-50 text-truncate" style="max-width:300px;">${exam.title}</li>
-                    </ol>
-                </nav>
-                <h1 class="fw-bold text-white mb-2 fs-3">${exam.title}</h1>
-                <div class="d-flex flex-wrap gap-2 align-items-center">
-                    <span class="badge ${levelBadgeClass(exam.level)} px-3 py-2">${mapLevel(exam.level)}</span>
-                    <span class="text-white-50 small"><i class="bi bi-building me-1"></i>${exam.organization}</span>
-                    <span class="text-white-50 small"><i class="bi bi-calendar me-1"></i>${exam.year}</span>
-                    <span class="text-white-50 small"><i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)} lượt xem</span>
-                    <span class="text-white-50 small"><i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)} lượt tải</span>
+                <div class="row g-3 align-items-stretch">
+                    <div class="col-lg-8">
+                        <div class="hero-main h-100">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb breadcrumb-modern mb-2">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html" class="text-warning text-decoration-none breadcrumb-home-link"><i class="bi bi-house-door-fill me-1"></i>Trang chủ</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="exam.html" class="text-warning text-decoration-none">Đề thi</a>
+                                    </li>
+                                    <li class="breadcrumb-item active text-white-50 text-truncate" style="max-width:300px;">${exam.title}</li>
+                                </ol>
+                            </nav>
+                            <h1 class="fw-bold text-white mb-2 fs-3">${exam.title}</h1>
+                            <div class="d-flex flex-wrap gap-2 align-items-center">
+                                <span class="badge ${levelBadgeClass(exam.level)} px-3 py-2">${mapLevel(exam.level)}</span>
+                                <span class="text-white-50 small"><i class="bi bi-building me-1"></i>${exam.organization}</span>
+                                <span class="text-white-50 small"><i class="bi bi-calendar me-1"></i>${exam.year}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="hero-stats h-100">
+                            <div class="hero-stats-grid">
+                                <div class="hero-stat-item">
+                                    <span class="hero-stat-label"><i class="bi bi-eye me-1"></i>Lượt xem</span>
+                                    <strong class="hero-stat-value">${formatNumber(exam.view_count)}</strong>
+                                </div>
+                                <div class="hero-stat-item">
+                                    <span class="hero-stat-label"><i class="bi bi-download me-1"></i>Lượt tải</span>
+                                    <strong class="hero-stat-value">${formatNumber(exam.download_count)}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
