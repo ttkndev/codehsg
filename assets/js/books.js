@@ -197,6 +197,20 @@ function renderHeroStats(books) {
     });
 }
 
+function renderLatestBookBadge(books) {
+    const badge = document.getElementById('book-hero-latest');
+    if (!badge) return;
+
+    const readyBooks = books.filter(book => book.is_ready !== false && book.date_added);
+    if (readyBooks.length === 0) {
+        badge.innerHTML = `<i class="bi bi-stars me-1"></i>Chưa có sách mới được cập nhật`;
+        return;
+    }
+
+    const latestBook = readyBooks.sort((a, b) => new Date(b.date_added) - new Date(a.date_added))[0];
+    badge.innerHTML = `<i class="bi bi-stars me-1"></i>Sách mới thêm: ${latestBook.title}`;
+}
+
 // ── Category filter (dynamic) ──────────────────────────────────
 
 /** Tạo checkbox danh mục từ dữ liệu thực tế */
@@ -384,6 +398,7 @@ async function init() {
     const container = document.getElementById('book-container');
     try {
         allBooks = await fetch('data/books.json').then(res => res.json());
+        renderLatestBookBadge(allBooks);
         renderHeroStats(allBooks);
         buildCategoryFilters(allBooks);
         readUrlParams();

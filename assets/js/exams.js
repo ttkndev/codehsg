@@ -161,6 +161,20 @@ let currentPage = 1;
 let currentView = 'grid';
 const PAGE_SIZE = 6;
 
+function renderLatestExamBadge(exams) {
+    const badge = document.getElementById('exam-hero-latest');
+    if (!badge) return;
+
+    const examsWithDate = exams.filter(exam => exam.date_added);
+    if (examsWithDate.length === 0) {
+        badge.innerHTML = `<i class="bi bi-stars me-1"></i>Chưa có đề thi mới được cập nhật`;
+        return;
+    }
+
+    const latestExam = examsWithDate.sort((a, b) => new Date(b.date_added) - new Date(a.date_added))[0];
+    badge.innerHTML = `<i class="bi bi-stars me-1"></i>Đề thi mới thêm: ${latestExam.title}`;
+}
+
 // =====================
 // FILTER & SORT
 // =====================
@@ -315,6 +329,7 @@ async function init() {
     const container = document.getElementById('exam-container');
     try {
         allExams = await fetch('data/exams.json').then(res => res.json());
+        renderLatestExamBadge(allExams);
         filtered = [...allExams];
         bindEvents();
         applyFilters();
