@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 
 <body>
@@ -17,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="index.html">CodeHSG</a>
+                <a class="navbar-brand fw-bold" href="index.html">Code<span class="text-warning">HSG</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -35,53 +34,72 @@
 
     <!-- Main -->
     <main class="container my-5">
-
         <!-- Hero -->
-        <section class="py-5 text-center bg-light mt-5">
+        <section class="py-4 px-4 bg-light rounded shadow-sm">
             <div class="container">
-                <h2 class="fw-bold mb-3">Khám phá tài liệu học tập chất lượng</h2>
-                <p class="lead mb-4">
-                    Chúng tôi cung cấp các đề thi và học liệu được cập nhật thường xuyên để giúp bạn chuẩn bị tốt nhất
-                    cho
-                    các kỳ thi học sinh giỏi.
-                </p>
-                <div class="mb-4">
-                    <a href="exam.html" class="btn btn-primary me-2">Xem đề thi</a>
-                    <a href="book.html" class="btn btn-secondary">Xem học liệu</a>
+                <!-- Hàng 1: nội dung + code -->
+                <div class="row align-items-center">
+                    <!-- Bên trái -->
+                    <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                        <h2 class="fw-bold mb-3">Khám phá tài liệu học tập chất lượng</h2>
+                        <p class="lead mb-4">
+                            Chúng tôi cung cấp các đề thi và học liệu được cập nhật thường xuyên để giúp bạn chuẩn bị
+                            tốt nhất cho các kỳ thi học sinh giỏi.
+                        </p>
+                        <div class="mb-4">
+                            <a href="exam.html" class="btn btn-primary me-2">Khám phá kho đề thi</a>
+                            <a href="book.html" class="btn btn-secondary">Khám phá kho học liệu</a>
+                        </div>
+                    </div>
+                    <!-- Bên phải: khung code -->
+                    <div class="col-md-6">
+                       <div class="bg-dark rounded shadow-sm position-relative code-box">
+  <!-- 3 nút cửa sổ -->
+  <div class="d-flex gap-2 position-absolute top-0 start-0 p-2">
+    <span class="btn btn-sm btn-danger rounded-circle"></span>
+    <span class="btn btn-sm btn-warning rounded-circle"></span>
+    <span class="btn btn-sm btn-success rounded-circle"></span>
+  </div>
+  <pre class="mt-4"><code class="language-cpp">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    cout << "Hello world!";
+    return 0;
+}
+  </code></pre>
+</div>
+                    </div>
+                    <!-- Hàng 2: thống kê -->
+                    <div class="row justify-content-center mt-4" id="stats"></div>
                 </div>
-
-                <!-- Stats -->
-                <div class="row justify-content-center mt-4" id="stats">
-                    <!-- JS sẽ render thống kê -->
-                </div>
-            </div>
         </section>
 
         <!-- Exams -->
-        <section class="my-5">
+        <section class="mt-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>Đề thi nổi bật</h2>
-                <a href="exam.html" class="btn btn-link">Xem tất cả</a>
+                <h2><i class="bi bi-file-earmark-text me-2"></i>Đề thi nổi bật</h2>
+                <a href="exam.html" class="btn btn-link">
+                    Xem tất cả <i class="bi bi-arrow-right-circle ms-1"></i>
+                </a>
             </div>
-            <div class="row" id="featured-exams">
-                <!-- JS sẽ render 3 card -->
-            </div>
+            <div class="row" id="featured-exams"></div>
         </section>
 
         <!-- Books -->
-        <section class="my-5">
+        <section class="mt-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>Học liệu nổi bật</h2>
-                <a href="book.html" class="btn btn-link">Xem tất cả</a>
+                <h2><i class="bi bi-journal-text me-2"></i>Học liệu nổi bật</h2>
+                <a href="book.html" class="btn btn-link d-inline-flex align-items-center">
+                    Xem tất cả <i class="bi bi-arrow-right-circle ms-1"></i>
+                </a>
             </div>
-            <div class="row" id="featured-books">
-                <!-- JS sẽ render 3 card -->
-            </div>
+            <div class="row" id="featured-books"></div>
         </section>
 
         <!-- Share -->
-        <section class="my-5 text-center bg-light p-4 rounded">
-            <h2>Chia sẻ tài nguyên học tập</h2>
+        <section class="mt-5 text-center bg-light p-4 rounded">
+            <h2><i class="bi bi-share me-2"></i>Chia sẻ tài nguyên học tập</h2>
             <p>
                 <strong>CodeHSG</strong> luôn trân trọng những đóng góp từ cộng đồng.
                 Việc chia sẻ đề thi, sách và tài liệu không chỉ giúp lan tỏa tri thức,
@@ -90,26 +108,23 @@
             <p>
                 Hãy cùng chung tay xây dựng cộng đồng học tập bền vững, nơi mọi người cùng nhau rèn luyện và phát triển.
             </p>
-            <a href="https://www.facebook.com/CodeHSG" target="_blank" class="btn btn-secondary btn-sm mt-3">
-                <i class="bi bi-facebook me-1"></i>
-                Gửi tài nguyên qua Facebook
+            <a href="https://www.facebook.com/CodeHSG" target="_blank" class="btn btn-secondary btn-sm">
+                <i class="bi bi-facebook me-1"></i>Chia sẻ tài nguyên của bạn
             </a>
         </section>
 
         <!-- Contributors -->
-        <section class="my-5">
-            <h2 class="text-center mb-4">Vinh danh thành viên đóng góp</h2>
+        <section class="mt-5" p-4>
+            <h2 class="text-center mb-4"><i class="bi bi-people me-2"></i>Vinh danh thành viên đóng góp</h2>
             <p class="text-center">
                 <strong>CodeHSG</strong> phát triển nhờ sự đóng góp quý báu từ cộng đồng.
                 Xin trân trọng cảm ơn các thành viên đã chia sẻ đề thi, học liệu và kinh nghiệm học tập.
             </p>
-            <div class="row justify-content-center" id="contributors">
-                <!-- JS sẽ render danh sách contributors -->
-            </div>
+            <div class="row justify-content-center" id="contributors"></div>
         </section>
+    </main>
 
-
-    </main><!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-dark text-white py-3">
         <div class="container d-flex justify-content-between align-items-center">
             <p class="mb-0">&copy; 2026 - ttkndev</p>
@@ -132,6 +147,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Prism.js -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

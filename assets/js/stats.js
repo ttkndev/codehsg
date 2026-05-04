@@ -42,7 +42,7 @@ async function loadStats() {
             col.className = 'col-md-3 col-6 mb-3';
             col.innerHTML = `
                 <div class="card shadow-sm border-0">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <i class="${stat.icon} fs-2 mb-2"></i>
                         <h3 class="fw-bold stat-value">0+</h3>
                         <p class="text-muted mb-0">${stat.title}</p>

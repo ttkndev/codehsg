@@ -36,7 +36,7 @@ async function loadFeaturedExams() {
                                 </div>
                                 <!-- Kiểu tệp + dung lượng -->
                                 <div class="row text-muted small mb-1">
-                                    <div class="col-6"><i class="bi bi-file-earmark-pdf text-danger me-1"></i>${exam.file_ext.toUpperCase()}</div>
+                                    <div class="col-6"><i class="bi bi-file-earmark-pdf me-1"></i>${exam.file_ext.toUpperCase()}</div>
                                     <div class="col-6"><i class="bi bi-hdd me-1"></i>${exam.file_size}</div>
                                 </div>
                                 <!-- Lượt xem + lượt tải -->
@@ -64,7 +64,7 @@ async function loadFeaturedExams() {
                             <a href="${exam.drive_view}" target="_blank" class="btn btn-outline-success btn-sm" title="Xem">
                                 <i class="bi bi-eye"></i> Xem nhanh
                             </a>
-                            <a href="${exam.drive_download}" target="_blank" class="btn btn-outline-danger btn-sm" title="Tải">
+                            <a href="${exam.drive_download}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Tải">
                                 <i class="bi bi-download"></i> Tải về
                             </a>
                         </div>

@@ -7,7 +7,7 @@ async function loadContributors() {
 
         contributors.forEach(user => {
             const card = document.createElement('div');
-            card.className = 'col-md-3 col-sm-6 mb-4';
+            card.className = 'col-md-3 col-sm-6';
             card.innerHTML = `
                 <div class="text-center">
                     <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"

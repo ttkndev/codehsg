@@ -56,7 +56,7 @@ async function loadFeaturedBooks() {
                                 </div>
                                 <!-- Dòng riêng: kiểu tệp + dung lượng -->
                                 <div class="row text-muted small mb-1">
-                                    <div class="col-6"><i class="bi bi-file-earmark-pdf text-danger me-1"></i>${book.file_ext.toUpperCase()}</div>
+                                    <div class="col-6"><i class="bi bi-file-earmark-pdf me-1"></i>${book.file_ext.toUpperCase()}</div>
                                     <div class="col-6"><i class="bi bi-hdd me-1"></i>${book.file_size}</div>
                                 </div>
                                 <!-- Dòng riêng: lượt xem + lượt tải -->
@@ -93,7 +93,7 @@ async function loadFeaturedBooks() {
                             <a href="${book.drive_view}" target="_blank" class="btn btn-outline-success btn-sm" title="Xem"> Xem nhanh
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <a href="${book.drive_download}" target="_blank" class="btn btn-outline-danger btn-sm" title="Tải">
+                            <a href="${book.drive_download}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Tải">
                                 <i class="bi bi-download"></i> Tải về
                             </a>
                         </div>
