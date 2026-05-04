@@ -169,14 +169,21 @@ function renderHeroStats(books) {
     const el = document.getElementById('book-hero-stats');
     if (!el) return;
 
-    const ready      = books.filter(b => b.is_ready !== false);
+    const ready = books.filter(b => b.is_ready !== false);
     const countByCategory = (name) => ready.filter(b => b.category === name).length;
+
+    // NNLT = Ngôn ngữ lập trình: đếm theo tags (không phân biệt hoa thường)
+    const languageTags = ['c', 'c++', 'python', 'java', 'javascript', 'typescript', 'pascal', 'php', 'go', 'rust', 'kotlin', 'swift', 'ruby', 'c#'];
+    const nnltCount = ready.filter(book => {
+        const tags = (book.tags || []).map(tag => String(tag).toLowerCase());
+        return tags.some(tag => languageTags.includes(tag));
+    }).length;
 
     const stats = [
         { icon: 'bi bi-book', value: ready.length, title: 'Số học liệu' },
         { icon: 'bi bi-diagram-3', value: countByCategory('CTDL-GT'), title: 'CTDL-GT' },
         { icon: 'bi bi-journal-bookmark', value: countByCategory('Sách giáo khoa'), title: 'Sách giáo khoa' },
-        { icon: 'bi bi-bookmark-star', value: countByCategory('Sách tham khảo'), title: 'Sách tham khảo' }
+        { icon: 'bi bi-code-slash', value: nnltCount, title: 'NNLT' }
     ];
 
     el.innerHTML = '';
