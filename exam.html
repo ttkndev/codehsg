@@ -54,10 +54,27 @@
                         <li class="breadcrumb-item active text-white-50">Đề thi</li>
                     </ol>
                 </nav>
-                <h1 class="fw-bold text-white mb-1">
-                    <i class="bi bi-file-earmark-text text-warning me-2"></i>Kho đề thi
-                </h1>
-                <p class="text-white-50 mb-0">Tổng hợp đề thi học sinh giỏi Tin học các cấp</p>
+                <div class="row align-items-center gy-4">
+                    <div class="col-lg-6">
+                        <h1 class="fw-bold text-white mb-2">
+                            <i class="bi bi-file-earmark-text text-warning me-2"></i>Kho đề thi
+                        </h1>
+                        <p class="text-white-50 mb-2">
+                            Tổng hợp đề thi học sinh giỏi Tin học theo từng cấp học, địa phương và năm thi.
+                        </p>
+                        <p class="text-white-50 mb-0">
+                            Bạn có thể lọc nhanh theo cấp học, sắp xếp theo lượt xem/lượt tải và tìm kiếm đề phù hợp để luyện tập hiệu quả hơn.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3" id="stats">
+                            <div class="col-12 text-center text-secondary py-3">
+                                <div class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></div>
+                                Đang tải thống kê...
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -197,6 +214,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/exams.js" defer></script>
+    <script src="assets/js/stats.js" defer></script>
     <script>
         (function () {
             const currentPage = location.pathname.split('/').pop() || 'index.html';
