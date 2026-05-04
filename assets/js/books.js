@@ -176,7 +176,7 @@ function renderHeroStats(books) {
         { icon: 'bi bi-book', value: ready.length, title: 'Số học liệu' },
         { icon: 'bi bi-diagram-3', value: countByCategory('CTDL-GT'), title: 'CTDL-GT' },
         { icon: 'bi bi-journal-bookmark', value: countByCategory('Sách giáo khoa'), title: 'Sách giáo khoa' },
-        { icon: 'bi bi-bookmark-star', value: countByCategory('Sách tham khảo'), title: 'Sách tham khảo' }
+        { icon: 'bi bi-bookmark-star', value: countByCategory('Sách tham khảo'), title: 'Khác' }
     ];
 
     el.innerHTML = '';
