@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeHSG - Kho đề thi học sinh giỏi Tin học đầy đủ, được cập nhật thường xuyên.">
+    <title>CodeHSG | Đề thi</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-4" href="index.html">
+                    <span class="text-white">Code</span><span class="text-warning">HSG</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto gap-lg-1">
+                        <li class="nav-item"><a class="nav-link px-3 rounded" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded" href="exam.html">Đề thi</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded" href="book.html">Học liệu</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded" href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-hero">
+            <div class="container py-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-warning text-decoration-none">Trang chủ</a></li>
+                        <li class="breadcrumb-item active text-white-50">Đề thi</li>
+                    </ol>
+                </nav>
+                <h1 class="fw-bold text-white mb-1">
+                    <i class="bi bi-file-earmark-text text-warning me-2"></i>Kho Đề Thi
+                </h1>
+                <p class="text-white-50 mb-0">Tổng hợp đề thi học sinh giỏi Tin học các cấp</p>
+            </div>
+        </div>
+
+        <div class="container py-4">
+            <div class="row g-4">
+
+                <!-- ===== SIDEBAR ===== -->
+                <div class="col-lg-3">
+                    <div class="filter-sidebar sticky-sidebar">
+
+                        <!-- Tìm kiếm -->
+                        <div class="filter-block">
+                            <h6 class="filter-title"><i class="bi bi-search me-2"></i>Tìm kiếm</h6>
+                            <input type="text" id="search-input" class="form-control form-control-sm"
+                                placeholder="Tên đề thi, tổ chức...">
+                        </div>
+
+                        <!-- Cấp học -->
+                        <div class="filter-block">
+                            <h6 class="filter-title"><i class="bi bi-mortarboard me-2"></i>Cấp học</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="filter-check">
+                                    <input type="checkbox" class="filter-level" value="1"> Tiểu học
+                                </label>
+                                <label class="filter-check">
+                                    <input type="checkbox" class="filter-level" value="2"> THCS
+                                </label>
+                                <label class="filter-check">
+                                    <input type="checkbox" class="filter-level" value="3"> THPT
+                                </label>
+                                <label class="filter-check">
+                                    <input type="checkbox" class="filter-level" value="4"> THPT Chuyên
+                                </label>
+                                <label class="filter-check">
+                                    <input type="checkbox" class="filter-level" value="5"> Đại học
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Sắp xếp -->
+                        <div class="filter-block">
+                            <h6 class="filter-title"><i class="bi bi-sort-down me-2"></i>Sắp xếp</h6>
+                            <select id="sort-select" class="form-select form-select-sm">
+                                <option value="view_count">Lượt xem nhiều nhất</option>
+                                <option value="download_count">Lượt tải nhiều nhất</option>
+                                <option value="date_added">Mới nhất</option>
+                                <option value="year">Năm thi</option>
+                            </select>
+                        </div>
+
+                        <!-- Reset -->
+                        <button id="reset-filters" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>Xóa bộ lọc
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== MAIN CONTENT ===== -->
+                <div class="col-lg-9">
+
+                    <!-- Toolbar -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span id="result-count" class="text-secondary small">Đang tải...</span>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-secondary view-btn active" data-view="grid" title="Dạng lưới">
+                                <i class="bi bi-grid"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary view-btn" data-view="list" title="Dạng danh sách">
+                                <i class="bi bi-list-ul"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card container -->
+                    <div id="exam-container" class="row g-3">
+                        <div class="col-12 text-center text-secondary py-5">
+                            <div class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></div>
+                            Đang tải đề thi...
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="mt-4" id="pagination-nav" aria-label="Phân trang">
+                        <ul class="pagination justify-content-center" id="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white border-top border-secondary mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center gy-3">
+                <div class="col-md-4 text-center text-md-start">
+                    <span class="fw-bold fs-5">Code<span class="text-warning">HSG</span></span>
+                    <p class="text-secondary small mb-0 mt-1">Nền tảng học tập dành cho học sinh giỏi Tin học</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <ul class="list-inline mb-0 small">
+                        <li class="list-inline-item"><a href="index.html" class="text-secondary text-decoration-none footer-link">Trang chủ</a></li>
+                        <li class="list-inline-item text-secondary">·</li>
+                        <li class="list-inline-item"><a href="exam.html" class="text-secondary text-decoration-none footer-link">Đề thi</a></li>
+                        <li class="list-inline-item text-secondary">·</li>
+                        <li class="list-inline-item"><a href="book.html" class="text-secondary text-decoration-none footer-link">Học liệu</a></li>
+                        <li class="list-inline-item text-secondary">·</li>
+                        <li class="list-inline-item"><a href="contact.html" class="text-secondary text-decoration-none footer-link">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <div class="d-flex gap-2 justify-content-center justify-content-md-end">
+                        <a href="https://www.facebook.com/CodeHSG" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline-secondary btn-sm rounded-circle social-btn" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://github.com/ttkndev/codehsg" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline-secondary btn-sm rounded-circle social-btn" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="mailto:support@codehsg.vn"
+                            class="btn btn-outline-secondary btn-sm rounded-circle social-btn" aria-label="Email">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-3">
+            <p class="text-center text-secondary small mb-0">&copy; 2026 ttkndev · CodeHSG</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/exams.js" defer></script>
+    <script>
+        (function () {
+            const currentPage = location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

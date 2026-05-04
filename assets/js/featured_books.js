@@ -1,6 +1,6 @@
 // Quy đổi level sang tên cấp học
 function mapLevel(level) {
-    switch(level) {
+    switch (level) {
         case 1: return "Tiểu học";
         case 2: return "THCS";
         case 3: return "THPT";
@@ -12,12 +12,12 @@ function mapLevel(level) {
 
 // Chọn icon theo level
 function levelIcon(level) {
-    switch(level) {
-        case 1: return "bi-book";          // Tiểu học
-        case 2: return "bi-journal";       // THCS
-        case 3: return "bi-mortarboard";   // THPT
-        case 4: return "bi-award";         // THPT Chuyên
-        case 5: return "bi-building";      // Đại học
+    switch (level) {
+        case 1: return "bi-book";
+        case 2: return "bi-journal";
+        case 3: return "bi-mortarboard";
+        case 4: return "bi-award";
+        case 5: return "bi-building";
         default: return "bi-question-circle";
     }
 }
@@ -27,6 +27,7 @@ async function loadFeaturedBooks() {
     try {
         const books = await fetch('data/books.json').then(res => res.json());
 
+        // Sort theo lượt xem giảm dần, lấy top 3
         books.sort((a, b) => (b.view_count || 0) - (a.view_count || 0));
         const topBooks = books.slice(0, 3);
 
@@ -54,12 +55,12 @@ async function loadFeaturedBooks() {
                                     <div class="col-6"><i class="bi bi-person-badge me-1"></i>${book.contributor}</div>
                                     <div class="col-6"><i class="bi bi-file-text me-1"></i>${book.pages} trang</div>
                                 </div>
-                                <!-- Dòng riêng: kiểu tệp + dung lượng -->
+                                <!-- Kiểu tệp + dung lượng -->
                                 <div class="row text-muted small mb-1">
                                     <div class="col-6"><i class="bi bi-file-earmark-pdf me-1"></i>${book.file_ext.toUpperCase()}</div>
                                     <div class="col-6"><i class="bi bi-hdd me-1"></i>${book.file_size}</div>
                                 </div>
-                                <!-- Dòng riêng: lượt xem + lượt tải -->
+                                <!-- Lượt xem + lượt tải -->
                                 <div class="row text-muted small mb-1">
                                     <div class="col-6"><i class="bi bi-eye me-1"></i>${book.view_count}</div>
                                     <div class="col-6"><i class="bi bi-download me-1"></i>${book.download_count}</div>
@@ -80,20 +81,20 @@ async function loadFeaturedBooks() {
 
                         <!-- Tags -->
                         <div class="mb-2">
-                            ${(book.tags || []).map(tag => 
+                            ${(book.tags || []).map(tag =>
                                 `<span class="badge bg-light text-dark border me-1">#${tag}</span>`
                             ).join('')}
                         </div>
 
-                        <!-- Buttons: chỉ icon -->
+                        <!-- Buttons -->
                         <div class="d-flex justify-content-center gap-2 mt-auto">
-                            <a href="${book.drive_view}" target="_blank" class="btn btn-outline-primary btn-sm" title="Chi tiết">
+                            <a href="detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm" title="Chi tiết">
                                 <i class="bi bi-info-circle"></i> Chi tiết
                             </a>
-                            <a href="${book.drive_view}" target="_blank" class="btn btn-outline-success btn-sm" title="Xem"> Xem nhanh
-                                <i class="bi bi-eye"></i>
+                            <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm" title="Xem nhanh">
+                                <i class="bi bi-eye"></i> Xem nhanh
                             </a>
-                            <a href="${book.drive_download}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Tải">
+                            <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm" title="Tải về">
                                 <i class="bi bi-download"></i> Tải về
                             </a>
                         </div>
@@ -108,7 +109,7 @@ async function loadFeaturedBooks() {
             <div class="col-12">
                 <div class="alert alert-warning text-center">
                     Không thể tải dữ liệu học liệu nổi bật lúc này.<br>
-                    Vui lòng thử lại sau hoặc xem toàn bộ danh sách tại 
+                    Vui lòng thử lại sau hoặc xem toàn bộ danh sách tại
                     <a href="book.html" class="alert-link">trang Học liệu</a>.
                 </div>
             </div>

@@ -2,6 +2,9 @@ async function loadFeaturedExams() {
     const container = document.getElementById('featured-exams');
     try {
         const exams = await fetch('data/exams.json').then(res => res.json());
+
+        // Sort theo lượt xem giảm dần, lấy top 3
+        exams.sort((a, b) => (b.view_count || 0) - (a.view_count || 0));
         const featured = exams.slice(0, 3);
 
         container.innerHTML = '';
@@ -56,15 +59,15 @@ async function loadFeaturedExams() {
                             ).join('')}
                         </div>
 
-                        <!-- Buttons: chỉ icon -->
+                        <!-- Buttons -->
                         <div class="d-flex justify-content-center gap-2 mt-auto">
-                            <a href="${exam.drive_view}" target="_blank" class="btn btn-outline-primary btn-sm" title="Chi tiết">
+                            <a href="detail.html?id=${exam.id}" class="btn btn-outline-primary btn-sm" title="Chi tiết">
                                 <i class="bi bi-info-circle"></i> Chi tiết
                             </a>
-                            <a href="${exam.drive_view}" target="_blank" class="btn btn-outline-success btn-sm" title="Xem">
+                            <a href="${exam.drive_view}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm" title="Xem nhanh">
                                 <i class="bi bi-eye"></i> Xem nhanh
                             </a>
-                            <a href="${exam.drive_download}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Tải">
+                            <a href="${exam.drive_download}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm" title="Tải về">
                                 <i class="bi bi-download"></i> Tải về
                             </a>
                         </div>
@@ -78,7 +81,9 @@ async function loadFeaturedExams() {
         container.innerHTML = `
             <div class="col-12">
                 <div class="alert alert-warning text-center">
-                    Không thể tải danh sách đề thi nổi bật lúc này.
+                    Không thể tải danh sách đề thi nổi bật lúc này.<br>
+                    Vui lòng thử lại sau hoặc xem toàn bộ danh sách tại
+                    <a href="exam.html" class="alert-link">trang Đề thi</a>.
                 </div>
             </div>
         `;
