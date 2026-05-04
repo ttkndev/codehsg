@@ -1,97 +1,71 @@
-// =====================
-// HELPERS
-// =====================
-function mapLevel(level) {
-    switch (level) {
-        case 1: return "Tiểu học";
-        case 2: return "THCS";
-        case 3: return "THPT";
-        case 4: return "THPT Chuyên";
-        case 5: return "Đại học";
-        default: return "Không rõ";
-    }
-}
+// ============================================================
+// books.js — Trang danh sách học liệu (book.html)
+// Phụ thuộc: utils.js (load trước)
+// ============================================================
 
-function levelBadgeClass(level) {
-    switch (level) {
-        case 1: return "bg-info text-dark";
-        case 2: return "bg-success";
-        case 3: return "bg-primary";
-        case 4: return "bg-warning text-dark";
-        case 5: return "bg-danger";
-        default: return "bg-secondary";
-    }
-}
+// ── Card builders ─────────────────────────────────────────────
 
-function levelIcon(level) {
-    switch (level) {
-        case 1: return "bi-book";
-        case 2: return "bi-journal";
-        case 3: return "bi-mortarboard";
-        case 4: return "bi-award";
-        case 5: return "bi-building";
-        default: return "bi-question-circle";
-    }
-}
-
-function formatNumber(n) {
-    if (!n) return '0';
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-    return n;
-}
-
-// =====================
-// CARD BUILDERS
-// =====================
+/**
+ * Card dạng LƯỚI: ảnh bìa ở trên chiếm full width,
+ * thông tin bên dưới — tránh layout bị vỡ khi tên tác giả dài.
+ */
 function buildGridCard(book) {
     return `
-        <div class="col-md-6 col-xl-4 book-card-wrap">
+        <div class="col-sm-6 col-xl-4 book-card-wrap">
             <div class="card h-100 shadow-sm">
+                <!-- Ảnh bìa cố định tỉ lệ 3:4 -->
+                <a href="book-detail.html?id=${book.id}" class="d-block overflow-hidden"
+                   style="height:180px; background:#f0f0f0;">
+                    <img src="${book.images[0]}"
+                         class="w-100 h-100"
+                         style="object-fit:cover; object-position:top;"
+                         alt="${book.title}" loading="lazy">
+                </a>
+
                 <div class="card-body d-flex flex-column p-3">
-                    <div class="row g-2 mb-2">
-                        <div class="col-4">
-                            <a href="book-detail.html?id=${book.id}">
-                                <img src="${book.images[0]}" class="img-fluid rounded border book-thumb"
-                                    alt="${book.title}" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col-8">
-                            <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
-                                <h6 class="fw-bold mb-1 book-title">${book.title}</h6>
-                            </a>
-                            <div class="text-muted small mb-1">
-                                <i class="bi bi-person me-1"></i>${book.author}
-                            </div>
-                            <div class="d-flex flex-wrap gap-1 mb-1">
-                                <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
-                                <span class="badge bg-light text-dark border">${book.category}</span>
-                            </div>
-                            <div class="row text-muted small">
-                                <div class="col-6"><i class="bi bi-file-text me-1"></i>${book.pages} trang</div>
-                                <div class="col-6"><i class="bi bi-calendar me-1"></i>${book.year}</div>
-                                <div class="col-6"><i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}</div>
-                                <div class="col-6"><i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}</div>
-                            </div>
-                        </div>
+                    <!-- Tiêu đề -->
+                    <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
+                        <h6 class="fw-bold mb-1 book-title">${book.title}</h6>
+                    </a>
+
+                    <!-- Tác giả (1 dòng, cắt nếu dài) -->
+                    <div class="text-muted small mb-2 text-truncate">
+                        <i class="bi bi-person me-1"></i>${book.author}
                     </div>
-                    <div class="text-muted small mb-2">
-                        <i class="bi bi-building me-1"></i>${book.publisher}
+
+                    <!-- Badges -->
+                    <div class="d-flex flex-wrap gap-1 mb-2">
+                        <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
+                        <span class="badge bg-light text-dark border">${book.category}</span>
                     </div>
+
+                    <!-- Thống kê 2 cột -->
+                    <div class="row row-cols-2 text-muted small mb-2 g-1">
+                        <div class="col"><i class="bi bi-file-text me-1"></i>${book.pages} trang</div>
+                        <div class="col"><i class="bi bi-calendar me-1"></i>${book.year}</div>
+                        <div class="col"><i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}</div>
+                        <div class="col"><i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}</div>
+                    </div>
+
+                    <!-- Tags -->
                     <div class="mb-2 tags-row">
                         ${(book.tags || []).slice(0, 4).map(tag =>
                             `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`
                         ).join('')}
                     </div>
+
+                    <!-- Nút hành động -->
                     <div class="d-flex gap-2 mt-auto">
-                        <a href="book-detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm flex-fill">
+                        <a href="book-detail.html?id=${book.id}"
+                           class="btn btn-outline-primary btn-sm flex-fill">
                             <i class="bi bi-info-circle me-1"></i>Chi tiết
                         </a>
                         <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-outline-success btn-sm flex-fill">
+                           class="btn btn-outline-success btn-sm flex-fill">
                             <i class="bi bi-eye me-1"></i>Xem
                         </a>
                         <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-outline-secondary btn-sm">
+                           class="btn btn-outline-secondary btn-sm">
                             <i class="bi bi-download"></i>
                         </a>
                     </div>
@@ -101,19 +75,26 @@ function buildGridCard(book) {
     `;
 }
 
+/**
+ * Card dạng DANH SÁCH: thumbnail nhỏ bên trái, thông tin bên phải.
+ */
 function buildListCard(book) {
     return `
-        <div class="col-12">
+        <div class="col-12 book-card-wrap">
             <div class="card shadow-sm">
                 <div class="card-body p-3">
                     <div class="row align-items-center g-2">
+                        <!-- Thumbnail cố định -->
                         <div class="col-auto">
                             <a href="book-detail.html?id=${book.id}">
-                                <img src="${book.images[0]}" class="rounded border book-thumb-sm"
-                                    alt="${book.title}" loading="lazy">
+                                <img src="${book.images[0]}"
+                                     class="rounded border book-thumb-sm"
+                                     alt="${book.title}" loading="lazy">
                             </a>
                         </div>
-                        <div class="col">
+
+                        <!-- Nội dung -->
+                        <div class="col min-w-0">
                             <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
                                 <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
                                     <h6 class="fw-bold mb-0">${book.title}</h6>
@@ -121,15 +102,15 @@ function buildListCard(book) {
                                 <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
                                 <span class="badge bg-light text-dark border">${book.category}</span>
                             </div>
-                            <div class="text-muted small mb-1">
+                            <div class="text-muted small mb-1 text-truncate">
                                 <i class="bi bi-person me-1"></i>${book.author}
-                                <span class="mx-2">·</span>
+                                <span class="mx-1">·</span>
                                 <i class="bi bi-building me-1"></i>${book.publisher}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-file-text me-1"></i>${book.pages} trang
-                                <span class="mx-2">·</span>
+                                <span class="mx-1">·</span>
+                                <i class="bi bi-file-text me-1"></i>${book.pages} tr
+                                <span class="mx-1">·</span>
                                 <i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}
-                                <span class="mx-2">·</span>
+                                <span class="mx-1">·</span>
                                 <i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}
                             </div>
                             <div>
@@ -138,16 +119,19 @@ function buildListCard(book) {
                                 ).join('')}
                             </div>
                         </div>
-                        <div class="col-auto d-flex gap-2">
-                            <a href="book-detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm">
+
+                        <!-- Nút -->
+                        <div class="col-auto d-flex gap-2 flex-wrap">
+                            <a href="book-detail.html?id=${book.id}"
+                               class="btn btn-outline-primary btn-sm">
                                 <i class="bi bi-info-circle me-1"></i>Chi tiết
                             </a>
                             <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-outline-success btn-sm">
+                               class="btn btn-outline-success btn-sm">
                                 <i class="bi bi-eye me-1"></i>Xem
                             </a>
                             <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-outline-secondary btn-sm">
+                               class="btn btn-outline-secondary btn-sm">
                                 <i class="bi bi-download"></i>
                             </a>
                         </div>
@@ -158,36 +142,58 @@ function buildListCard(book) {
     `;
 }
 
-// =====================
-// STATE
-// =====================
-let allBooks = [];
-let filtered = [];
+// ── State ──────────────────────────────────────────────────────
+let allBooks   = [];
+let filtered   = [];
 let currentPage = 1;
 let currentView = 'grid';
 const PAGE_SIZE = 9;
 
-// =====================
-// BUILD CATEGORY FILTERS DYNAMICALLY
-// =====================
+// ── Hero stats ─────────────────────────────────────────────────
+
+/** Render thống kê nhanh trong page-hero của book.html */
+function renderHeroStats(books) {
+    const el = document.getElementById('book-hero-stats');
+    if (!el) return;
+
+    const ready      = books.filter(b => b.is_ready !== false);
+    const totalViews = ready.reduce((s, b) => s + (b.view_count || 0), 0);
+    const totalDl    = ready.reduce((s, b) => s + (b.download_count || 0), 0);
+
+    el.innerHTML = `
+        <span class="me-3"><i class="bi bi-book me-1 text-warning"></i>
+            <strong>${ready.length}</strong> học liệu
+        </span>
+        <span class="me-3"><i class="bi bi-eye me-1 text-warning"></i>
+            <strong>${formatNumber(totalViews)}</strong> lượt xem
+        </span>
+        <span><i class="bi bi-download me-1 text-warning"></i>
+            <strong>${formatNumber(totalDl)}</strong> lượt tải
+        </span>
+    `;
+}
+
+// ── Category filter (dynamic) ──────────────────────────────────
+
+/** Tạo checkbox danh mục từ dữ liệu thực tế */
 function buildCategoryFilters(books) {
-    const categories = [...new Set(books.map(b => b.category).filter(Boolean))].sort();
     const container = document.getElementById('category-filters');
     if (!container) return;
+
+    const categories = [...new Set(books.map(b => b.category).filter(Boolean))].sort();
     container.innerHTML = categories.map(cat => `
         <label class="filter-check">
             <input type="checkbox" class="filter-category" value="${cat}"> ${cat}
         </label>
     `).join('');
-    // Bind events after render
+
     container.querySelectorAll('.filter-category').forEach(cb =>
         cb.addEventListener('change', applyFilters)
     );
 }
 
-// =====================
-// FILTER & SORT
-// =====================
+// ── Filter & sort ──────────────────────────────────────────────
+
 function getSelectedLevels() {
     return [...document.querySelectorAll('.filter-level:checked')].map(cb => parseInt(cb.value));
 }
@@ -197,25 +203,27 @@ function getSelectedCategories() {
 }
 
 function applyFilters() {
-    const query = document.getElementById('search-input').value.toLowerCase().trim();
-    const levels = getSelectedLevels();
+    const query      = document.getElementById('search-input').value.toLowerCase().trim();
+    const levels     = getSelectedLevels();
     const categories = getSelectedCategories();
-    const sort = document.getElementById('sort-select').value;
+    const sort       = document.getElementById('sort-select').value;
 
+    // Chỉ hiển thị tài nguyên đã sẵn sàng
     filtered = allBooks.filter(book => {
+        if (book.is_ready === false) return false;
         const matchSearch = !query ||
             book.title.toLowerCase().includes(query) ||
             (book.author || '').toLowerCase().includes(query) ||
             (book.publisher || '').toLowerCase().includes(query) ||
             (book.tags || []).some(t => t.toLowerCase().includes(query));
-        const matchLevel = levels.length === 0 || levels.includes(book.level);
+        const matchLevel    = levels.length === 0     || levels.includes(book.level);
         const matchCategory = categories.length === 0 || categories.includes(book.category);
         return matchSearch && matchLevel && matchCategory;
     });
 
     filtered.sort((a, b) => {
         if (sort === 'date_added') return new Date(b.date_added) - new Date(a.date_added);
-        if (sort === 'pages') return (b.pages || 0) - (a.pages || 0);
+        if (sort === 'pages')      return (b.pages || 0) - (a.pages || 0);
         return (b[sort] || 0) - (a[sort] || 0);
     });
 
@@ -223,20 +231,22 @@ function applyFilters() {
     render();
 }
 
-// =====================
-// RENDER
-// =====================
+// ── Render ─────────────────────────────────────────────────────
+
 function render() {
     const container = document.getElementById('book-container');
-    const countEl = document.getElementById('result-count');
-    const total = filtered.length;
+    const countEl   = document.getElementById('result-count');
+    const total      = filtered.length;
     const totalPages = Math.ceil(total / PAGE_SIZE);
-    const start = (currentPage - 1) * PAGE_SIZE;
-    const pageItems = filtered.slice(start, start + PAGE_SIZE);
+    const start      = (currentPage - 1) * PAGE_SIZE;
+    const pageItems  = filtered.slice(start, start + PAGE_SIZE);
 
-    countEl.textContent = total === 0
-        ? 'Không có kết quả'
-        : `Hiển thị ${Math.min(start + 1, total)}–${Math.min(start + PAGE_SIZE, total)} trong ${total} học liệu`;
+    if (total === 0) {
+        countEl.textContent = 'Không có kết quả';
+    } else {
+        countEl.textContent =
+            `Hiển thị ${Math.min(start + 1, total)}–${Math.min(start + PAGE_SIZE, total)} trong ${total} học liệu`;
+    }
 
     if (pageItems.length === 0) {
         container.innerHTML = `
@@ -244,7 +254,7 @@ function render() {
                 <i class="bi bi-search fs-1 d-block mb-3 opacity-25"></i>
                 <p class="mb-0">Không tìm thấy học liệu phù hợp.</p>
             </div>`;
-        renderPagination(0, 1);
+        renderPagination(totalPages);
         return;
     }
 
@@ -253,19 +263,19 @@ function render() {
         currentView === 'grid' ? buildGridCard(book) : buildListCard(book)
     ).join('');
 
-    renderPagination(total, totalPages);
+    renderPagination(totalPages);
 }
 
-function renderPagination(total, totalPages) {
+function renderPagination(totalPages) {
     const ul = document.getElementById('pagination');
     if (totalPages <= 1) { ul.innerHTML = ''; return; }
 
-    let html = '';
-    html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-        <a class="page-link" href="#" data-page="${currentPage - 1}" aria-label="Trang trước">
-            <i class="bi bi-chevron-left"></i>
-        </a>
-    </li>`;
+    let html = `
+        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-page="${currentPage - 1}" aria-label="Trang trước">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+        </li>`;
 
     for (let i = 1; i <= totalPages; i++) {
         if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
@@ -277,19 +287,20 @@ function renderPagination(total, totalPages) {
         }
     }
 
-    html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-        <a class="page-link" href="#" data-page="${currentPage + 1}" aria-label="Trang sau">
-            <i class="bi bi-chevron-right"></i>
-        </a>
-    </li>`;
+    html += `
+        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-page="${currentPage + 1}" aria-label="Trang sau">
+                <i class="bi bi-chevron-right"></i>
+            </a>
+        </li>`;
 
     ul.innerHTML = html;
 }
 
-// =====================
-// EVENTS
-// =====================
+// ── Events ─────────────────────────────────────────────────────
+
 function bindEvents() {
+    // Tìm kiếm có debounce 280ms
     let searchTimer;
     document.getElementById('search-input').addEventListener('input', () => {
         clearTimeout(searchTimer);
@@ -309,11 +320,12 @@ function bindEvents() {
         applyFilters();
     });
 
+    // Pagination — event delegation
     document.getElementById('pagination').addEventListener('click', e => {
         e.preventDefault();
         const link = e.target.closest('[data-page]');
         if (!link) return;
-        const page = parseInt(link.dataset.page);
+        const page       = parseInt(link.dataset.page);
         const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
         if (page < 1 || page > totalPages) return;
         currentPage = page;
@@ -321,6 +333,7 @@ function bindEvents() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // Toggle grid / list
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
@@ -331,25 +344,23 @@ function bindEvents() {
     });
 }
 
-// =====================
-// URL PARAM: q (từ tag click)
-// =====================
+// ── URL param ?q= (từ click tag ở trang khác) ─────────────────
+
 function readUrlParams() {
-    const params = new URLSearchParams(location.search);
-    const q = params.get('q');
+    const q = new URLSearchParams(location.search).get('q');
     if (q) {
         const input = document.getElementById('search-input');
         if (input) input.value = q;
     }
 }
 
-// =====================
-// INIT
-// =====================
+// ── Init ───────────────────────────────────────────────────────
+
 async function init() {
     const container = document.getElementById('book-container');
     try {
         allBooks = await fetch('data/books.json').then(res => res.json());
+        renderHeroStats(allBooks);
         buildCategoryFilters(allBooks);
         readUrlParams();
         bindEvents();

@@ -1,0 +1,171 @@
+// ============================================================
+// utils.js — Hàm dùng chung cho toàn bộ dự án CodeHSG
+// Import file này TRƯỚC tất cả các file JS khác
+// ============================================================
+
+// ── Cấp học ─────────────────────────────────────────────────
+
+/** Trả về tên cấp học từ level (1–5) */
+function mapLevel(level) {
+    const map = { 1: "Tiểu học", 2: "THCS", 3: "THPT", 4: "THPT Chuyên", 5: "Đại học" };
+    return map[level] ?? "Không rõ";
+}
+
+/** Trả về class Bootstrap badge tương ứng level */
+function levelBadgeClass(level) {
+    const map = {
+        1: "bg-info text-dark",
+        2: "bg-success",
+        3: "bg-primary",
+        4: "bg-warning text-dark",
+        5: "bg-danger"
+    };
+    return map[level] ?? "bg-secondary";
+}
+
+/** Trả về tên icon Bootstrap Icons tương ứng level */
+function levelIcon(level) {
+    const map = {
+        1: "bi-book",
+        2: "bi-journal",
+        3: "bi-mortarboard",
+        4: "bi-award",
+        5: "bi-building"
+    };
+    return map[level] ?? "bi-question-circle";
+}
+
+// ── Format số & ngày ─────────────────────────────────────────
+
+/** Rút gọn số lớn: 1200 → "1.2k" */
+function formatNumber(n) {
+    if (!n || isNaN(n)) return '0';
+    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+    return String(n);
+}
+
+/** Format ngày ISO sang dd/mm/yyyy tiếng Việt */
+function formatDate(dateStr) {
+    if (!dateStr) return '—';
+    return new Date(dateStr).toLocaleDateString('vi-VN', {
+        day: '2-digit', month: '2-digit', year: 'numeric'
+    });
+}
+
+// ── Mô tả ────────────────────────────────────────────────────
+
+/**
+ * Chuyển mô tả dạng plain-text nhiều dòng sang HTML.
+ * Mỗi dòng không trống → <p>
+ */
+function renderDescription(desc) {
+    if (!desc) return '';
+    return desc
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => `<p class="mb-1">${line}</p>`)
+        .join('');
+}
+
+// ── Share buttons ────────────────────────────────────────────
+
+/**
+ * Tạo HTML các nút chia sẻ mạng xã hội.
+ * @param {string} title - Tiêu đề để share (sẽ được encode)
+ */
+function buildShareButtons(title) {
+    const url   = encodeURIComponent(location.href);
+    const text  = encodeURIComponent(title + ' - CodeHSG');
+    return `
+        <div class="d-flex flex-wrap gap-2">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${url}"
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-facebook me-1"></i>Facebook
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=${url}&text=${text}"
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-sm btn-outline-info">
+                <i class="bi bi-twitter-x me-1"></i>Twitter / X
+            </a>
+            <button class="btn btn-sm btn-outline-secondary" id="copy-link-btn">
+                <i class="bi bi-link-45deg me-1"></i>Sao chép link
+            </button>
+        </div>
+    `;
+}
+
+/**
+ * Gắn sự kiện cho nút "Sao chép link" (sau khi đã render vào DOM).
+ * Gọi hàm này sau khi buildShareButtons() đã được chèn vào trang.
+ */
+function bindCopyLinkBtn() {
+    document.getElementById('copy-link-btn')?.addEventListener('click', () => {
+        navigator.clipboard.writeText(location.href).then(() => {
+            const btn = document.getElementById('copy-link-btn');
+            btn.innerHTML = '<i class="bi bi-check2 me-1"></i>Đã sao chép!';
+            btn.classList.replace('btn-outline-secondary', 'btn-success');
+            setTimeout(() => {
+                btn.innerHTML = '<i class="bi bi-link-45deg me-1"></i>Sao chép link';
+                btn.classList.replace('btn-success', 'btn-outline-secondary');
+            }, 2000);
+        });
+    });
+}
+
+// ── Contributors ─────────────────────────────────────────────
+
+/** Tạo màu avatar nhất quán từ tên (không random mỗi lần render) */
+function nameToColor(name) {
+    const colors = [
+        '#4f46e5', '#0891b2', '#059669', '#d97706',
+        '#dc2626', '#7c3aed', '#db2777', '#065f46'
+    ];
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return colors[Math.abs(hash) % colors.length];
+}
+
+/** Lấy chữ cái cuối của tên (hỗ trợ tên tiếng Việt: "Nguyễn Văn A" → "A") */
+function getInitial(name) {
+    const parts = name.trim().split(/\s+/);
+    return parts[parts.length - 1].charAt(0).toUpperCase();
+}
+
+// ── Subcategory label (books) ─────────────────────────────────
+
+/** Map slug chuyên đề sang tên hiển thị tiếng Việt */
+function formatSubcategory(sub) {
+    const map = {
+        'cau-truc-du-lieu':  'Cấu trúc dữ liệu',
+        'giai-thuat':        'Giải thuật',
+        'hsg-tinh':          'HSG Tỉnh',
+        'hsg-quoc-gia':      'HSG Quốc gia',
+        'lap-trinh-co-ban':  'Lập trình cơ bản',
+        'quy-hoach-dong':    'Quy hoạch động',
+        'do-thi':            'Đồ thị',
+        'so-hoc':            'Số học',
+        'hinh-hoc':          'Hình học tính toán',
+    };
+    return map[sub] ?? sub;
+}
+
+// ── Animate counter (index stats) ────────────────────────────
+
+/**
+ * Chạy hiệu ứng đếm số từ start đến end trong duration ms.
+ * @param {HTMLElement} element - Phần tử hiển thị giá trị
+ */
+function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        element.textContent = Math.floor(progress * (end - start) + start) + '+';
+        if (progress < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+}
