@@ -170,19 +170,19 @@ function renderHeroStats(books) {
     if (!el) return;
 
     const ready      = books.filter(b => b.is_ready !== false);
-    const totalViews = ready.reduce((s, b) => s + (b.view_count || 0), 0);
-    const totalDl    = ready.reduce((s, b) => s + (b.download_count || 0), 0);
+    const countByCategory = (name) => ready.filter(b => b.category === name).length;
 
     const stats = [
-        { icon: 'bi bi-book', value: ready.length, title: 'Học liệu' },
-        { icon: 'bi bi-eye', value: totalViews, title: 'Lượt xem' },
-        { icon: 'bi bi-download', value: totalDl, title: 'Lượt tải' }
+        { icon: 'bi bi-book', value: ready.length, title: 'Số học liệu' },
+        { icon: 'bi bi-diagram-3', value: countByCategory('CTDL-GT'), title: 'CTDL-GT' },
+        { icon: 'bi bi-journal-bookmark', value: countByCategory('Sách giáo khoa'), title: 'Sách giáo khoa' },
+        { icon: 'bi bi-bookmark-star', value: countByCategory('Sách tham khảo'), title: 'Sách tham khảo' }
     ];
 
     el.innerHTML = '';
     stats.forEach(stat => {
         const col = document.createElement('div');
-        col.className = 'col-md-4 col-6 mb-3';
+        col.className = 'col-md-3 col-6 mb-3';
         col.innerHTML = `
             <div class="card shadow-sm border-0">
                 <div class="card-body text-center">
@@ -261,7 +261,8 @@ function applyFilters() {
 
     filtered.sort((a, b) => {
         if (sort === 'date_added') return new Date(b.date_added) - new Date(a.date_added);
-        if (sort === 'pages')      return (b.pages || 0) - (a.pages || 0);
+        if (sort === 'pages_asc')  return (a.pages || 0) - (b.pages || 0);
+        if (sort === 'pages_desc') return (b.pages || 0) - (a.pages || 0);
         return (b[sort] || 0) - (a[sort] || 0);
     });
 
