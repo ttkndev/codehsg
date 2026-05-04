@@ -1,44 +1,13 @@
-// =====================
-// HELPERS
-// =====================
-function mapLevel(level) {
-    switch (level) {
-        case 1: return "Tiểu học";
-        case 2: return "THCS";
-        case 3: return "THPT";
-        case 4: return "THPT Chuyên";
-        case 5: return "Đại học";
-        default: return "Không rõ";
-    }
-}
+// exams.js
+// Dùng helper từ utils.js
 
-function levelBadgeClass(level) {
-    switch (level) {
-        case 1: return "bg-info text-dark";
-        case 2: return "bg-success";
-        case 3: return "bg-primary";
-        case 4: return "bg-warning text-dark";
-        case 5: return "bg-danger";
-        default: return "bg-secondary";
-    }
-}
 
-function levelIcon(level) {
-    switch (level) {
-        case 1: return "bi-book";
-        case 2: return "bi-journal";
-        case 3: return "bi-mortarboard";
-        case 4: return "bi-award";
-        case 5: return "bi-building";
-        default: return "bi-question-circle";
-    }
+function renderHeroStats(exams){
+ const el=document.getElementById('exam-hero-stats'); if(!el) return;
+ const ready=exams.filter(e=>e.is_ready!==false);
+ const totalViews=ready.reduce((s,e)=>s+(e.view_count||0),0);
+ el.innerHTML=`<span class="me-3"><i class="bi bi-file-earmark-text text-warning me-1"></i><strong>${ready.length}</strong> đề thi</span><span><i class="bi bi-eye text-warning me-1"></i><strong>${formatNumber(totalViews)}</strong> lượt xem</span>`;
 }
-
-function formatNumber(n) {
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-    return n;
-}
-
 // =====================
 // CARD BUILDERS
 // =====================
@@ -64,12 +33,11 @@ function buildGridCard(exam) {
                                 <span class="badge ${levelBadgeClass(exam.level)}">${mapLevel(exam.level)}</span>
                                 <span class="badge bg-light text-dark border">${exam.year}</span>
                             </div>
-                            <div class="row text-muted small">
-                                <div class="col-6"><i class="bi bi-list-check me-1"></i>${exam.problem_count} bài</div>
-                                <div class="col-6"><i class="bi bi-clock me-1"></i>${exam.duration}</div>
-                                <div class="col-6"><i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)}</div>
-                                <div class="col-6"><i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)}</div>
-                            </div>
+                            <div class="meta-grid text-muted small">
+                                <div class="meta-item"><i class="bi bi-list-check me-1"></i>${exam.problem_count} bài</div>
+                                <div class="meta-item"><i class="bi bi-clock me-1"></i>${exam.duration}</div>
+                                <div class="meta-item"><i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)}</div>
+                                <div class="meta-item"><i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)}</div>
                         </div>
                     </div>
                     <div class="mb-2 tags-row">
@@ -315,6 +283,7 @@ async function init() {
     const container = document.getElementById('exam-container');
     try {
         allExams = await fetch('data/exams.json').then(res => res.json());
+        renderHeroStats(allExams);
         filtered = [...allExams];
         bindEvents();
         applyFilters();

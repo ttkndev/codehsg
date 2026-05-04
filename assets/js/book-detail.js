@@ -1,149 +1,5 @@
-// =====================
-// HELPERS
-// =====================
-function mapLevel(level) {
-    switch (level) {
-        case 1: return "Tiểu học";
-        case 2: return "THCS";
-        case 3: return "THPT";
-        case 4: return "THPT Chuyên";
-        case 5: return "Đại học";
-        default: return "Không rõ";
-    }
-}
-
-function levelBadgeClass(level) {
-    switch (level) {
-        case 1: return "bg-info text-dark";
-        case 2: return "bg-success";
-        case 3: return "bg-primary";
-        case 4: return "bg-warning text-dark";
-        case 5: return "bg-danger";
-        default: return "bg-secondary";
-    }
-}
-
-function formatNumber(n) {
-    if (!n) return '0';
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-    return n;
-}
-
-function formatDate(dateStr) {
-    if (!dateStr) return '—';
-    return new Date(dateStr).toLocaleDateString('vi-VN', {
-        day: '2-digit', month: '2-digit', year: 'numeric'
-    });
-}
-
-function renderDescription(desc) {
-    if (!desc) return '';
-    return desc
-        .split('\n')
-        .map(line => line.trim())
-        .filter(Boolean)
-        .map(line => `<p class="mb-1">${line}</p>`)
-        .join('');
-}
-
-// =====================
-// SHARE BUTTONS
-// =====================
-function buildShareButtons() {
-    const url = encodeURIComponent(location.href);
-    const title = encodeURIComponent(document.title);
-    return `
-        <div class="d-flex flex-wrap gap-2">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=${url}"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-sm btn-outline-primary">
-                <i class="bi bi-facebook me-1"></i>Facebook
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=${url}&text=${title}"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-sm btn-outline-info">
-                <i class="bi bi-twitter-x me-1"></i>Twitter / X
-            </a>
-            <button class="btn btn-sm btn-outline-secondary" id="copy-link-btn">
-                <i class="bi bi-link-45deg me-1"></i>Sao chép link
-            </button>
-        </div>
-    `;
-}
-
-// =====================
-// RELATED BOOK CARD
-// =====================
-function buildRelatedCard(book) {
-    return `
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body p-3 d-flex flex-column">
-                    <div class="row g-2 mb-2">
-                        <div class="col-4">
-                            <img src="${book.images[0]}" class="img-fluid rounded border" alt="${book.title}" loading="lazy">
-                        </div>
-                        <div class="col-8">
-                            <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
-                                <h6 class="fw-bold mb-1 small book-title">${book.title}</h6>
-                            </a>
-                            <div class="text-muted" style="font-size:0.78rem;">
-                                <span class="badge ${levelBadgeClass(book.level)} me-1">${mapLevel(book.level)}</span>
-                                ${book.author}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="book-detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm w-100">
-                            <i class="bi bi-info-circle me-1"></i>Xem chi tiết
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// =====================
-// IMAGE GALLERY
-// =====================
-function buildGallery(images, title) {
-    if (!images || images.length <= 1) return '';
-    return `
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="fw-bold mb-3"><i class="bi bi-images text-warning me-2"></i>Ảnh bìa / Nội dung</h5>
-                <div class="row g-2">
-                    ${images.map((img, i) => `
-                        <div class="col-4 col-md-3">
-                            <a href="${img}" target="_blank" rel="noopener noreferrer">
-                                <img src="${img}" class="img-fluid rounded border" alt="${title} - trang ${i + 1}" loading="lazy">
-                            </a>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// =====================
-// SUBCATEGORY LABEL
-// =====================
-function formatSubcategory(sub) {
-    const map = {
-        'cau-truc-du-lieu': 'Cấu trúc dữ liệu',
-        'giai-thuat': 'Giải thuật',
-        'hsg-tinh': 'HSG Tỉnh',
-        'hsg-quoc-gia': 'HSG Quốc gia',
-        'lap-trinh-co-ban': 'Lập trình cơ bản',
-        'quy-hoach-dong': 'Quy hoạch động',
-        'do-thi': 'Đồ thị',
-        'so-hoc': 'Số học',
-        'hinh-hoc': 'Hình học tính toán',
-    };
-    return map[sub] || sub;
-}
+// book-detail.js
+// Dùng helper từ utils.js
 
 // =====================
 // MAIN RENDER
@@ -247,28 +103,13 @@ function renderDetail(book, allBooks) {
                     </div>` : ''}
 
                     <!-- Gallery (nếu có nhiều ảnh) -->
-                    ${buildGallery(book.images, book.title)}
+                    
 
                     <!-- Chia sẻ -->
                     <div class="card shadow-sm mb-4">
                         <div class="card-body">
                             <h5 class="fw-bold mb-3"><i class="bi bi-share text-warning me-2"></i>Chia sẻ</h5>
                             ${buildShareButtons()}
-                        </div>
-                    </div>
-
-                    <!-- Bình luận -->
-                    <div class="card shadow-sm mb-4">
-                        <div class="card-body">
-                            <h5 class="fw-bold mb-3"><i class="bi bi-chat-dots text-warning me-2"></i>Bình luận</h5>
-                            <div class="text-center py-4 text-secondary bg-light rounded">
-                                <i class="bi bi-facebook fs-2 mb-2 d-block text-primary opacity-50"></i>
-                                <p class="small mb-2">Bình luận qua Facebook</p>
-                                <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer"
-                                   class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-box-arrow-up-right me-1"></i>Xem và bình luận trên Drive
-                                </a>
-                            </div>
                         </div>
                     </div>
 

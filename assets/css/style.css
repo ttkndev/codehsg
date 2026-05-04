@@ -318,3 +318,8 @@ code, pre, .code-box {
         height: 70px;
     }
 }
+
+
+.book-thumb-fixed{height:190px;object-fit:cover;object-position:top;}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:.25rem .75rem;}
+.meta-grid .meta-item{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
