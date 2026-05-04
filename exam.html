@@ -210,6 +210,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/exams.js" defer></script>
     <script>
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = `${value}+`;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
         async function loadExamHeroStats() {
             const statsContainer = document.getElementById('exam-hero-stats');
             if (!statsContainer) return;
@@ -231,20 +245,25 @@
                     { icon: 'bi bi-collection', value: other, title: 'Đề khác' }
                 ];
 
-                statsContainer.innerHTML = stats.map(stat => `
-                    <div class="col-6">
-                        <div class="card stat-card h-100 shadow-sm border-0">
-                            <div class="card-body py-2 px-3">
-                                <div class="d-flex align-items-center gap-2 mb-1">
-                                    <i class="${stat.icon} text-warning"></i>
-                                    <span class="small text-muted">${stat.title}</span>
-                                </div>
-                                <div class="fw-bold fs-5 text-dark">${stat.value}</div>
-                                <div class="small text-muted">(${stat.value} đề)</div>
+                statsContainer.innerHTML = '';
+
+                stats.forEach(stat => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-3 col-6 mb-3';
+                    col.innerHTML = `
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body text-center">
+                                <i class="${stat.icon} fs-2 mb-2"></i>
+                                <h3 class="fw-bold stat-value">0+</h3>
+                                <p class="text-muted mb-0">${stat.title}</p>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    `;
+                    statsContainer.appendChild(col);
+
+                    const valueElement = col.querySelector('.stat-value');
+                    animateValue(valueElement, 0, stat.value, 1200);
+                });
             } catch (error) {
                 statsContainer.innerHTML = `
                     <div class="col-12">
