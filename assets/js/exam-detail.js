@@ -131,9 +131,9 @@ function renderDetail(exam, allExams) {
         <div class="page-hero">
             <div class="container py-4">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-2">
+                    <ol class="breadcrumb breadcrumb-modern mb-2">
                         <li class="breadcrumb-item">
-                            <a href="index.html" class="text-warning text-decoration-none">Trang chủ</a>
+                            <a href="index.html" class="text-warning text-decoration-none breadcrumb-home-link"><i class="bi bi-house-door-fill me-1"></i>Trang chủ</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="exam.html" class="text-warning text-decoration-none">Đề thi</a>

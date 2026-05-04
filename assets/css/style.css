@@ -318,3 +318,33 @@ code, pre, .code-box {
         height: 70px;
     }
 }
+
+
+/* =====================
+   BREADCRUMB
+   ===================== */
+.breadcrumb-modern {
+    --bs-breadcrumb-divider: '\f285';
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.breadcrumb-modern .breadcrumb-item + .breadcrumb-item::before {
+    font-family: "bootstrap-icons";
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.75rem;
+    transform: translateY(1px);
+}
+
+.breadcrumb-modern .breadcrumb-item a {
+    color: #ffc107 !important;
+    font-weight: 500;
+}
+
+.breadcrumb-modern .breadcrumb-item.active {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.breadcrumb-home-link i {
+    font-size: 0.85rem;
+}
