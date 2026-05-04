@@ -61,7 +61,7 @@ async function loadFeaturedExams() {
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-center gap-2 mt-auto">
-                            <a href="detail.html?id=${exam.id}" class="btn btn-outline-primary btn-sm flex-fill" title="Chi tiết">
+                            <a href="exam-detail.html?id=${exam.id}" class="btn btn-outline-primary btn-sm flex-fill" title="Chi tiết">
                                 <i class="bi bi-info-circle"></i> Chi tiết
                             </a>
                             <a href="${exam.drive_view}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm flex-fill" title="Xem nhanh">
