@@ -86,8 +86,8 @@ function buildGridCard(exam) {
                             <i class="bi bi-eye me-1"></i>Xem
                         </a>
                         <a href="${exam.drive_download}" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-outline-secondary btn-sm">
-                            <i class="bi bi-download"></i>
+                            class="btn btn-outline-secondary btn-sm" flex-fill>
+                            <i class="bi bi-download"></i>Tải
                         </a>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ function buildListCard(exam) {
                             </a>
                             <a href="${exam.drive_download}" target="_blank" rel="noopener noreferrer"
                                 class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-download"></i>
+                                <i class="bi bi-download"></i>Tải
                             </a>
                         </div>
                     </div>
@@ -159,7 +159,7 @@ let allExams = [];
 let filtered = [];
 let currentPage = 1;
 let currentView = 'grid';
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 6;
 
 // =====================
 // FILTER & SORT

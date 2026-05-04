@@ -82,48 +82,49 @@ function buildListCard(book) {
     return `
         <div class="col-12 book-card-wrap">
             <div class="card shadow-sm">
-                <div class="card-body p-3">
-                    <div class="row align-items-center g-2">
-                        <!-- Thumbnail cố định -->
-                        <div class="col-auto">
-                            <a href="book-detail.html?id=${book.id}">
-                                <img src="${book.images[0]}"
-                                     class="rounded border book-thumb-sm"
-                                     alt="${book.title}" loading="lazy">
+                <div class="card-body p-3 d-flex gap-3">
+                    <!-- Thumbnail cố định bên trái -->
+                    <a href="book-detail.html?id=${book.id}" class="flex-shrink-0">
+                        <img src="${book.images[0]}"
+                             alt="${book.title}" loading="lazy"
+                             style="width:100px; height:140px; object-fit:cover; object-position:top;"
+                             class="rounded border">
+                    </a>
+
+                    <!-- Nội dung bên phải -->
+                    <div class="flex-grow-1 min-w-0 d-flex flex-column">
+                        <!-- Hàng 1: Tiêu đề + badges -->
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                            <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark flex-grow-1">
+                                <h6 class="fw-bold mb-0 text-truncate">${book.title}</h6>
                             </a>
+                            <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
+                            <span class="badge bg-light text-dark border">${book.category}</span>
                         </div>
 
-                        <!-- Nội dung -->
-                        <div class="col min-w-0">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                                <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
-                                    <h6 class="fw-bold mb-0">${book.title}</h6>
-                                </a>
-                                <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
-                                <span class="badge bg-light text-dark border">${book.category}</span>
-                            </div>
-                            <div class="text-muted small mb-1 text-truncate">
-                                <i class="bi bi-person me-1"></i>${book.author}
-                                <span class="mx-1">·</span>
-                                <i class="bi bi-building me-1"></i>${book.publisher}
-                                <span class="mx-1">·</span>
-                                <i class="bi bi-file-text me-1"></i>${book.pages} tr
-                                <span class="mx-1">·</span>
-                                <i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}
-                                <span class="mx-1">·</span>
-                                <i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}
-                            </div>
-                            <div>
-                                ${(book.tags || []).slice(0, 5).map(tag =>
-                                    `<span class="badge bg-light text-dark border me-1">#${tag}</span>`
-                                ).join('')}
-                            </div>
+                        <!-- Hàng 2: Tác giả + publisher + thống kê -->
+                        <div class="text-muted small mb-1 text-truncate">
+                            <i class="bi bi-person me-1"></i>${book.author}
+                            <span class="mx-1">·</span>
+                            <i class="bi bi-building me-1"></i>${book.publisher}
+                            <span class="mx-1">·</span>
+                            <i class="bi bi-file-text me-1"></i>${book.pages} tr
+                            <span class="mx-1">·</span>
+                            <i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}
+                            <span class="mx-1">·</span>
+                            <i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}
                         </div>
 
-                        <!-- Nút -->
-                        <div class="col-auto d-flex gap-2 flex-wrap">
-                            <a href="book-detail.html?id=${book.id}"
-                               class="btn btn-outline-primary btn-sm">
+                        <!-- Hàng 3: Tags -->
+                        <div class="mb-2">
+                            ${(book.tags || []).slice(0, 5).map(tag =>
+                                `<span class="badge bg-light text-dark border me-1">#${tag}</span>`
+                            ).join('')}
+                        </div>
+
+                        <!-- Hàng 4: Nút hành động -->
+                        <div class="d-flex gap-2 flex-wrap mt-auto">
+                            <a href="book-detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm">
                                 <i class="bi bi-info-circle me-1"></i>Chi tiết
                             </a>
                             <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer"
@@ -142,12 +143,13 @@ function buildListCard(book) {
     `;
 }
 
+
 // ── State ──────────────────────────────────────────────────────
 let allBooks   = [];
 let filtered   = [];
 let currentPage = 1;
 let currentView = 'grid';
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 6;
 
 // ── Hero stats ─────────────────────────────────────────────────
 

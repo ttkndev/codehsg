@@ -88,13 +88,13 @@ async function loadFeaturedBooks() {
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-center gap-2 mt-auto">
-                            <a href="detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm" title="Chi tiết">
+                            <a href="detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm flex-fill" title="Chi tiết">
                                 <i class="bi bi-info-circle"></i> Chi tiết
                             </a>
-                            <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm" title="Xem nhanh">
+                            <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm flex-fill" title="Xem nhanh">
                                 <i class="bi bi-eye"></i> Xem nhanh
                             </a>
-                            <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm" title="Tải về">
+                            <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm flex-fill" title="Tải về">
                                 <i class="bi bi-download"></i> Tải về
                             </a>
                         </div>
