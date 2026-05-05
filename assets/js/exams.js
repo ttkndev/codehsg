@@ -71,17 +71,34 @@ function buildListCard(exam) {
                                 <span class="badge bg-light text-dark border">${exam.year}</span>
                             </div>
                             <div class="text-muted small mb-1">
-                                <i class="bi bi-building me-1"></i>${exam.organization}
+                                <i class="bi bi-building me-1"></i>${exam.organization || '—'}
                                 <span class="mx-2">·</span>
-                                <i class="bi bi-list-check me-1"></i>${exam.problem_count} bài
+                                <i class="bi bi-list-check me-1"></i>${exam.problem_count || 0} bài
                                 <span class="mx-2">·</span>
-                                <i class="bi bi-clock me-1"></i>${exam.duration}
+                                <i class="bi bi-clock me-1"></i>${exam.duration || '—'}
                                 <span class="mx-2">·</span>
-                                <i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)}
+                                <i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count || 0)}
                                 <span class="mx-2">·</span>
-                                <i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)}
+                                <i class="bi bi-download me-1"></i>${formatNumber(exam.download_count || 0)}
+                            </div>
+                            <div class="text-muted small mb-1">
+                                <i class="bi bi-person-badge me-1"></i>${exam.contributor || '—'}
+                                <span class="mx-2">·</span>
+                                <i class="bi bi-bookmark me-1"></i>${exam.subject || '—'}
+                                <span class="mx-2">·</span>
+                                <i class="bi bi-file-earmark me-1"></i>${(exam.file_ext || '—').toUpperCase()}
+                                <span class="mx-2">·</span>
+                                <i class="bi bi-hdd me-1"></i>${exam.file_size || '—'}
+                            </div>
+                            <div class="text-muted small mb-1">
+                                <i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}
+                                <span class="mx-2">·</span>
+                                <i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}
                             </div>
                             <div>
+                                ${(exam.problem_names || []).slice(0, 3).map(name =>
+                                    `<span class="badge bg-warning-subtle text-dark border me-1">${name}</span>`
+                                ).join('')}
                                 ${(exam.tags || []).slice(0, 5).map(tag =>
                                     `<span class="badge bg-light text-dark border me-1">#${tag}</span>`
                                 ).join('')}
