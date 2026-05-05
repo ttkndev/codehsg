@@ -10,69 +10,10 @@
  * thông tin bên dưới — tránh layout bị vỡ khi tên tác giả dài.
  */
 function buildGridCard(book) {
-    return `
-        <div class="col-sm-6 col-xl-4 book-card-wrap">
-            <div class="card h-100 shadow-sm">
-                <!-- Ảnh bìa cố định tỉ lệ 3:4 -->
-                <a href="book-detail.html?id=${book.id}" class="d-block overflow-hidden"
-                   style="height:180px; background:#f0f0f0;">
-                    <img src="${book.images[0]}"
-                         class="w-100 h-100"
-                         style="object-fit:cover; object-position:top;"
-                         alt="${book.title}" loading="lazy">
-                </a>
-
-                <div class="card-body d-flex flex-column p-3">
-                    <!-- Tiêu đề -->
-                    <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
-                        <h6 class="fw-bold mb-1 book-title">${book.title}</h6>
-                    </a>
-
-                    <!-- Tác giả (1 dòng, cắt nếu dài) -->
-                    <div class="text-muted small mb-2 text-truncate">
-                        <i class="bi bi-person me-1"></i>${book.author}
-                    </div>
-
-                    <!-- Badges -->
-                    <div class="d-flex flex-wrap gap-1 mb-2">
-                        <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
-                        <span class="badge bg-light text-dark border">${book.category}</span>
-                    </div>
-
-                    <!-- Thống kê 2 cột -->
-                    <div class="row row-cols-2 text-muted small mb-2 g-1">
-                        <div class="col"><i class="bi bi-file-text me-1"></i>${book.pages} trang</div>
-                        <div class="col"><i class="bi bi-calendar me-1"></i>${book.year}</div>
-                        <div class="col"><i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}</div>
-                        <div class="col"><i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}</div>
-                    </div>
-
-                    <!-- Tags -->
-                    <div class="mb-2 tags-row">
-                        ${(book.tags || []).slice(0, 4).map(tag =>
-                            `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`
-                        ).join('')}
-                    </div>
-
-                    <!-- Nút hành động -->
-                    <div class="d-flex gap-2 mt-auto">
-                        <a href="book-detail.html?id=${book.id}"
-                           class="btn btn-outline-primary btn-sm flex-fill">
-                            <i class="bi bi-info-circle me-1"></i>Chi tiết
-                        </a>
-                        <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer"
-                           class="btn btn-outline-success btn-sm flex-fill">
-                            <i class="bi bi-eye me-1"></i>Xem
-                        </a>
-                        <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer"
-                           class="btn btn-outline-secondary btn-sm">
-                            <i class="bi bi-download"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+    return buildBookStandardCard(book, {
+        columnClass: 'col-sm-6 col-xl-4',
+        coverHeight: CONFIG.BOOK_THUMB_HEIGHT
+    });
 }
 
 /**
@@ -87,7 +28,7 @@ function buildListCard(book) {
                     <a href="book-detail.html?id=${book.id}" class="flex-shrink-0">
                         <img src="${book.images[0]}"
                              alt="${book.title}" loading="lazy"
-                             style="width:100px; height:140px; object-fit:cover; object-position:top;"
+                             style="width:${CONFIG.BOOK_LIST_THUMB_WIDTH}px; height:${CONFIG.BOOK_LIST_THUMB_HEIGHT}px; object-fit:cover; object-position:top;"
                              class="rounded border">
                     </a>
 
@@ -96,14 +37,14 @@ function buildListCard(book) {
                         <!-- Hàng 1: Tiêu đề + badges -->
                         <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
                             <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark flex-grow-1">
-                                <h6 class="fw-bold mb-0 text-truncate">${book.title}</h6>
+                                <h6 class="fw-bold mb-0 book-title">${book.title}</h6>
                             </a>
                             <span class="badge ${levelBadgeClass(book.level)}">${mapLevel(book.level)}</span>
                             <span class="badge bg-light text-dark border">${book.category}</span>
                         </div>
 
                         <!-- Hàng 2: Tác giả + publisher + thống kê -->
-                        <div class="text-muted small mb-1 text-truncate">
+                        <div class="text-muted small mb-1 book-meta-line">
                             <i class="bi bi-person me-1"></i>${book.author}
                             <span class="mx-1">·</span>
                             <i class="bi bi-building me-1"></i>${book.publisher}
@@ -149,21 +90,9 @@ let allBooks   = [];
 let filtered   = [];
 let currentPage = 1;
 let currentView = 'grid';
-const PAGE_SIZE = 6;
+const PAGE_SIZE = CONFIG.PAGE_SIZE;
 
 // ── Hero stats ─────────────────────────────────────────────────
-function animateValue(element, start, end, duration) {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const value = Math.floor(progress * (end - start) + start);
-        element.textContent = `${formatNumber(value)}+`;
-        if (progress < 1) window.requestAnimationFrame(step);
-    };
-    window.requestAnimationFrame(step);
-}
-
 /** Render thống kê nhanh trong page-hero của book.html */
 function renderHeroStats(books) {
     const el = document.getElementById('book-hero-stats');
@@ -200,7 +129,7 @@ function renderHeroStats(books) {
             </div>
         `;
         el.appendChild(col);
-        animateValue(col.querySelector('.stat-value'), 0, stat.value, 1200);
+        animateValue(col.querySelector('.stat-value'), 0, stat.value, CONFIG.ANIMATE_DURATION);
     });
 }
 
@@ -350,7 +279,7 @@ function bindEvents() {
     let searchTimer;
     document.getElementById('search-input').addEventListener('input', () => {
         clearTimeout(searchTimer);
-        searchTimer = setTimeout(applyFilters, 280);
+        searchTimer = setTimeout(applyFilters, CONFIG.DEBOUNCE_MS);
     });
 
     document.querySelectorAll('.filter-level').forEach(cb =>

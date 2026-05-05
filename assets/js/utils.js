@@ -3,6 +3,89 @@
 // Import file này TRƯỚC tất cả các file JS khác
 // ============================================================
 
+
+
+// ── Cấu hình toàn cục ───────────────────────────────────────
+
+const CONFIG = {
+    PAGE_SIZE: 6,
+    FEATURED_COUNT: 3,
+    DEBOUNCE_MS: 280,
+    ANIMATE_DURATION: 1500,
+    BOOK_THUMB_HEIGHT: 180,
+    BOOK_LIST_THUMB_WIDTH: 124,
+    BOOK_LIST_THUMB_HEIGHT: 168,
+};
+
+// ── Book cards (dùng chung) ─────────────────────────────────
+
+function buildBookStandardCard(book, options = {}) {
+    const {
+        columnClass = 'col-md-4 mb-4',
+        cardClass = 'card h-100 shadow-sm',
+        coverHeight = CONFIG.BOOK_THUMB_HEIGHT,
+    } = options;
+
+    return `
+        <div class="${columnClass} book-card-wrap">
+            <div class="${cardClass}">
+                <div class="card-body d-flex flex-column">
+                    <div class="row mb-2 g-2 align-items-start">
+                        <div class="col-4">
+                            <a href="book-detail.html?id=${book.id}" class="d-block" style="height:${coverHeight}px;">
+                                <img src="${book.images?.[0] || ''}" class="img-fluid rounded w-100 h-100" style="object-fit:cover; object-position:top;" alt="${book.title}" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-8">
+                            <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
+                                <h6 class="fw-bold mb-2 book-title">${book.title}</h6>
+                            </a>
+                            <div class="row text-muted small mb-1 g-1">
+                                <div class="col-6"><i class="bi ${levelIcon(book.level)} me-1"></i>${mapLevel(book.level)}</div>
+                                <div class="col-6"><i class="bi bi-calendar me-1"></i>${book.year || '—'}</div>
+                            </div>
+                            <div class="row text-muted small mb-1 g-1">
+                                <div class="col-6"><i class="bi bi-person-badge me-1"></i>${book.contributor || '—'}</div>
+                                <div class="col-6"><i class="bi bi-file-text me-1"></i>${book.pages || 0} trang</div>
+                            </div>
+                            <div class="row text-muted small mb-1 g-1">
+                                <div class="col-6"><i class="bi bi-file-earmark-pdf me-1"></i>${(book.file_ext || 'pdf').toUpperCase()}</div>
+                                <div class="col-6"><i class="bi bi-hdd me-1"></i>${book.file_size || '—'}</div>
+                            </div>
+                            <div class="row text-muted small mb-1 g-1">
+                                <div class="col-6"><i class="bi bi-eye me-1"></i>${formatNumber(book.view_count)}</div>
+                                <div class="col-6"><i class="bi bi-download me-1"></i>${formatNumber(book.download_count)}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small mb-2 book-meta-line"><i class="bi bi-person me-1"></i>${book.author || 'Đang cập nhật'}</p>
+                    <div class="d-flex flex-wrap justify-content-between text-muted mb-2 small gap-1">
+                        <span><i class="bi bi-building me-1"></i>${book.publisher || '—'}</span>
+                        <span><i class="bi bi-tag me-1"></i>${book.category || '—'}</span>
+                    </div>
+
+                    <hr class="my-2">
+                    <div class="mb-2 tags-row">
+                        ${(book.tags || []).slice(0, 5).map(tag => `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`).join('')}
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-2 mt-auto flex-wrap">
+                        <a href="book-detail.html?id=${book.id}" class="btn btn-outline-primary btn-sm flex-fill">
+                            <i class="bi bi-info-circle"></i> Chi tiết
+                        </a>
+                        <a href="${book.drive_view}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm flex-fill">
+                            <i class="bi bi-eye"></i> Xem
+                        </a>
+                        <a href="${book.drive_download}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm flex-fill">
+                            <i class="bi bi-download"></i> Tải
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
 // ── Cấp học ─────────────────────────────────────────────────
 
 /** Trả về tên cấp học từ level (1–5) */
