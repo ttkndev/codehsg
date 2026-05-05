@@ -86,6 +86,71 @@ function buildBookStandardCard(book, options = {}) {
         </div>
     `;
 }
+
+
+// ── Exam cards (dùng chung) ─────────────────────────────────
+
+function buildExamStandardCard(exam, options = {}) {
+    const {
+        columnClass = 'col-md-4 mb-4',
+        cardClass = 'card h-100 shadow-sm exam-card',
+        thumbClass = 'img-fluid rounded border exam-thumb',
+        maxTags = 4,
+    } = options;
+
+    return `
+        <div class="${columnClass} exam-card-wrap">
+            <div class="${cardClass}">
+                <div class="card-body d-flex flex-column p-3">
+                    <div class="row g-2 mb-2">
+                        <div class="col-4">
+                            <a href="exam-detail.html?id=${exam.id}">
+                                <img src="${exam.images?.[0] || ''}" class="${thumbClass}" alt="${exam.title}" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-8">
+                            <a href="exam-detail.html?id=${exam.id}" class="text-decoration-none text-dark">
+                                <h6 class="fw-bold mb-1 exam-title">${exam.title}</h6>
+                            </a>
+                            <div class="text-muted small mb-1">
+                                <i class="bi bi-building me-1"></i>${exam.organization || '—'}
+                            </div>
+                            <div class="d-flex flex-wrap gap-1 mb-1">
+                                <span class="badge ${levelBadgeClass(exam.level)}">${mapLevel(exam.level)}</span>
+                                <span class="badge bg-light text-dark border">${exam.year || '—'}</span>
+                            </div>
+                            <div class="row text-muted small">
+                                <div class="col-6"><i class="bi bi-list-check me-1"></i>${exam.problem_count || 0} bài</div>
+                                <div class="col-6"><i class="bi bi-clock me-1"></i>${exam.duration || '—'}</div>
+                                <div class="col-6"><i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)}</div>
+                                <div class="col-6"><i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2 tags-row">
+                        ${(exam.tags || []).slice(0, maxTags).map(tag =>
+                            `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`
+                        ).join('')}
+                    </div>
+                    <div class="d-flex gap-2 mt-auto">
+                        <a href="exam-detail.html?id=${exam.id}" class="btn btn-outline-primary btn-sm flex-fill">
+                            <i class="bi bi-info-circle me-1"></i>Chi tiết
+                        </a>
+                        <a href="${exam.drive_view}" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline-success btn-sm flex-fill">
+                            <i class="bi bi-eye me-1"></i>Xem
+                        </a>
+                        <a href="${exam.drive_download}" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline-secondary btn-sm flex-fill">
+                            <i class="bi bi-download"></i>Tải
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 // ── Cấp học ─────────────────────────────────────────────────
 
 /** Trả về tên cấp học từ level (1–5) */
