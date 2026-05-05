@@ -124,10 +124,19 @@ function buildExamStandardCard(exam, options = {}) {
                                 <div class="col-6"><i class="bi bi-clock me-1"></i>${exam.duration || '—'}</div>
                                 <div class="col-6"><i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)}</div>
                                 <div class="col-6"><i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)}</div>
+                                <div class="col-6"><i class="bi bi-person-badge me-1"></i>${exam.contributor || '—'}</div>
+                                <div class="col-6"><i class="bi bi-bookmark me-1"></i>${exam.subject || '—'}</div>
+                                <div class="col-6"><i class="bi bi-file-earmark me-1"></i>${(exam.file_ext || '—').toUpperCase()}</div>
+                                <div class="col-6"><i class="bi bi-hdd me-1"></i>${exam.file_size || '—'}</div>
+                                <div class="col-6"><i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}</div>
+                                <div class="col-6"><i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}</div>
                             </div>
                         </div>
                     </div>
                     <div class="mb-2 tags-row">
+                        ${(exam.problem_names || []).slice(0, 3).map(name =>
+                            `<span class="badge bg-warning-subtle text-dark border me-1 mb-1">${name}</span>`
+                        ).join('')}
                         ${(exam.tags || []).slice(0, maxTags).map(tag =>
                             `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`
                         ).join('')}
