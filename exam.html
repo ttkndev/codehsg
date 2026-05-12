@@ -110,10 +110,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end mt-3">
-                            <button id="reset-filters" class="btn btn-outline-secondary btn-sm filter-reset-btn">
-                                <i class="bi bi-arrow-counterclockwise me-1"></i>Xóa bộ lọc
-                            </button>
+                        <div class="row g-3 align-items-end mt-0">
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <label class="filter-title mb-1"><i class="bi bi-sort-down me-2"></i>Sắp xếp</label>
+                                <select id="sort-select" class="form-select form-select-sm" aria-label="Sắp xếp đề thi">
+                                    <option value="view_count">Lượt xem nhiều nhất</option>
+                                    <option value="download_count">Lượt tải nhiều nhất</option>
+                                    <option value="date_added">Mới nhất</option>
+                                    <option value="year">Năm thi</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-12 d-flex justify-content-md-end">
+                                <button id="reset-filters" class="btn btn-outline-secondary btn-sm filter-reset-btn mt-md-0 mt-2">
+                                    <i class="bi bi-arrow-counterclockwise me-1"></i>Xóa bộ lọc
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +135,7 @@
                     <!-- Toolbar -->
                     <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-wrap">
                         <span id="result-count" class="text-secondary small">Đang tải...</span>
-                        <div class="d-flex gap-2 align-items-center flex-wrap justify-content-end">
+                        <div class="d-flex gap-2 align-items-center">
                             <button class="btn btn-sm btn-outline-secondary view-btn active" data-view="grid"
                                 title="Dạng lưới">
                                 <i class="bi bi-grid"></i>
@@ -133,12 +144,6 @@
                                 title="Dạng danh sách">
                                 <i class="bi bi-list-ul"></i>
                             </button>
-                            <select id="sort-select" class="form-select form-select-sm sort-select-inline" aria-label="Sắp xếp đề thi">
-                                <option value="view_count">Lượt xem nhiều nhất</option>
-                                <option value="download_count">Lượt tải nhiều nhất</option>
-                                <option value="date_added">Mới nhất</option>
-                                <option value="year">Năm thi</option>
-                            </select>
                         </div>
                     </div>
 
