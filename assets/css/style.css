@@ -264,7 +264,7 @@ code, pre, .code-box {
 /* Compact horizontal toolbar for exam/book listing pages */
 .filter-toolbar {
     display: grid;
-    grid-template-columns: minmax(240px, 1.5fr) minmax(230px, 1fr) minmax(200px, 0.7fr) auto;
+    grid-template-columns: minmax(220px, 1.4fr) repeat(4, minmax(120px, 1fr)) minmax(190px, 1fr);
     gap: 0.9rem 1rem;
     align-items: end;
     padding: 1rem;
@@ -282,11 +282,11 @@ code, pre, .code-box {
 
 .filter-block-level,
 .filter-block-category {
-    grid-column: 2;
+    grid-column: auto;
 }
 
 .filter-block-sort {
-    grid-column: 3;
+    grid-column: 6;
 }
 
 .filter-block-search .form-control,
@@ -304,15 +304,25 @@ code, pre, .code-box {
 }
 
 .filter-reset-btn {
-    grid-column: 4;
+    grid-column: span 2;
     align-self: end;
     min-height: 38px;
     white-space: nowrap;
 }
 
+.book-cover-thumb {
+    border: 1px solid #dee2e6;
+}
+
+.book-author-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @media (max-width: 1200px) {
     .filter-toolbar {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         align-items: stretch;
     }
 

@@ -52,76 +52,12 @@ function buildGridCard(exam) {
 }
 
 function buildListCard(exam) {
-    return `
-        <div class="col-12 exam-card-wrap">
-            <div class="card shadow-sm exam-card">
-                <div class="card-body p-3">
-                    <div class="row align-items-center g-2">
-                        <div class="col-auto">
-                            <a href="exam-detail.html?id=${exam.id}">
-                                <img src="${exam.images[0]}" class="rounded border exam-thumb-sm" alt="${exam.title}" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                                <a href="exam-detail.html?id=${exam.id}" class="text-decoration-none text-dark">
-                                    <h6 class="fw-bold mb-0">${exam.title}</h6>
-                                </a>
-                                <span class="badge ${levelBadgeClass(exam.level)}">${mapLevel(exam.level)}</span>
-                                <span class="badge bg-light text-dark border">${exam.year}</span>
-                            </div>
-                            <div class="text-muted small mb-1">
-                                <i class="bi bi-building me-1"></i>${exam.organization || '—'}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-list-check me-1"></i>${exam.problem_count || 0} bài
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-clock me-1"></i>${exam.duration || '—'}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count || 0)}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-download me-1"></i>${formatNumber(exam.download_count || 0)}
-                            </div>
-                            <div class="text-muted small mb-1">
-                                <i class="bi bi-person-badge me-1"></i>${exam.contributor || '—'}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-bookmark me-1"></i>${exam.subject || '—'}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-file-earmark me-1"></i>${(exam.file_ext || '—').toUpperCase()}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-hdd me-1"></i>${exam.file_size || '—'}
-                            </div>
-                            <div class="text-muted small mb-1">
-                                <i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}
-                                <span class="mx-2">·</span>
-                                <i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}
-                            </div>
-                            <div>
-                                ${(exam.problem_names || []).slice(0, 3).map(name =>
-                                    `<span class="badge bg-warning-subtle text-dark border me-1">${name}</span>`
-                                ).join('')}
-                                ${(exam.tags || []).slice(0, 5).map(tag =>
-                                    `<span class="badge bg-light text-dark border me-1">#${tag}</span>`
-                                ).join('')}
-                            </div>
-                        </div>
-                        <div class="col-auto d-flex gap-2">
-                            <a href="exam-detail.html?id=${exam.id}" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-info-circle me-1"></i>Chi tiết
-                            </a>
-                            <a href="${exam.drive_view}" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-outline-success btn-sm">
-                                <i class="bi bi-eye me-1"></i>Xem
-                            </a>
-                            <a href="${exam.drive_download}" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-download"></i>Tải
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+    return buildExamStandardCard(exam, {
+        columnClass: 'col-12',
+        cardClass: 'card h-100 shadow-sm exam-card',
+        thumbClass: 'img-fluid rounded border exam-thumb',
+        maxTags: 4
+    });
 }
 
 // =====================
