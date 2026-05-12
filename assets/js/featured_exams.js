@@ -12,9 +12,7 @@ async function loadFeaturedExams() {
         container.innerHTML = featured.map(exam =>
             buildExamStandardCard(
                 exam,
-                getExamStandardCardOptions({
-                    columnClass: 'col-md-4 mb-4'
-                })
+                getExamIndexCardOptions()
             )
         ).join('');
     } catch (error) {

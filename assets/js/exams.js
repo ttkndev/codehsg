@@ -45,7 +45,7 @@ function formatNumber(n) {
 function buildGridCard(exam) {
     return buildExamStandardCard(
         exam,
-        getExamStandardCardOptions({
+        getExamListingCardOptions({
             columnClass: 'col-md-6 col-xl-4',
         })
     );
@@ -54,7 +54,7 @@ function buildGridCard(exam) {
 function buildListCard(exam) {
     return buildExamStandardCard(
         exam,
-        getExamStandardCardOptions({
+        getExamListingCardOptions({
             columnClass: 'col-12',
         })
     );
