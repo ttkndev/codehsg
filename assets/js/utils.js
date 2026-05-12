@@ -102,6 +102,12 @@ function buildExamStandardCard(exam, options = {}) {
         statusBelowProblemNames = false,
         showFullTitle = false,
     } = options;
+    const solutionCount = Array.isArray(exam.solution_detail)
+        ? exam.solution_detail.length
+        : (exam.solution_detail ? 1 : 0);
+    const testcaseCount = Array.isArray(exam.testcases)
+        ? exam.testcases.length
+        : (exam.testcases ? 1 : 0);
 
     return `
         <div class="${columnClass} exam-card-wrap">
@@ -109,8 +115,8 @@ function buildExamStandardCard(exam, options = {}) {
                 <div class="card-body d-flex flex-column p-3">
                     <div class="row g-2 mb-2">
                         <div class="col-4">
-                            <a href="exam-detail.html?id=${exam.id}">
-                                <img src="${exam.images?.[0] || ''}" class="${thumbClass}" alt="${exam.title}" loading="lazy">
+                            <a href="exam-detail.html?id=${exam.id}" class="exam-thumb-link">
+                                <img src="${exam.images?.[0] || ''}" class="${thumbClass} exam-thumb-zoom" alt="${exam.title}" loading="lazy">
                             </a>
                         </div>
                         <div class="col-8">
@@ -133,8 +139,7 @@ function buildExamStandardCard(exam, options = {}) {
                                 <div class="col-6"><i class="bi bi-bookmark me-1"></i>${exam.subject || '—'}</div>
                                 <div class="col-6"><i class="bi bi-file-earmark me-1"></i>${(exam.file_ext || '—').toUpperCase()}</div>
                                 <div class="col-6"><i class="bi bi-hdd me-1"></i>${exam.file_size || '—'}</div>
-                                ${statusBelowProblemNames ? '' : `<div class="col-6"><i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}</div>`}
-                                ${statusBelowProblemNames ? '' : `<div class="col-6"><i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}</div>`}
+                                ${statusBelowProblemNames ? '' : `<div class="col-12"><div class="exam-meta-inline"><span class="exam-meta-pill"><i class="bi bi-lightbulb me-1"></i>Lời giải <span class="exam-meta-badge">${solutionCount}</span></span><span class="exam-meta-pill"><i class="bi bi-terminal me-1"></i>Testcase <span class="exam-meta-badge">${testcaseCount}</span></span></div></div>`}
                             </div>
                         </div>
                     </div>
@@ -147,9 +152,9 @@ function buildExamStandardCard(exam, options = {}) {
                         ).join('') : ''}
                     </div>
                     ${statusBelowProblemNames ? `
-                        <div class="row text-muted small mb-2">
-                            <div class="col-12"><i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}</div>
-                            <div class="col-12"><i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}</div>
+                        <div class="exam-meta-inline text-muted small mb-2">
+                            <span class="exam-meta-pill"><i class="bi bi-lightbulb me-1"></i>Lời giải <span class="exam-meta-badge">${solutionCount}</span></span>
+                            <span class="exam-meta-pill"><i class="bi bi-terminal me-1"></i>Testcase <span class="exam-meta-badge">${testcaseCount}</span></span>
                         </div>
                     ` : ''}
                     <div class="d-flex gap-2 mt-auto">
