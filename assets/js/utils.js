@@ -101,6 +101,7 @@ function buildExamStandardCard(exam, options = {}) {
         showAllProblemNames = false,
         statusBelowProblemNames = false,
         showFullTitle = false,
+        enablePreviewModal = false,
     } = options;
     const solutionCount = Array.isArray(exam.solution_detail)
         ? exam.solution_detail.length
@@ -115,7 +116,7 @@ function buildExamStandardCard(exam, options = {}) {
                 <div class="card-body d-flex flex-column p-3">
                     <div class="row g-2 mb-2">
                         <div class="col-4">
-                            <a href="exam-detail.html?id=${exam.id}" class="exam-thumb-link">
+                            <a href="${enablePreviewModal ? '#' : `exam-detail.html?id=${exam.id}`}" class="exam-thumb-link ${enablePreviewModal ? 'exam-preview-trigger' : ''}" ${enablePreviewModal ? `data-preview-src="${exam.images?.[0] || ''}" data-preview-title="${exam.title}"` : ''}>
                                 <img src="${exam.images?.[0] || ''}" class="${thumbClass} exam-thumb-zoom" alt="${exam.title}" loading="lazy">
                             </a>
                         </div>
