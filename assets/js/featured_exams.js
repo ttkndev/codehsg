@@ -14,7 +14,11 @@ async function loadFeaturedExams() {
                 columnClass: 'col-md-4 mb-4',
                 cardClass: 'card h-100 shadow-sm exam-card',
                 thumbClass: 'img-fluid rounded border exam-thumb',
-                maxTags: 4
+                maxTags: 4,
+                showExamTags: false,
+                showAllProblemNames: true,
+                statusBelowProblemNames: true,
+                showFullTitle: true
             })
         ).join('');
     } catch (error) {
