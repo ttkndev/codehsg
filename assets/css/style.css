@@ -261,6 +261,38 @@ code, pre, .code-box {
     flex-shrink: 0;
 }
 
+.compact-toolbar {
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.compact-toolbar .filter-block {
+    border: none;
+    padding: 0;
+}
+
+.compact-check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+}
+
+.compact-check-group .filter-check {
+    margin-bottom: 0;
+    font-size: 0.82rem;
+}
+
+.exam-image-thumb {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.exam-modal-image {
+    max-height: 78vh;
+    object-fit: contain;
+    background: #0c0f14;
+}
+
 /* Compact horizontal toolbar for exam/book listing pages */
 .filter-toolbar {
     display: grid;

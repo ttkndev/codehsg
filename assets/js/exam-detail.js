@@ -108,6 +108,16 @@ function buildRelatedCard(exam) {
 // MAIN RENDER
 // =====================
 function renderDetail(exam, allExams) {
+    const actualProblemCount = Math.max(
+        Number(exam.problem_count) || 0,
+        Array.isArray(exam.problem_names) ? exam.problem_names.length : 0
+    );
+    const solutionCount = Array.isArray(exam.solution_detail)
+        ? exam.solution_detail.length
+        : (exam.solution_detail ? 1 : 0);
+    const testcaseCount = Array.isArray(exam.testcases)
+        ? exam.testcases.length
+        : (exam.testcases ? 1 : 0);
     // Update page title & meta
     document.title = `${exam.title} | CodeHSG`;
     document.querySelector('meta[name="description"]')
@@ -208,6 +218,26 @@ function renderDetail(exam, allExams) {
                     </div>` : ''}
 
                     <!-- Danh sách bài thi -->
+                    ${exam.images && exam.images.length > 0 ? `
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-images text-warning me-2"></i>Ảnh đề thi</h5>
+                            <div class="row g-2">
+                                ${exam.images.map((img, idx) => `
+                                    <div class="col-6 col-md-4">
+                                        <button
+                                            class="btn p-0 border rounded overflow-hidden w-100 exam-image-thumb-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#examImageModal"
+                                            data-bs-slide-to="${idx}">
+                                            <img src="${img}" alt="${exam.title} - trang ${idx + 1}" class="img-fluid w-100 exam-image-thumb" loading="lazy">
+                                        </button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>` : ''}
+
                     ${exam.problem_names && exam.problem_names.length > 0 ? `
                     <div class="card shadow-sm mb-4">
                         <div class="card-body">
@@ -279,7 +309,7 @@ function renderDetail(exam, allExams) {
                                     </tr>
                                     <tr>
                                         <td class="text-secondary small"><i class="bi bi-list-check me-1"></i>Số bài</td>
-                                        <td class="small">${exam.problem_count} bài</td>
+                                        <td class="small">${actualProblemCount} bài</td>
                                     </tr>
                                     <tr>
                                         <td class="text-secondary small"><i class="bi bi-clock me-1"></i>Thời gian</td>
@@ -314,16 +344,58 @@ function renderDetail(exam, allExams) {
                         </div>
                     </div>
 
-                    <!-- Tags -->
-                    ${exam.tags && exam.tags.length > 0 ? `
+                    <!-- Lời giải + Testcase -->
                     <div class="card shadow-sm mb-4">
                         <div class="card-body">
-                            <h5 class="fw-bold mb-3"><i class="bi bi-tags text-warning me-2"></i>Tags</h5>
-                            <div>
-                                ${exam.tags.map(tag =>
-                                    `<a href="exam.html?q=${encodeURIComponent(tag)}"
-                                        class="badge bg-light text-dark border me-1 mb-1 text-decoration-none">#${tag}</a>`
-                                ).join('')}
+                            <h5 class="fw-bold mb-3"><i class="bi bi-journal-code text-warning me-2"></i>Lời giải & Test case</h5>
+                            <div class="row g-2 small">
+                                <div class="col-12 d-flex align-items-center justify-content-between border rounded p-2">
+                                    <span><i class="bi bi-lightbulb me-1 text-warning"></i>Lời giải</span>
+                                    <span class="badge bg-light text-dark border">${solutionCount}</span>
+                                </div>
+                                <div class="col-12 d-flex align-items-center justify-content-between border rounded p-2">
+                                    <span><i class="bi bi-terminal me-1 text-primary"></i>Test case</span>
+                                    <span class="badge bg-light text-dark border">${testcaseCount}</span>
+                                </div>
+                            </div>
+                            <hr class="my-3">
+                            ${exam.tags && exam.tags.length > 0 ? `
+                                <h6 class="fw-bold mb-2"><i class="bi bi-tags text-warning me-2"></i>Tags</h6>
+                                <div>
+                                    ${exam.tags.map(tag =>
+                                        `<a href="exam.html?q=${encodeURIComponent(tag)}"
+                                            class="badge bg-light text-dark border me-1 mb-1 text-decoration-none">#${tag}</a>`
+                                    ).join('')}
+                                </div>
+                            ` : `<p class="text-secondary small mb-0">Chưa có tag cho đề thi này.</p>`}
+                        </div>
+                    </div>
+
+                    ${exam.images && exam.images.length > 0 ? `
+                    <div class="modal fade" id="examImageModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header border-secondary">
+                                    <h5 class="modal-title text-white">Ảnh đề thi</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body p-0">
+                                    <div id="examImageCarousel" class="carousel slide" data-bs-touch="true">
+                                        <div class="carousel-inner">
+                                            ${exam.images.map((img, idx) => `
+                                                <div class="carousel-item ${idx === 0 ? 'active' : ''}">
+                                                    <img src="${img}" class="d-block w-100 exam-modal-image" alt="${exam.title} - trang ${idx + 1}">
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#examImageCarousel" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#examImageCarousel" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>` : ''}
@@ -346,6 +418,15 @@ function renderDetail(exam, allExams) {
     `;
 
     document.getElementById('detail-main').innerHTML = html;
+    const imageModal = document.getElementById('examImageModal');
+    const carouselEl = document.getElementById('examImageCarousel');
+    if (imageModal && carouselEl && window.bootstrap?.Carousel) {
+        const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl, { interval: false });
+        imageModal.addEventListener('show.bs.modal', (event) => {
+            const slideTo = Number(event.relatedTarget?.getAttribute('data-bs-slide-to') || 0);
+            carousel.to(slideTo);
+        });
+    }
 
     // Copy link button
     document.getElementById('copy-link-btn')?.addEventListener('click', () => {

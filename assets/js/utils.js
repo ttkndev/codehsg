@@ -103,6 +103,10 @@ function buildExamStandardCard(exam, options = {}) {
         showFullTitle = false,
         enablePreviewModal = false,
     } = options;
+    const actualProblemCount = Math.max(
+        Number(exam.problem_count) || 0,
+        Array.isArray(exam.problem_names) ? exam.problem_names.length : 0
+    );
     const solutionCount = Array.isArray(exam.solution_detail)
         ? exam.solution_detail.length
         : (exam.solution_detail ? 1 : 0);
@@ -132,7 +136,7 @@ function buildExamStandardCard(exam, options = {}) {
                                 <span class="badge bg-light text-dark border">${exam.year || '—'}</span>
                             </div>
                             <div class="row text-muted small">
-                                <div class="col-6"><i class="bi bi-list-check me-1"></i>${exam.problem_count || 0} bài</div>
+                                <div class="col-6"><i class="bi bi-list-check me-1"></i>${actualProblemCount} bài</div>
                                 <div class="col-6"><i class="bi bi-clock me-1"></i>${exam.duration || '—'}</div>
                                 <div class="col-6"><i class="bi bi-eye me-1"></i>${formatNumber(exam.view_count)}</div>
                                 <div class="col-6"><i class="bi bi-download me-1"></i>${formatNumber(exam.download_count)}</div>
