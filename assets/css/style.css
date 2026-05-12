@@ -261,6 +261,63 @@ code, pre, .code-box {
     flex-shrink: 0;
 }
 
+/* Compact horizontal toolbar for exam/book listing pages */
+.filter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.9rem 1rem;
+    padding: 0.95rem 1rem;
+}
+
+.filter-toolbar .filter-block {
+    border-bottom: none;
+    padding-bottom: 0;
+    min-width: 0;
+}
+
+.filter-block-search {
+    flex: 1 1 260px;
+}
+
+.filter-block-search .form-control {
+    min-height: 34px;
+}
+
+.filter-block-level,
+.filter-block-category {
+    flex: 2 1 320px;
+}
+
+.filter-block-sort {
+    flex: 0 1 220px;
+}
+
+.filter-check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+}
+
+.filter-reset-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+@media (max-width: 992px) {
+    .filter-toolbar {
+        align-items: stretch;
+    }
+
+    .filter-block-search,
+    .filter-block-level,
+    .filter-block-category,
+    .filter-block-sort,
+    .filter-reset-btn {
+        flex: 1 1 100%;
+    }
+}
+
 /* =====================
    VIEW TOGGLE BUTTONS
    ===================== */

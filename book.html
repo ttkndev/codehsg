@@ -86,19 +86,19 @@
 
                 <!-- ===== FILTER BAR ===== -->
                 <div class="col-12">
-                    <div class="filter-sidebar">
+                    <div class="filter-sidebar filter-toolbar">
 
                         <!-- Tìm kiếm -->
-                        <div class="filter-block">
+                        <div class="filter-block filter-block-search">
                             <h6 class="filter-title"><i class="bi bi-search me-2"></i>Tìm kiếm</h6>
                             <input type="text" id="search-input" class="form-control form-control-sm"
                                 placeholder="Tên sách, tác giả, NXB...">
                         </div>
 
                         <!-- Cấp học -->
-                        <div class="filter-block">
+                        <div class="filter-block filter-block-level">
                             <h6 class="filter-title"><i class="bi bi-mortarboard me-2"></i>Cấp học</h6>
-                            <div class="d-flex flex-column gap-2">
+                            <div class="filter-check-group">
                                 <label class="filter-check">
                                     <input type="checkbox" class="filter-level" value="1"> Tiểu học
                                 </label>
@@ -118,15 +118,15 @@
                         </div>
 
                         <!-- Danh mục -->
-                        <div class="filter-block">
+                        <div class="filter-block filter-block-category">
                             <h6 class="filter-title"><i class="bi bi-tag me-2"></i>Danh mục</h6>
-                            <div class="d-flex flex-column gap-2" id="category-filters">
+                            <div class="filter-check-group" id="category-filters">
                                 <!-- Render động từ JS -->
                             </div>
                         </div>
 
                         <!-- Sắp xếp -->
-                        <div class="filter-block">
+                        <div class="filter-block filter-block-sort">
                             <h6 class="filter-title"><i class="bi bi-sort-down me-2"></i>Sắp xếp</h6>
                             <select id="sort-select" class="form-select form-select-sm">
                                 <option value="view_count">Lượt xem nhiều nhất</option>
@@ -138,7 +138,7 @@
                         </div>
 
                         <!-- Reset -->
-                        <button id="reset-filters" class="btn btn-outline-secondary btn-sm w-100">
+                        <button id="reset-filters" class="btn btn-outline-secondary btn-sm filter-reset-btn">
                             <i class="bi bi-arrow-counterclockwise me-1"></i>Xóa bộ lọc
                         </button>
                     </div>
