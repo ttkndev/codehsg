@@ -199,6 +199,28 @@ function getExamStandardCardOptions(options = {}) {
 // ── Cấp học ─────────────────────────────────────────────────
 
 /** Trả về tên cấp học từ level (1–5) */
+
+function getExamIndexCardOptions(options = {}) {
+    return getExamStandardCardOptions({
+        columnClass: 'col-md-4 mb-4',
+        showProblemNames: true,
+        showAllProblemNames: false,
+        statusBelowProblemNames: false,
+        showFullTitle: false,
+        ...options,
+    });
+}
+
+function getExamListingCardOptions(options = {}) {
+    return getExamStandardCardOptions({
+        showProblemNames: true,
+        showAllProblemNames: false,
+        statusBelowProblemNames: false,
+        showFullTitle: false,
+        ...options,
+    });
+}
+
 function mapLevel(level) {
     const map = { 1: "Tiểu học", 2: "THCS", 3: "THPT", 4: "THPT Chuyên", 5: "Đại học" };
     return map[level] ?? "Không rõ";
