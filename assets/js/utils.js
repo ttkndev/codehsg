@@ -33,7 +33,7 @@ function buildBookStandardCard(book, options = {}) {
                     <div class="row mb-2 g-2 align-items-start">
                         <div class="col-4">
                             <a href="book-detail.html?id=${book.id}" class="d-block" style="height:${coverHeight}px;">
-                                <img src="${book.images?.[0] || ''}" class="img-fluid rounded w-100 h-100" style="object-fit:cover; object-position:top;" alt="${book.title}" loading="lazy">
+                                <img src="${book.images?.[0] || ''}" class="img-fluid rounded w-100 h-100 book-cover-thumb" style="object-fit:cover; object-position:top;" alt="${book.title}" loading="lazy">
                             </a>
                         </div>
                         <div class="col-8">
@@ -59,7 +59,7 @@ function buildBookStandardCard(book, options = {}) {
                         </div>
                     </div>
 
-                    <p class="text-muted small mb-2 book-meta-line"><i class="bi bi-person me-1"></i>${book.author || 'Đang cập nhật'}</p>
+                    <p class="text-muted small mb-2 book-meta-line book-author-ellipsis" title="${book.author || 'Đang cập nhật'}"><i class="bi bi-person me-1"></i>${book.author || 'Đang cập nhật'}</p>
                     <div class="d-flex flex-wrap justify-content-between text-muted mb-2 small gap-1">
                         <span><i class="bi bi-building me-1"></i>${book.publisher || '—'}</span>
                         <span><i class="bi bi-tag me-1"></i>${book.category || '—'}</span>
