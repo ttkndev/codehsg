@@ -102,6 +102,8 @@ function buildExamStandardCard(exam, options = {}) {
         statusBelowProblemNames = false,
         showFullTitle = false,
         enablePreviewModal = false,
+        thumbColumnClass = 'col-4',
+        infoColumnClass = 'col-8',
     } = options;
     const actualProblemCount = Math.max(
         Number(exam.problem_count) || 0,
@@ -119,12 +121,12 @@ function buildExamStandardCard(exam, options = {}) {
             <div class="${cardClass}">
                 <div class="card-body d-flex flex-column p-3">
                     <div class="row g-2 mb-2">
-                        <div class="col-4">
+                        <div class="${thumbColumnClass}">
                             <a href="${enablePreviewModal ? '#' : `exam-detail.html?id=${exam.id}`}" class="exam-thumb-link ${enablePreviewModal ? 'exam-preview-trigger' : ''}" ${enablePreviewModal ? `data-preview-src="${exam.images?.[0] || ''}" data-preview-title="${exam.title}"` : ''}>
                                 <img src="${exam.images?.[0] || ''}" class="${thumbClass} exam-thumb-zoom" alt="${exam.title}" loading="lazy">
                             </a>
                         </div>
-                        <div class="col-8">
+                        <div class="${infoColumnClass}">
                             <a href="exam-detail.html?id=${exam.id}" class="text-decoration-none text-dark">
                                 <h6 class="fw-bold mb-1 exam-title ${showFullTitle ? 'exam-title-full' : ''}" title="${exam.title}">${exam.title}</h6>
                             </a>
@@ -196,6 +198,8 @@ function getExamStandardCardOptions(options = {}) {
         statusBelowProblemNames: false,
         showFullTitle: false,
         enablePreviewModal: false,
+        thumbColumnClass: 'col-4',
+        infoColumnClass: 'col-8',
         ...options,
     };
 }

@@ -598,3 +598,18 @@ code, pre, .code-box {
         min-width: 160px;
     }
 }
+
+
+/* List view exam thumbnail sizing */
+.exam-card-list .exam-thumb-list {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    object-position: top;
+}
+
+@media (max-width: 576px) {
+    .exam-card-list .exam-thumb-list {
+        max-height: 90px;
+    }
+}
