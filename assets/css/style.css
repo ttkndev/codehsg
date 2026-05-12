@@ -139,12 +139,7 @@ code, pre, .code-box {
 }
 
 .exam-thumb-zoom {
-    transition: transform 0.25s ease;
-    transform-origin: top center;
-}
-
-.exam-thumb-link:hover .exam-thumb-zoom {
-    transform: scale(3);
+    transition: opacity 0.2s ease;
 }
 
 .exam-preview-trigger {
@@ -152,7 +147,7 @@ code, pre, .code-box {
 }
 
 .exam-preview-trigger:hover .exam-thumb-zoom {
-    transform: none;
+    opacity: 0.9;
 }
 
 .exam-thumb-sm {
