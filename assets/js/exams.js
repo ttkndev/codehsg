@@ -43,21 +43,21 @@ function formatNumber(n) {
 // CARD BUILDERS
 // =====================
 function buildGridCard(exam) {
-    return buildExamStandardCard(exam, {
-        columnClass: 'col-md-6 col-xl-4',
-        cardClass: 'card h-100 shadow-sm exam-card',
-        thumbClass: 'img-fluid rounded border exam-thumb',
-        maxTags: 4
-    });
+    return buildExamStandardCard(
+        exam,
+        getExamStandardCardOptions({
+            columnClass: 'col-md-6 col-xl-4',
+        })
+    );
 }
 
 function buildListCard(exam) {
-    return buildExamStandardCard(exam, {
-        columnClass: 'col-12',
-        cardClass: 'card h-100 shadow-sm exam-card',
-        thumbClass: 'img-fluid rounded border exam-thumb',
-        maxTags: 4
-    });
+    return buildExamStandardCard(
+        exam,
+        getExamStandardCardOptions({
+            columnClass: 'col-12',
+        })
+    );
 }
 
 // =====================

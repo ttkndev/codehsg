@@ -177,6 +177,25 @@ function buildExamStandardCard(exam, options = {}) {
     `;
 }
 
+/**
+ * Preset options cho card đề thi để tái sử dụng đồng nhất giữa các trang.
+ * Có thể override bằng options truyền vào.
+ */
+function getExamStandardCardOptions(options = {}) {
+    return {
+        cardClass: 'card h-100 shadow-sm exam-card',
+        thumbClass: 'img-fluid rounded border exam-thumb',
+        maxTags: 4,
+        showExamTags: true,
+        showProblemNames: true,
+        showAllProblemNames: false,
+        statusBelowProblemNames: false,
+        showFullTitle: false,
+        enablePreviewModal: false,
+        ...options,
+    };
+}
+
 // ── Cấp học ─────────────────────────────────────────────────
 
 /** Trả về tên cấp học từ level (1–5) */

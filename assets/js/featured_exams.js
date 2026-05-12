@@ -10,20 +10,13 @@ async function loadFeaturedExams() {
         container.innerHTML = '';
 
         container.innerHTML = featured.map(exam =>
-            buildExamStandardCard(exam, {
-                columnClass: 'col-md-4 mb-4',
-                cardClass: 'card h-100 shadow-sm exam-card',
-                thumbClass: 'img-fluid rounded border exam-thumb',
-                maxTags: 4,
-                showExamTags: false,
-                showAllProblemNames: true,
-                statusBelowProblemNames: true,
-                showFullTitle: true,
-                enablePreviewModal: true
-            })
+            buildExamStandardCard(
+                exam,
+                getExamStandardCardOptions({
+                    columnClass: 'col-md-4 mb-4'
+                })
+            )
         ).join('');
-
-        bindFeaturedExamPreviewModal();
     } catch (error) {
         console.error('Lỗi khi load exams:', error);
         container.innerHTML = `
@@ -36,26 +29,6 @@ async function loadFeaturedExams() {
             </div>
         `;
     }
-}
-
-function bindFeaturedExamPreviewModal() {
-    const modalEl = document.getElementById('exam-preview-modal');
-    if (!modalEl || !window.bootstrap) return;
-
-    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-    const modalImg = document.getElementById('exam-preview-image');
-    const modalTitle = document.getElementById('exam-preview-title');
-
-    document.querySelectorAll('.exam-preview-trigger').forEach(trigger => {
-        trigger.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (!modalImg) return;
-            modalImg.src = trigger.dataset.previewSrc || '';
-            modalImg.alt = trigger.dataset.previewTitle || 'Preview';
-            if (modalTitle) modalTitle.textContent = trigger.dataset.previewTitle || 'Xem ảnh đề thi';
-            modal.show();
-        });
-    });
 }
 
 document.addEventListener('DOMContentLoaded', loadFeaturedExams);
