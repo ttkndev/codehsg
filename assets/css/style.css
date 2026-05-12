@@ -588,3 +588,13 @@ code, pre, .code-box {
     word-break: break-word;
     line-height: 1.45;
 }
+
+.sort-select-inline {
+    min-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .sort-select-inline {
+        min-width: 160px;
+    }
+}

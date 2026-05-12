@@ -93,12 +93,14 @@
                 <div class="col-12">
                     <div class="filter-sidebar filter-toolbar compact-toolbar">
                         <div class="row g-3 align-items-end">
-                            <div class="col-lg-5">
+                            <div class="col-12">
                                 <label class="filter-title mb-1"><i class="bi bi-search me-2"></i>Tìm kiếm</label>
                                 <input type="text" id="search-input" class="form-control form-control-sm" placeholder="Tên đề thi, tổ chức...">
                             </div>
-                            <div class="col-lg-4">
-                                <label class="filter-title mb-1"><i class="bi bi-mortarboard me-2"></i>Cấp học</label>
+                        </div>
+                        <div class="row g-3 align-items-end mt-0">
+                            <div class="col-12">
+                                <label class="filter-title mb-1"><i class="bi bi-funnel me-2"></i>Bộ lọc cấp học</label>
                                 <div class="filter-check-group compact-check-group">
                                     <label class="filter-check"><input type="checkbox" class="filter-level" value="1"> Tiểu học</label>
                                     <label class="filter-check"><input type="checkbox" class="filter-level" value="2"> THCS</label>
@@ -106,15 +108,6 @@
                                     <label class="filter-check"><input type="checkbox" class="filter-level" value="4"> THPT Chuyên</label>
                                     <label class="filter-check"><input type="checkbox" class="filter-level" value="5"> Đại học</label>
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <label class="filter-title mb-1"><i class="bi bi-sort-down me-2"></i>Sắp xếp</label>
-                                <select id="sort-select" class="form-select form-select-sm">
-                                <option value="view_count">Lượt xem nhiều nhất</option>
-                                <option value="download_count">Lượt tải nhiều nhất</option>
-                                <option value="date_added">Mới nhất</option>
-                                <option value="year">Năm thi</option>
-                            </select>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-3">
@@ -129,9 +122,9 @@
                 <div class="col-12">
 
                     <!-- Toolbar -->
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-wrap">
                         <span id="result-count" class="text-secondary small">Đang tải...</span>
-                        <div class="d-flex gap-2">
+                        <div class="d-flex gap-2 align-items-center flex-wrap justify-content-end">
                             <button class="btn btn-sm btn-outline-secondary view-btn active" data-view="grid"
                                 title="Dạng lưới">
                                 <i class="bi bi-grid"></i>
@@ -140,6 +133,12 @@
                                 title="Dạng danh sách">
                                 <i class="bi bi-list-ul"></i>
                             </button>
+                            <select id="sort-select" class="form-select form-select-sm sort-select-inline" aria-label="Sắp xếp đề thi">
+                                <option value="view_count">Lượt xem nhiều nhất</option>
+                                <option value="download_count">Lượt tải nhiều nhất</option>
+                                <option value="date_added">Mới nhất</option>
+                                <option value="year">Năm thi</option>
+                            </select>
                         </div>
                     </div>
 

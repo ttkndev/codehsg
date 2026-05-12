@@ -1,45 +1,4 @@
 // =====================
-// HELPERS
-// =====================
-function mapLevel(level) {
-    switch (level) {
-        case 1: return "Tiểu học";
-        case 2: return "THCS";
-        case 3: return "THPT";
-        case 4: return "THPT Chuyên";
-        case 5: return "Đại học";
-        default: return "Không rõ";
-    }
-}
-
-function levelBadgeClass(level) {
-    switch (level) {
-        case 1: return "bg-info text-dark";
-        case 2: return "bg-success";
-        case 3: return "bg-primary";
-        case 4: return "bg-warning text-dark";
-        case 5: return "bg-danger";
-        default: return "bg-secondary";
-    }
-}
-
-function levelIcon(level) {
-    switch (level) {
-        case 1: return "bi-book";
-        case 2: return "bi-journal";
-        case 3: return "bi-mortarboard";
-        case 4: return "bi-award";
-        case 5: return "bi-building";
-        default: return "bi-question-circle";
-    }
-}
-
-function formatNumber(n) {
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-    return n;
-}
-
-// =====================
 // CARD BUILDERS
 // =====================
 function buildGridCard(exam) {
