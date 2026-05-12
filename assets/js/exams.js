@@ -47,6 +47,8 @@ function buildGridCard(exam) {
         exam,
         getExamListingCardOptions({
             columnClass: 'col-md-6 col-xl-4',
+            showAllProblemNames: true,
+            enablePreviewModal: true,
         })
     );
 }
@@ -56,6 +58,9 @@ function buildListCard(exam) {
         exam,
         getExamListingCardOptions({
             columnClass: 'col-12',
+            showAllProblemNames: true,
+            showFullTitle: true,
+            enablePreviewModal: true,
         })
     );
 }
@@ -228,6 +233,54 @@ function bindEvents() {
             render();
         });
     });
+
+    document.getElementById('exam-container').addEventListener('click', e => {
+        const trigger = e.target.closest('.exam-preview-trigger');
+        if (!trigger) return;
+        e.preventDefault();
+
+        const card = trigger.closest('.exam-card-wrap');
+        const detailLink = card?.querySelector('a[href^="exam-detail.html?id="]');
+        const examId = detailLink ? new URL(detailLink.href, window.location.href).searchParams.get('id') : null;
+        const exam = allExams.find(item => String(item.id) === String(examId));
+        if (!exam || !Array.isArray(exam.images) || exam.images.length === 0) return;
+
+        openExamPreviewModal(exam);
+    });
+}
+
+function openExamPreviewModal(exam) {
+    const modalEl = document.getElementById('examImageModal');
+    const titleEl = document.getElementById('examImageModalLabel');
+    const bodyEl = document.getElementById('examImageModalBody');
+    if (!modalEl || !titleEl || !bodyEl) return;
+
+    titleEl.textContent = exam.title || 'Ảnh đề thi';
+
+    const carouselId = 'examImageCarousel';
+    bodyEl.innerHTML = `
+        <div id="${carouselId}" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                ${exam.images.map((img, index) => `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <img src="${img}" class="d-block w-100 exam-modal-image rounded" alt="${exam.title} - trang ${index + 1}">
+                    </div>
+                `).join('')}
+            </div>
+            ${exam.images.length > 1 ? `
+                <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Ảnh trước</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Ảnh sau</span>
+                </button>
+            ` : ''}
+        </div>
+    `;
+
+    bootstrap.Modal.getOrCreateInstance(modalEl).show();
 }
 
 // =====================
