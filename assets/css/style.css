@@ -263,11 +263,11 @@ code, pre, .code-box {
 
 /* Compact horizontal toolbar for exam/book listing pages */
 .filter-toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: minmax(240px, 1.5fr) minmax(230px, 1fr) minmax(200px, 0.7fr) auto;
     gap: 0.9rem 1rem;
-    padding: 0.95rem 1rem;
+    align-items: end;
+    padding: 1rem;
 }
 
 .filter-toolbar .filter-block {
@@ -277,35 +277,42 @@ code, pre, .code-box {
 }
 
 .filter-block-search {
-    flex: 1 1 260px;
-}
-
-.filter-block-search .form-control {
-    min-height: 34px;
+    grid-column: 1;
 }
 
 .filter-block-level,
 .filter-block-category {
-    flex: 2 1 320px;
+    grid-column: 2;
 }
 
 .filter-block-sort {
-    flex: 0 1 220px;
+    grid-column: 3;
+}
+
+.filter-block-search .form-control,
+.filter-block-sort .form-select {
+    min-height: 38px;
 }
 
 .filter-check-group {
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem 0.85rem;
+    max-height: 96px;
+    overflow-y: auto;
+    padding-right: 0.2rem;
 }
 
 .filter-reset-btn {
-    flex: 0 0 auto;
+    grid-column: 4;
+    align-self: end;
+    min-height: 38px;
     white-space: nowrap;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .filter-toolbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: stretch;
     }
 
@@ -314,7 +321,22 @@ code, pre, .code-box {
     .filter-block-category,
     .filter-block-sort,
     .filter-reset-btn {
-        flex: 1 1 100%;
+        grid-column: auto;
+    }
+
+    .filter-reset-btn {
+        justify-self: start;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-reset-btn {
+        width: 100%;
+        justify-self: stretch;
     }
 }
 
