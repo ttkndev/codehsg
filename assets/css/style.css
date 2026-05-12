@@ -147,6 +147,14 @@ code, pre, .code-box {
     transform: scale(3);
 }
 
+.exam-preview-trigger {
+    cursor: zoom-in;
+}
+
+.exam-preview-trigger:hover .exam-thumb-zoom {
+    transform: none;
+}
+
 .exam-thumb-sm {
     width: 72px;
     height: 90px;
