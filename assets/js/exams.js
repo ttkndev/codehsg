@@ -20,6 +20,10 @@ function buildListCard(exam) {
             showAllProblemNames: true,
             showFullTitle: true,
             enablePreviewModal: true,
+            cardClass: 'card h-100 shadow-sm exam-card exam-card-list',
+            thumbClass: 'img-fluid rounded border exam-thumb exam-thumb-list',
+            thumbColumnClass: 'col-3 col-md-2',
+            infoColumnClass: 'col-9 col-md-10',
         })
     );
 }
