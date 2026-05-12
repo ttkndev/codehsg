@@ -38,7 +38,7 @@ function buildBookStandardCard(book, options = {}) {
                         </div>
                         <div class="col-8">
                             <a href="book-detail.html?id=${book.id}" class="text-decoration-none text-dark">
-                                <h6 class="fw-bold mb-2 book-title">${book.title}</h6>
+                                <h6 class="fw-bold mb-2 book-title" title="${book.title}">${book.title}</h6>
                             </a>
                             <div class="row text-muted small mb-1 g-1">
                                 <div class="col-6"><i class="bi ${levelIcon(book.level)} me-1"></i>${mapLevel(book.level)}</div>
@@ -96,6 +96,11 @@ function buildExamStandardCard(exam, options = {}) {
         cardClass = 'card h-100 shadow-sm exam-card',
         thumbClass = 'img-fluid rounded border exam-thumb',
         maxTags = 4,
+        showExamTags = true,
+        showProblemNames = true,
+        showAllProblemNames = false,
+        statusBelowProblemNames = false,
+        showFullTitle = false,
     } = options;
 
     return `
@@ -110,7 +115,7 @@ function buildExamStandardCard(exam, options = {}) {
                         </div>
                         <div class="col-8">
                             <a href="exam-detail.html?id=${exam.id}" class="text-decoration-none text-dark">
-                                <h6 class="fw-bold mb-1 exam-title">${exam.title}</h6>
+                                <h6 class="fw-bold mb-1 exam-title ${showFullTitle ? 'exam-title-full' : ''}" title="${exam.title}">${exam.title}</h6>
                             </a>
                             <div class="text-muted small mb-1">
                                 <i class="bi bi-building me-1"></i>${exam.organization || '—'}
@@ -128,19 +133,25 @@ function buildExamStandardCard(exam, options = {}) {
                                 <div class="col-6"><i class="bi bi-bookmark me-1"></i>${exam.subject || '—'}</div>
                                 <div class="col-6"><i class="bi bi-file-earmark me-1"></i>${(exam.file_ext || '—').toUpperCase()}</div>
                                 <div class="col-6"><i class="bi bi-hdd me-1"></i>${exam.file_size || '—'}</div>
-                                <div class="col-6"><i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}</div>
-                                <div class="col-6"><i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}</div>
+                                ${statusBelowProblemNames ? '' : `<div class="col-6"><i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}</div>`}
+                                ${statusBelowProblemNames ? '' : `<div class="col-6"><i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}</div>`}
                             </div>
                         </div>
                     </div>
                     <div class="mb-2 tags-row">
-                        ${(exam.problem_names || []).slice(0, 3).map(name =>
+                        ${showProblemNames ? (showAllProblemNames ? (exam.problem_names || []) : (exam.problem_names || []).slice(0, 3)).map(name =>
                             `<span class="badge bg-warning-subtle text-dark border me-1 mb-1">${name}</span>`
-                        ).join('')}
-                        ${(exam.tags || []).slice(0, maxTags).map(tag =>
+                        ).join('') : ''}
+                        ${showExamTags ? (exam.tags || []).slice(0, maxTags).map(tag =>
                             `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`
-                        ).join('')}
+                        ).join('') : ''}
                     </div>
+                    ${statusBelowProblemNames ? `
+                        <div class="row text-muted small mb-2">
+                            <div class="col-12"><i class="bi bi-lightbulb me-1"></i>${exam.solution_detail ? 'Có lời giải' : 'Chưa có lời giải'}</div>
+                            <div class="col-12"><i class="bi bi-terminal me-1"></i>${(exam.testcases && exam.testcases.length > 0) ? 'Có testcase' : 'Chưa có testcase'}</div>
+                        </div>
+                    ` : ''}
                     <div class="d-flex gap-2 mt-auto">
                         <a href="exam-detail.html?id=${exam.id}" class="btn btn-outline-primary btn-sm flex-fill">
                             <i class="bi bi-info-circle me-1"></i>Chi tiết

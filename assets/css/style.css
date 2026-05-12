@@ -146,6 +146,13 @@ code, pre, .code-box {
     overflow: hidden;
 }
 
+.exam-title-full {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
+}
+
 .tags-row {
     min-height: 26px;
 }
