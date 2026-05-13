@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <!-- Logo / Brand -->
                 <a class="navbar-brand fw-bold" href="index.html">CodeHSG</a>
@@ -69,28 +69,32 @@
                             <div class="col-6 col-lg-3 mb-4">
                                 <div class="p-3 bg-white shadow-sm rounded">
                                     <i class="bi bi-file-earmark-text fs-1 text-primary"></i>
-                                    <h2 class="fw-bold text-primary"><span id="stat-exams">0</span>+</h2>
+                                    <h2 class="fw-bold text-primary"><span id="stat-exams" class="stat-number">0</span>+
+                                    </h2>
                                     <p>Đề thi</p>
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 mb-4">
                                 <div class="p-3 bg-white shadow-sm rounded">
                                     <i class="bi bi-book fs-1 text-success"></i>
-                                    <h2 class="fw-bold text-success"><span id="stat-books">0</span>+</h2>
+                                    <h2 class="fw-bold text-success"><span id="stat-books" class="stat-number">0</span>+
+                                    </h2>
                                     <p>Học liệu</p>
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 mb-4">
                                 <div class="p-3 bg-white shadow-sm rounded">
                                     <i class="bi bi-eye fs-1 text-danger"></i>
-                                    <h2 class="fw-bold text-danger"><span id="stat-views">0</span>+</h2>
+                                    <h2 class="fw-bold text-danger"><span id="stat-views" class="stat-number">0</span>+
+                                    </h2>
                                     <p>Lượt xem</p>
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 mb-4">
                                 <div class="p-3 bg-white shadow-sm rounded">
                                     <i class="bi bi-download fs-1 text-warning"></i>
-                                    <h2 class="fw-bold text-warning"><span id="stat-downloads">0</span>+</h2>
+                                    <h2 class="fw-bold text-warning"><span id="stat-downloads"
+                                            class="stat-number">0</span>+</h2>
                                     <p>Lượt tải</p>
                                 </div>
                             </div>
@@ -104,7 +108,7 @@
         <section class="py-5">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="fw-bold">Đề thi nổi bật</h2>
+                    <h2 class="fw-bold"><i class="bi bi-award"></i> Đề thi nổi bật</h2>
                     <a href="exams.html" class="btn btn-outline-primary btn-sm">Xem tất cả <i
                             class="bi bi-chevron-right"></i></a>
                 </div>
@@ -118,7 +122,7 @@
         <section class="pb-5">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="fw-bold">Học liệu nổi bật</h2>
+                    <h2 class="fw-bold"><i class="bi bi-journal-bookmark"></i> Học liệu nổi bật</h2>
                     <a href="books.html" class="btn btn-outline-primary btn-sm">Xem tất cả <i
                             class="bi bi-chevron-right"></i></a>
                 </div>
@@ -131,6 +135,7 @@
         <!-- Contribute Section -->
         <section class="py-5 bg-light">
             <div class="container text-center">
+                <h2 class="fw-bold"><i class="bi bi-share-fill"></i></h2>
                 <h2 class="fw-bold mb-3">Đóng góp tài nguyên</h2>
                 <p class="text-muted mb-4">
                     Nếu bạn có đề thi, học liệu hay muốn chia sẻ cùng cộng đồng, hãy gửi cho chúng tôi qua các kênh sau:
@@ -150,20 +155,19 @@
 
         <!-- Contributors Section -->
         <section class="py-5 bg-white">
-            <div class="container">
+            <div class="container text-center">
+                <h2 class="fw-bold"><i class="bi bi-award"></i></h2>
                 <h2 class="fw-bold mb-4 text-center">Vinh danh tài nguyên</h2>
                 <div class="row justify-content-center" id="contributors-list">
                     <!-- JS sẽ render -->
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="bg-dark text-light py-3">
         <div class="container">
             <div class="row">
-
                 <!-- Cột 1: Bản quyền -->
                 <div class="col-12 col-md-4 d-flex align-items-center justify-content-start">
                     <p class="mb-0">&copy; 2026 - <span class="fw-bold text-light">ttkndev</span></p>
@@ -182,14 +186,20 @@
                 <!-- Cột 3: Mạng xã hội -->
                 <div class="col-12 col-md-4 d-flex align-items-center justify-content-end">
                     <div class="d-flex justify-content-center justify-content-md-end gap-3">
-                        <a href="https://facebook.com/codehsg.vn" target="_blank" class="text-secondary fs-5"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="https://www.youtube.com/@ttkndev" target="_blank" class="text-secondary fs-5"><i
-                                class="bi bi-youtube"></i></a>
-                        <a href="tel:+84775426999" class="text-secondary fs-5"><i class="bi bi-telephone"></i></a>
-                        <a href="mailto:ttkndev@gmail.com" class="text-secondary fs-5"><i
-                                class="bi bi-envelope"></i></a>
-                        <a href="#" class="text-secondary fs-5"><i class="bi bi-chat-dots"></i></a>
+                        <a href="https://facebook.com/codehsg.vn" target="_blank" class="text-secondary fs-5"
+                            aria-label="Facebook CodeHSG">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@ttkndev" target="_blank" class="text-secondary fs-5"
+                            aria-label="YouTube channel ttkndev">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="tel:+84775426999" class="text-secondary fs-5" aria-label="Gọi điện thoại hỗ trợ">
+                            <i class="bi bi-telephone"></i>
+                        </a>
+                        <a href="mailto:ttkndev@gmail.com" class="text-secondary fs-5" aria-label="Gửi thư điện tử">
+                            <i class="bi bi-envelope"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -204,6 +214,7 @@
     <script src="assets/js/exams.js"></script>
     <script src="assets/js/books.js"></script>
     <script src="assets/js/contributors.js"></script>
+    <script src="assets/js/modal.js"></script>
 </body>
 
 </html>

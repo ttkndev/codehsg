@@ -44,3 +44,21 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Lỗi load exams:", err));
 });
+
+// Sự kiện click để mở Preview bằng hàm dùng chung
+document.addEventListener("click", e => {
+  // Kiểm tra nếu click vào ảnh hoặc nút có class 'exam-img' hoặc 'btn-preview'
+  const target = e.target.closest(".exam-img, .btn-preview");
+  
+  if (target) {
+    const images = JSON.parse(target.getAttribute("data-images") || "[]");
+    const title = target.getAttribute("data-title") || "Xem nhanh đề thi";
+
+    // Gọi hàm từ common-modal.js
+    if (typeof openExamPreview === "function") {
+      openExamPreview(title, images);
+    } else {
+      console.error("Hàm openExamPreview chưa được load!");
+    }
+  }
+});

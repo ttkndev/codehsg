@@ -49,3 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Lỗi load books:", err));
 });
+
+// Sự kiện click dùng chung cho cả ảnh sách và nút "Xem nhanh"
+document.addEventListener("click", e => {
+  const target = e.target.closest(".book-img, .btn-preview-book");
+  
+  if (target) {
+    const images = JSON.parse(target.getAttribute("data-images") || "[]");
+    const title = target.getAttribute("data-title") || "Chi tiết học liệu";
+
+    if (typeof openExamPreview === "function") {
+      openExamPreview(title, images);
+    }
+  }
+});

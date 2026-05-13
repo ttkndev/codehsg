@@ -9,3 +9,83 @@
   footer i {
     transition: color 0.3s ease;
   }
+
+  /* Hiệu ứng cho số liệu thống kê */
+.stat-number {
+  display: inline-block;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Tùy chọn: thêm hiệu ứng nhấp nháy nhẹ khi đang chạy */
+.stat-number.running {
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
+
+/* Làm đẹp thanh cuộn (Scrollbar) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #212529;
+    border-radius: 10px;
+}
+
+/* 1. Làm mờ nền phía sau modal để tập trung vào ảnh */
+#examPreviewModal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 2. Khống chế kích thước ảnh (không cho quá to gây choán màn hình) */
+#exam-preview-inner img {
+    max-height: 85vh; /* Chiều cao tối đa bằng 85% màn hình */
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* 3. Nút điều hướng tùy chỉnh (Rõ ràng hơn) */
+.custom-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1060;
+}
+
+.custom-nav:hover {
+    background-color: #0d6efd; /* Màu xanh thương hiệu khi hover */
+    color: white;
+}
+
+.custom-nav.prev { left: -60px; } /* Đẩy nút ra ngoài khung ảnh nếu màn hình to */
+.custom-nav.next { right: -60px; }
+
+/* 4. Responsive cho mobile (đưa nút vào trong lại vì màn hình hẹp) */
+@media (max-width: 992px) {
+    .custom-nav.prev { left: 10px; }
+    .custom-nav.next { right: 10px; }
+    .custom-nav {
+        background-color: rgba(0, 0, 0, 0.5); /* Nền tối để nổi bật trên ảnh trắng */
+    }
+}

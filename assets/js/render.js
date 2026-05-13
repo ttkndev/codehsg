@@ -10,7 +10,7 @@ function renderExamCard(exam) {
         <div class="card-body">
           <div class="row mb-2">
             <div class="col-4">
-              <img src="${exam.images[0]}" class="img-fluid rounded border" alt="Exam cover">
+              <img src="${exam.images[0]}" class="img-fluid rounded border exam-img" alt="Exam cover" data-images='${JSON.stringify(exam.images)}'>
             </div>
             <div class="col-8">
               <h6 class="card-title mb-2"><i class="bi bi-building"></i> ${exam.organization}</h6>
@@ -57,6 +57,7 @@ function renderExamCard(exam) {
     </div>
   `;
 }
+
 function renderBookCard(book) {
   // Xử lý ngôn ngữ hiển thị
   let langDisplay = book.language;
@@ -72,7 +73,7 @@ function renderBookCard(book) {
         <div class="card-body">
           <div class="row mb-2">
             <div class="col-4">
-              <img src="${book.images[0]}" class="img-fluid rounded border" alt="Book cover">
+              <img src="${book.images[0]}" class="img-fluid rounded border book-img" alt="Book cover" data-images='${JSON.stringify(book.images)}'>
             </div>
             <div class="col-8">
               <h6 class="card-title mb-2"><i class="bi bi-building"></i> ${book.category}</h6>
