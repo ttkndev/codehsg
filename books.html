@@ -81,9 +81,42 @@
 
         <section class="py-5">
             <div class="container">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-12 col-lg-5">
+                                <label for="book-search" class="form-label fw-semibold">Tìm kiếm</label>
+                                <input id="book-search" type="search" class="form-control"
+                                    placeholder="Tên sách, tác giả, nhà xuất bản...">
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <label for="book-category" class="form-label fw-semibold">Danh mục</label>
+                                <select id="book-category" class="form-select">
+                                    <option value="">Tất cả</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <label for="book-year" class="form-label fw-semibold">Năm</label>
+                                <select id="book-year" class="form-select">
+                                    <option value="">Tất cả</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <label for="book-sort" class="form-label fw-semibold">Sắp xếp</label>
+                                <select id="book-sort" class="form-select">
+                                    <option value="newest">Mới nhất (năm giảm dần)</option>
+                                    <option value="downloads_desc">Lượt tải cao nhất</option>
+                                    <option value="views_desc">Lượt xem cao nhất</option>
+                                    <option value="title_asc">Tên A → Z</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-                    <p class="mb-0 text-muted"><span id="book-result-count">0</span>/<span
-                            id="book-total-count">0</span> bản ghi</p>
+                    <p class="mb-0 text-muted"><span id="book-result-count">0</span>/<span id="book-total-count">0</span> bản ghi</p>
+                    <p class="mb-0 text-muted">Kiểu sắp xếp: <span id="book-sort-label">Mới nhất (năm giảm dần)</span></p>
                 </div>
 
                 <div class="row" id="book-feature" data-mode="all"></div>

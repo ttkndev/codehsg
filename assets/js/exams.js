@@ -48,13 +48,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function updateHeroStats(items) {
         const sum = (arr, key) => arr.reduce((acc, item) => acc + (Number(item[key]) || 0), 0);
+        const animateCount = (el, target) => {
+          if (!el) return;
+          let current = 0;
+          const step = Math.max(1, Math.ceil(target / 80));
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = current.toLocaleString("vi-VN");
+          }, 20);
+        };
+
         const setText = (id, value) => {
-          const el = document.getElementById(id);
-          if (el) el.textContent = value.toLocaleString("vi-VN");
+          animateCount(document.getElementById(id), Number(value) || 0);
         };
 
         setText("hero-total-exams", items.length);
-        setText("hero-total-grades", new Set(items.map(item => item.grade)).size);
+        setText("hero-total-problems", sum(items, "problem_count"));
         setText("hero-total-views", sum(items, "view_count"));
         setText("hero-total-downloads", sum(items, "download_count"));
       }
