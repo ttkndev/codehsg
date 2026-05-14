@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     if (!hasAnySolution) {
-      return `${metaBadges}<div class="alert alert-secondary mb-4">Dữ liệu cấu trúc đã có nhưng chưa có lời giải chi tiết cho từng bài.</div>`;
+      return `${metaBadges}<div class="alert alert-secondary mb-4">Chưa có lời giải chi tiết cho từng bài.</div>`;
     }
 
     const accordionId = `solution-accordion-${escapeHtml(exam.id)}`;
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .slice(0, 4);
       const relatedHtml = relatedExams.map(item => `
         <a href="exam-detail.html?id=${encodeURIComponent(item.id)}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          <span>${item.title} <span class="text-muted">(${item.year})</span></span>
+          <span>${item.title} <span class="text-muted">(${item.year}) - ${item.organization}</span></span>
           <span class="badge bg-primary-subtle text-primary-emphasis">${item.grade}</span>
         </a>
       `).join("");
