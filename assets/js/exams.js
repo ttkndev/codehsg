@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const grades = [...new Set(data.map(item => item.grade))].sort();
       grades.forEach(grade => gradeEl.insertAdjacentHTML("beforeend", `<option value="${grade}">${grade}</option>`));
 
-      const years = [...new Set(data.map(item => item.year))].sort((a, b) => b - a);
+      const years = [...new Set(data.map(item => item.year))].sort((a, b) => a - b);
       years.forEach(year => yearEl.insertAdjacentHTML("beforeend", `<option value="${year}">${year}</option>`));
 
       function updateHeroStats(items) {
