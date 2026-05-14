@@ -1,6 +1,6 @@
 import os
-import re
 from file_helper import get_file_info
+from utils import slugify
 
 def parse_exam_filename(filename, full_path=None):
     name_no_ext = os.path.splitext(filename)[0]
@@ -81,11 +81,3 @@ def parse_book_filename(filename, full_path=None):
 
 def safe_get(parts, index):
     return parts[index] if len(parts) > index else None
-
-def slugify(text):
-    if not text: return None
-    text = text.lower()
-    text = re.sub(r'[\s_]+', '-', text)
-    text = re.sub(r'[^a-z0-9\-]', '', text)
-    text = re.sub(r'-+', '-', text).strip('-')
-    return text

@@ -1,6 +1,6 @@
 import os, json, config
 from collections import Counter
-from generate_json import create_skeleton
+from generate_json import create_skeleton, create_solution_detail, refresh_problem_schema
 from upload_drive import init_drive, upload_or_update_file
 from extract_images import export_images
 from docx2pdf import convert
@@ -51,7 +51,6 @@ def convert_docx():
 def log(msg, indent=0):
     print("   " * indent + msg)
 
-
 def process_file(fname, drive, num, index):
     local_pdf = os.path.join(config.INPUT_DIR, fname)
 
@@ -81,12 +80,19 @@ def process_file(fname, drive, num, index):
         
         # Merge các field khác nếu trong JSON cũ chưa có
         for k, v in parsed.items():
-            if k not in meta:
+            if meta.get(k) is None:
                 meta[k] = v
+        if ensure_solution_detail(meta, item_type):
+            log("\t🧩 Migrated solution_detail", 1)
+
+        if refresh_problem_schema(meta):
+            log("\t🔄 Refreshed problem_id", 1)
         log("\t📄 Loaded & Updated physical info", 1)
     else:
         meta = create_skeleton(item_type)
         meta.update(parsed)
+        if ensure_solution_detail(meta, item_type):
+            log("\t🧩 Initialized solution_detail", 1)
         log("\t🆕 Created skeleton meta", 1)
 
     # --- BẮT ĐẦU GIAI ĐOẠN 1: LÀM VIỆC NẶNG NHƯNG VÔ HẠI ---
@@ -159,6 +165,21 @@ def build_data(exams, books, contributors):
         for name, resources in counter.items()
     ]
     json.dump(contributors_data, open(f"{config.DATA_DIR}/contributors.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+
+def ensure_solution_detail(meta, item_type):
+
+    if (
+        item_type == "exam"
+        and len(meta.get("problem_names", [])) > 0
+        and meta.get("solution_detail") is None
+    ):
+        meta["solution_detail"] = create_solution_detail(
+            meta["problem_names"]
+        )
+
+        return True
+
+    return False
 
 if __name__ == "__main__":
     run_pipeline()

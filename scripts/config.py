@@ -81,6 +81,5 @@ EXAM_FIELDS = [
     "problem_names",    # ["Tổng dãy số", "Đảo ngược chuỗi", "Tìm đường đi"]
     "problem_count",    # (int) Số lượng bài tập có trong đề thi
     "duration",         # (int) Thời gian làm bài (phút)
-    "solution_detail",  # (str) Hướng dẫn giải ngắn gọn hoặc ghi chú về lời giải
-    "testcases"         # (list) Mảng chứa testcase mẫu (ví dụ: [{'in': '...', 'out': '...'}])
+    "solution_detail"   # (str) Hướng dẫn giải ngắn gọn hoặc ghi chú về lời giải
 ]

@@ -1,6 +1,7 @@
 import config
 import random
 from datetime import datetime
+from utils import slugify
 
 def create_skeleton(item_type: str):
     data = {}
@@ -66,3 +67,86 @@ def clean_data(data):
         k: v for k, v in data.items()
         if v is not None or k in MUST_KEEP
     }
+
+def create_solution_detail(problem_names):
+    return {
+        "verified": False,
+        "last_updated": None,
+        "problems": [
+            {
+                "problem_id": slugify(name),
+                "problem_name": name,
+
+                # Metadata
+                "difficulty": None,
+                "tags": [],
+
+                # Solution stats
+                "has_solution": False,
+                "solution_count": 0,
+
+                # Community solutions
+                "solutions": [],
+
+                # Testcases
+                "testcases": [],
+
+                # Editorial
+                "editorial": None
+            }
+            for name in problem_names
+        ]
+    }
+
+def refresh_problem_schema(meta):
+
+    solution_detail = meta.get("solution_detail")
+
+    if not solution_detail:
+        return False
+
+    changed = False
+
+    for problem in solution_detail.get("problems", []):
+
+        # Refresh problem_id
+        expected_id = slugify(
+            problem.get("problem_name")
+        )
+
+        if problem.get("problem_id") != expected_id:
+            problem["problem_id"] = expected_id
+            changed = True
+
+        # Ensure fields
+        defaults = {
+            "difficulty": None,
+            "tags": [],
+
+            "has_solution": False,
+            "solution_count": 0,
+
+            "solutions": [],
+            "testcases": []
+        }
+
+        for key, value in defaults.items():
+
+            if key not in problem:
+                problem[key] = value
+                changed = True
+
+        # Refresh derived stats
+        solution_count = len(problem.get("solutions", []))
+
+        if problem.get("solution_count") != solution_count:
+            problem["solution_count"] = solution_count
+            changed = True
+
+        has_solution = solution_count > 0
+
+        if problem.get("has_solution") != has_solution:
+            problem["has_solution"] = has_solution
+            changed = True
+
+    return changed

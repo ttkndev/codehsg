@@ -101,3 +101,21 @@
     filter: brightness(1.1);   /* Tăng độ sáng lên 10% */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ cho card nổi lên */
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12) !important;
+}

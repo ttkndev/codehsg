@@ -21,7 +21,7 @@
     "level": 4,
     "year": "2024-2025",
     "language": "vi",
-    "contributor": "admin, lpnt",
+    "contributor": "admin",
     "images": [
       "assets/images/exam-tinhoc-chondoituyen-hsgqg-thpt-sogddt-tiengiang-2024-2025-page-1.jpg",
       "assets/images/exam-tinhoc-chondoituyen-hsgqg-thpt-sogddt-tiengiang-2024-2025-page-2.jpg",
@@ -37,7 +37,7 @@
     "posted_fb": false,
     "is_featured": false,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 313,
     "download_count": 96,
     "file_ext": "pdf",
@@ -52,8 +52,42 @@
     ],
     "problem_count": 3,
     "duration": "180 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "pickleball",
+          "problem_name": "PICKLEBALL",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "mooncake",
+          "problem_name": "MOONCAKE",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "tree",
+          "problem_name": "TREE",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -89,7 +123,7 @@
     "posted_fb": false,
     "is_featured": false,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 179,
     "download_count": 51,
     "file_ext": "pdf",
@@ -105,8 +139,52 @@
     ],
     "problem_count": 4,
     "duration": "150 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "chia-het",
+          "problem_name": "Chia hết",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "dem-ki-tu",
+          "problem_name": "Đếm kí tự",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "giam-can",
+          "problem_name": "Giảm cân",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "chon-mua-sach",
+          "problem_name": "Chọn mua sách",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -140,7 +218,7 @@
     "posted_fb": false,
     "is_featured": true,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 351,
     "download_count": 70,
     "file_ext": "pdf",
@@ -155,8 +233,42 @@
     ],
     "problem_count": 3,
     "duration": "150 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "so-chia-het",
+          "problem_name": "Số chia hết",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "so-bao-danh",
+          "problem_name": "Số báo danh",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "chon-vi-kem",
+          "problem_name": "Chọn vị kem",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -192,7 +304,7 @@
     "posted_fb": false,
     "is_featured": false,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 108,
     "download_count": 26,
     "file_ext": "pdf",
@@ -208,8 +320,52 @@
     ],
     "problem_count": 4,
     "duration": "150 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "so-phong-phu",
+          "problem_name": "Số phong phú",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "nhanh-tri",
+          "problem_name": "Nhanh trí",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "khieu-vu",
+          "problem_name": "Khiêu vũ",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "day-hinh-non",
+          "problem_name": "Dãy hình nón",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -244,7 +400,7 @@
     "posted_fb": false,
     "is_featured": true,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 162,
     "download_count": 42,
     "file_ext": "pdf",
@@ -260,8 +416,52 @@
     ],
     "problem_count": 4,
     "duration": "180 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "so-nguyen-to",
+          "problem_name": "Số nguyên tố",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "con-duong-dep",
+          "problem_name": "Con đường đẹp",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "day-o-lien-ke",
+          "problem_name": "Dãy ô liền kề",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "chon-qua",
+          "problem_name": "Chọn quà",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -299,7 +499,7 @@
     "posted_fb": false,
     "is_featured": true,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 218,
     "download_count": 54,
     "file_ext": "pdf",
@@ -316,8 +516,62 @@
     ],
     "problem_count": 5,
     "duration": "180 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "hinh-vuong",
+          "problem_name": "Hình vuông",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "cap-so-ban-be",
+          "problem_name": "Cặp số bạn bè",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "chu-x-may-man",
+          "problem_name": "Chữ X may mắn",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "bo-ba-nghich-the",
+          "problem_name": "Bộ ba nghịch thế",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "lien-thong",
+          "problem_name": "Liên thông",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -351,7 +605,7 @@
     "posted_fb": false,
     "is_featured": false,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 119,
     "download_count": 36,
     "file_ext": "pdf",
@@ -366,8 +620,42 @@
     ],
     "problem_count": 3,
     "duration": "120 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "day-so",
+          "problem_name": "Dãy số",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "so-hanh-phuc",
+          "problem_name": "Số hạnh phúc",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "so-sinh",
+          "problem_name": "Số sinh",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -403,7 +691,7 @@
     "posted_fb": false,
     "is_featured": true,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 485,
     "download_count": 170,
     "file_ext": "pdf",
@@ -419,8 +707,52 @@
     ],
     "problem_count": 4,
     "duration": "120 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "tien-mat",
+          "problem_name": "Tiền mặt",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "quan-hau",
+          "problem_name": "Quân hậu",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "tich-lon-nhat",
+          "problem_name": "Tích lớn nhất",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "leo-cau-thang",
+          "problem_name": "Leo cầu thang",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   },
   {
     "is_ready": true,
@@ -456,7 +788,7 @@
     "posted_fb": false,
     "is_featured": false,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-14",
     "view_count": 490,
     "download_count": 120,
     "file_ext": "pdf",
@@ -472,7 +804,51 @@
     ],
     "problem_count": 4,
     "duration": "120 phút",
-    "solution_detail": null,
-    "testcases": []
+    "solution_detail": {
+      "verified": false,
+      "last_updated": null,
+      "problems": [
+        {
+          "problem_id": "fibonacci",
+          "problem_name": "Fibonacci",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "so-hoc",
+          "problem_name": "Số học",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "xu-ly-mang",
+          "problem_name": "Xử lý mảng",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        },
+        {
+          "problem_id": "tong-chu-so-va-so-dao-nguoc",
+          "problem_name": "Tổng chữ số và số đảo ngược",
+          "has_solution": false,
+          "solution_count": 0,
+          "solutions": [],
+          "difficulty": null,
+          "tags": [],
+          "testcases": []
+        }
+      ]
+    }
   }
 ]
