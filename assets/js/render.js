@@ -23,10 +23,12 @@ function renderExamCard(exam) {
   const problemNames = pick("problem_names", "problemNames", "problems") || [];
   const problemCount = Number(pick("problem_count", "problemCount") || problemNames.length || 0);
   const solutionDetail = pick("solution_detail", "solutionDetail", "solutions");
-  const testcaseCount = Array.isArray(exam?.testcases)
-    ? exam.testcases.length
-    : Array.isArray(solutionDetail?.problems)
-      ? solutionDetail.problems.reduce((acc, item) => acc + (item.testcases?.length || 0), 0)
+  const solutionProblems = Array.isArray(solutionDetail?.problems) ? solutionDetail.problems : [];
+  const solutionCount = solutionProblems.reduce((acc, item) => acc + (Array.isArray(item?.solutions) ? item.solutions.length : 0), 0);
+  const testcaseCount = solutionProblems.length
+    ? solutionProblems.reduce((acc, item) => acc + (Array.isArray(item?.testcases) ? item.testcases.length : 0), 0)
+    : Array.isArray(exam?.testcases)
+      ? exam.testcases.length
       : 0;
 
   return `
@@ -60,7 +62,7 @@ function renderExamCard(exam) {
               </div>
               <div class="row">
                 <div class="col-6">
-                  <span class="badge bg-secondary w-100"><i class="bi bi-journal-text"></i> Lời giải: ${solutionDetail ? "Có" : "0"}</span>
+                  <span class="badge bg-secondary w-100"><i class="bi bi-journal-text"></i> Lời giải: ${solutionCount}</span>
                 </div>
                 <div class="col-6">
                   <span class="badge bg-info text-dark w-100"><i class="bi bi-code-slash"></i> Testcase: ${testcaseCount}</span>

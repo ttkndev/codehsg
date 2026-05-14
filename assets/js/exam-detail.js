@@ -102,7 +102,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const tags = (exam.tags || []).map(tag => `<span class="badge bg-light text-dark border me-1 mb-1">#${tag}</span>`).join("");
-      const problems = (exam.problem_names || []).map((item, index) => `<li class="list-group-item"><strong>Bài ${index + 1}:</strong> ${item}</li>`).join("");
+
+      const solutionProblems = Array.isArray(exam.solution_detail?.problems) ? exam.solution_detail.problems : [];
+      const problemStats = solutionProblems.map(problem => ({
+        solutionCount: Array.isArray(problem?.solutions) ? problem.solutions.length : 0,
+        testcaseCount: Array.isArray(problem?.testcases) ? problem.testcases.length : 0
+      }));
+      const problems = (exam.problem_names || []).map((item, index) => {
+        const stats = problemStats[index] || { solutionCount: 0, testcaseCount: 0 };
+        return `<li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2"><span><strong>Bài ${index + 1}:</strong> ${item}</span><span class="d-flex gap-2"><span class="badge bg-success-subtle text-success-emphasis border">${stats.solutionCount} lời giải</span><span class="badge bg-info-subtle text-info-emphasis border">${stats.testcaseCount} testcase</span></span></li>`;
+      }).join("");
       const gallery = (exam.images || []).map((img, index) => `
         <div class="col-6 col-md-4 col-lg-3">
           <img src="${img}" alt="Trang ${index + 1}" class="img-fluid rounded border shadow-sm w-100 exam-img"
