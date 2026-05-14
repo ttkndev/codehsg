@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (container.dataset.mode !== "all") return;
 
-      const state = { perPage: 9, currentPage: 1, query: "", category: "", year: "", sort: "newest" };
+      const state = { perPage: 9, currentPage: 1, query: "", category: "", fileType: "", sort: "newest" };
       const searchEl = document.getElementById("book-search");
       const categoryEl = document.getElementById("book-category");
-      const yearEl = document.getElementById("book-year");
+      const fileTypeEl = document.getElementById("book-file-type");
       const sortEl = document.getElementById("book-sort");
       const paginationEl = document.getElementById("book-pagination");
       const resultCountEl = document.getElementById("book-result-count");
@@ -48,8 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const categories = [...new Set(data.map(item => item.category).filter(Boolean))].sort((a, b) => a.localeCompare(b, "vi"));
       categories.forEach(category => categoryEl?.insertAdjacentHTML("beforeend", `<option value="${category}">${category}</option>`));
 
-      const years = [...new Set(data.map(item => String(item.year)).filter(Boolean))].sort((a, b) => b.localeCompare(a, "vi", { numeric: true }));
-      years.forEach(year => yearEl?.insertAdjacentHTML("beforeend", `<option value="${year}">${year}</option>`));
+      const fileTypes = [...new Set(data.map(item => String(item.file_ext || "").trim().toLowerCase()).filter(Boolean))]
+        .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
+      fileTypes.forEach(fileType => fileTypeEl?.insertAdjacentHTML("beforeend", `<option value="${fileType}">${fileType.toUpperCase()}</option>`));
 
       function updateHeroStats(items) {
         const sum = (arr, key) => arr.reduce((acc, item) => acc + (Number(item[key]) || 0), 0);
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         }
         if (state.category) filtered = filtered.filter(item => item.category === state.category);
-        if (state.year) filtered = filtered.filter(item => String(item.year) === state.year);
+        if (state.fileType) filtered = filtered.filter(item => String(item.file_ext || "").trim().toLowerCase() === state.fileType);
 
         filtered.sort((a, b) => {
           if (state.sort === "downloads_desc") return (b.download_count || 0) - (a.download_count || 0);
@@ -126,8 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
         state.currentPage = 1;
         renderAll();
       });
-      yearEl?.addEventListener("change", e => {
-        state.year = e.target.value;
+      fileTypeEl?.addEventListener("change", e => {
+        state.fileType = e.target.value;
         state.currentPage = 1;
         renderAll();
       });

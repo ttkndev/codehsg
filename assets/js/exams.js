@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const grades = [...new Set(data.map(item => item.grade))].sort();
       grades.forEach(grade => gradeEl.insertAdjacentHTML("beforeend", `<option value="${grade}">${grade}</option>`));
 
-      const years = [...new Set(data.map(item => item.year))].sort((a, b) => a - b);
+      const years = [...new Set(data.map(item => Number(item.year)).filter(year => Number.isFinite(year)))].sort((a, b) => b - a);
       years.forEach(year => yearEl.insertAdjacentHTML("beforeend", `<option value="${year}">${year}</option>`));
 
       function updateHeroStats(items) {
@@ -92,7 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
           if (state.sort === "views_desc") return b.view_count - a.view_count;
           if (state.sort === "downloads_desc") return b.download_count - a.download_count;
           if (state.sort === "title_asc") return a.title.localeCompare(b.title, "vi");
-          return b.year - a.year;
+          const yearDiff = (Number(b.year) || 0) - (Number(a.year) || 0);
+          if (yearDiff !== 0) return yearDiff;
+          const updatedDiff = new Date(b.last_updated || 0).getTime() - new Date(a.last_updated || 0).getTime();
+          if (updatedDiff !== 0) return updatedDiff;
+          return (Number(b.id) || 0) - (Number(a.id) || 0);
         });
 
         return filtered;
