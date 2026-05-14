@@ -49,7 +49,7 @@ function renderExamCard(exam) {
           </div>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-info-circle"></i> Chi tiết</a>
+          <a href="exam-detail.html?id=${encodeURIComponent(exam.id)}" class="btn btn-outline-primary btn-sm"><i class="bi bi-info-circle"></i> Chi tiết</a>
           <a href="${exam.drive_view}" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener"><i class="bi bi-eye"></i> Xem nhanh</a>
           <a href="${exam.drive_download}" class="btn btn-outline-success btn-sm"><i class="bi bi-download"></i> Tải về</a>
         </div>
