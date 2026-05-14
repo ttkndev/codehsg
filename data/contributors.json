@@ -3,5 +3,15 @@
     "name": "admin",
     "resources": 37,
     "bio": null
+  },
+  {
+    "name": "ttkndev",
+    "resources": 1,
+    "bio": null
+  },
+  {
+    "name": "lpnt",
+    "resources": 1,
+    "bio": null
   }
 ]

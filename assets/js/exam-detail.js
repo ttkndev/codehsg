@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="row g-3">${gallery || '<p class="text-muted">Chưa có ảnh.</p>'}</div>
           </div>
         </div>
-      `.replace('<div class="row g-3 mb-3"> ... </div>',`<div class="row g-3 mb-3">
+      `.replace('<div class="row g-3 mb-3"> ... </div>', `<div class="row g-3 mb-3">
               <div class="col-6 col-md-3"><div class="p-3 bg-light rounded h-100"><div class="small text-muted">Đơn vị ra đề</div><div class="fw-semibold">${exam.organization}</div></div></div>
               <div class="col-6 col-md-3"><div class="p-3 bg-light rounded h-100"><div class="small text-muted">Năm học</div><div class="fw-semibold">${exam.year}</div></div></div>
               <div class="col-6 col-md-3"><div class="p-3 bg-light rounded h-100"><div class="small text-muted">Khối</div><div class="fw-semibold">${exam.grade}</div></div></div>
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Mở modal xem ảnh ở trang chi tiết
- document.addEventListener("click", e => {
+document.addEventListener("click", e => {
   const target = e.target.closest(".exam-img");
   if (!target) return;
   const images = JSON.parse(target.getAttribute("data-images") || "[]");
