@@ -81,10 +81,6 @@ def create_solution_detail(problem_names):
                 "difficulty": None,
                 "tags": [],
 
-                # Solution stats
-                "has_solution": False,
-                "solution_count": 0,
-
                 # Community solutions
                 "solutions": [],
 
@@ -118,13 +114,21 @@ def refresh_problem_schema(meta):
             problem["problem_id"] = expected_id
             changed = True
 
+        # Remove deprecated derived fields
+        deprecated_fields = [
+            "has_solution",
+            "solution_count"
+        ]
+
+        for field in deprecated_fields:
+            if field in problem:
+                del problem[field]
+                changed = True
+
         # Ensure fields
         defaults = {
             "difficulty": None,
             "tags": [],
-
-            "has_solution": False,
-            "solution_count": 0,
 
             "solutions": [],
             "testcases": []
@@ -135,18 +139,5 @@ def refresh_problem_schema(meta):
             if key not in problem:
                 problem[key] = value
                 changed = True
-
-        # Refresh derived stats
-        solution_count = len(problem.get("solutions", []))
-
-        if problem.get("solution_count") != solution_count:
-            problem["solution_count"] = solution_count
-            changed = True
-
-        has_solution = solution_count > 0
-
-        if problem.get("has_solution") != has_solution:
-            problem["has_solution"] = has_solution
-            changed = True
 
     return changed

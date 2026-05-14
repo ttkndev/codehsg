@@ -59,8 +59,6 @@
         {
           "problem_id": "pickleball",
           "problem_name": "PICKLEBALL",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -69,8 +67,6 @@
         {
           "problem_id": "mooncake",
           "problem_name": "MOONCAKE",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -79,8 +75,6 @@
         {
           "problem_id": "tree",
           "problem_name": "TREE",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -151,8 +145,6 @@
           "problem_name": "Biến đổi chuỗi nhị phân",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -162,8 +154,6 @@
           "problem_name": "Cảm biến giám sát",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -173,8 +163,6 @@
           "problem_name": "Sơ đồ quản lý",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -244,8 +232,6 @@
           "problem_name": "Ước số chung",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -255,8 +241,6 @@
           "problem_name": "Truy vấn giá",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -266,8 +250,6 @@
           "problem_name": "Biến đổi số",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -277,8 +259,6 @@
           "problem_name": "Năng lượng",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -348,8 +328,6 @@
           "problem_name": "Dãy phiến đá bí ẩn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -359,8 +337,6 @@
           "problem_name": "Hộp quà",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -370,8 +346,6 @@
           "problem_name": "Thử thách",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -381,8 +355,6 @@
           "problem_name": "Trò chơi giải mật thư",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -451,8 +423,6 @@
           "problem_name": "Tính tổng",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -462,8 +432,6 @@
           "problem_name": "Đếm ước",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -473,8 +441,6 @@
           "problem_name": "Số chính phương",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -484,8 +450,6 @@
           "problem_name": "Khách hàng may mắn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -553,8 +517,6 @@
           "problem_name": "ROBOT",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -564,8 +526,6 @@
           "problem_name": "NGUYÊN TỐ LỆCH",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -575,8 +535,6 @@
           "problem_name": "VẬN CHUYỂN",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -586,8 +544,6 @@
           "problem_name": "ĐẸP HOÀN HẢO",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -656,8 +612,6 @@
           "problem_name": "Ngôi nhà",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -667,8 +621,6 @@
           "problem_name": "Vị trí",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -678,8 +630,6 @@
           "problem_name": "Chuẩn hóa",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -689,8 +639,6 @@
           "problem_name": "Độ dài đoạn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -762,8 +710,6 @@
           "problem_name": "Hình chữ nhật",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -773,8 +719,6 @@
           "problem_name": "Số nguyên tố",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -784,8 +728,6 @@
           "problem_name": "Phần thưởng",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -795,8 +737,6 @@
           "problem_name": "Truy vấn xâu đối xứng",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -806,8 +746,6 @@
           "problem_name": "Trò chơi",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -879,8 +817,6 @@
           "problem_name": "Vườn nhãn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -890,8 +826,6 @@
           "problem_name": "Đếm số chính phương",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -901,8 +835,6 @@
           "problem_name": "Bia đá Xích Đằng",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -912,8 +844,6 @@
           "problem_name": "Khu rừng phi lao",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -923,8 +853,6 @@
           "problem_name": "Mã số Phố Hiến",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -995,8 +923,6 @@
           "problem_name": "Câu 1",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1006,8 +932,6 @@
           "problem_name": "Câu 2",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1017,8 +941,6 @@
           "problem_name": "Câu 3",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1028,8 +950,6 @@
           "problem_name": "Câu 4",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1039,8 +959,6 @@
           "problem_name": "Câu 5",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1111,8 +1029,6 @@
           "problem_name": "Số đặc biệt",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1122,8 +1038,6 @@
           "problem_name": "Nhầm lẫn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1133,8 +1047,6 @@
           "problem_name": "Bảy hai không",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1144,8 +1056,6 @@
           "problem_name": "Tặng quà",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1155,8 +1065,6 @@
           "problem_name": "Làm bánh",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1227,8 +1135,6 @@
           "problem_name": "HÌNH CHỮ NHẬT",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1238,8 +1144,6 @@
           "problem_name": "SỐ ĐẶC BIỆT",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1249,8 +1153,6 @@
           "problem_name": "ĐẾM SỐ NGUYÊN TỐ",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1260,8 +1162,6 @@
           "problem_name": "CHIA DÃY",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1271,8 +1171,6 @@
           "problem_name": "SỐ GẦN CHÍNH PHƯƠNG",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1342,8 +1240,6 @@
           "problem_name": "Bài toán năng lượng",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1353,8 +1249,6 @@
           "problem_name": "Quy hoạch mảnh đất hình thang",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1364,8 +1258,6 @@
           "problem_name": "Giải mã thông điệp",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1375,8 +1267,6 @@
           "problem_name": "Tổ chức nhóm học tập tối ưu",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1441,8 +1331,6 @@
         {
           "problem_id": "chia-het",
           "problem_name": "Chia hết",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1451,8 +1339,6 @@
         {
           "problem_id": "dem-ki-tu",
           "problem_name": "Đếm kí tự",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1461,8 +1347,6 @@
         {
           "problem_id": "giam-can",
           "problem_name": "Giảm cân",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1471,8 +1355,6 @@
         {
           "problem_id": "chon-mua-sach",
           "problem_name": "Chọn mua sách",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1535,8 +1417,6 @@
         {
           "problem_id": "so-chia-het",
           "problem_name": "Số chia hết",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1545,8 +1425,6 @@
         {
           "problem_id": "so-bao-danh",
           "problem_name": "Số báo danh",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1555,8 +1433,6 @@
         {
           "problem_id": "chon-vi-kem",
           "problem_name": "Chọn vị kem",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1622,8 +1498,6 @@
         {
           "problem_id": "so-phong-phu",
           "problem_name": "Số phong phú",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1632,8 +1506,6 @@
         {
           "problem_id": "nhanh-tri",
           "problem_name": "Nhanh trí",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1642,8 +1514,6 @@
         {
           "problem_id": "khieu-vu",
           "problem_name": "Khiêu vũ",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1652,8 +1522,6 @@
         {
           "problem_id": "day-hinh-non",
           "problem_name": "Dãy hình nón",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1718,8 +1586,6 @@
         {
           "problem_id": "so-nguyen-to",
           "problem_name": "Số nguyên tố",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1728,8 +1594,6 @@
         {
           "problem_id": "con-duong-dep",
           "problem_name": "Con đường đẹp",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1738,8 +1602,6 @@
         {
           "problem_id": "day-o-lien-ke",
           "problem_name": "Dãy ô liền kề",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1748,8 +1610,6 @@
         {
           "problem_id": "chon-qua",
           "problem_name": "Chọn quà",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1818,8 +1678,6 @@
         {
           "problem_id": "hinh-vuong",
           "problem_name": "Hình vuông",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1828,8 +1686,6 @@
         {
           "problem_id": "cap-so-ban-be",
           "problem_name": "Cặp số bạn bè",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1838,8 +1694,6 @@
         {
           "problem_id": "chu-x-may-man",
           "problem_name": "Chữ X may mắn",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1848,8 +1702,6 @@
         {
           "problem_id": "bo-ba-nghich-the",
           "problem_name": "Bộ ba nghịch thế",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1858,8 +1710,6 @@
         {
           "problem_id": "lien-thong",
           "problem_name": "Liên thông",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -1928,8 +1778,6 @@
           "problem_name": "DI TRUYỀN",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1939,8 +1787,6 @@
           "problem_name": "THU HOẠCH",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -1950,8 +1796,6 @@
           "problem_name": "BỘ SƯU TẬP",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2020,8 +1864,6 @@
           "problem_name": "Dãy vô hạn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2031,8 +1873,6 @@
           "problem_name": "Số mềm",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2042,8 +1882,6 @@
           "problem_name": "Truy vấn chia hết",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2053,8 +1891,6 @@
           "problem_name": "Phần tử nhìn thấy",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2116,8 +1952,6 @@
         {
           "problem_id": "day-so",
           "problem_name": "Dãy số",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2126,8 +1960,6 @@
         {
           "problem_id": "so-hanh-phuc",
           "problem_name": "Số hạnh phúc",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2136,8 +1968,6 @@
         {
           "problem_id": "so-sinh",
           "problem_name": "Số sinh",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2203,8 +2033,6 @@
         {
           "problem_id": "tien-mat",
           "problem_name": "Tiền mặt",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2213,8 +2041,6 @@
         {
           "problem_id": "quan-hau",
           "problem_name": "Quân hậu",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2223,8 +2049,6 @@
         {
           "problem_id": "tich-lon-nhat",
           "problem_name": "Tích lớn nhất",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2233,8 +2057,6 @@
         {
           "problem_id": "leo-cau-thang",
           "problem_name": "Leo cầu thang",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2300,8 +2122,6 @@
         {
           "problem_id": "fibonacci",
           "problem_name": "Fibonacci",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2310,8 +2130,6 @@
         {
           "problem_id": "so-hoc",
           "problem_name": "Số học",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2320,8 +2138,6 @@
         {
           "problem_id": "xu-ly-mang",
           "problem_name": "Xử lý mảng",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2330,8 +2146,6 @@
         {
           "problem_id": "tong-chu-so-va-so-dao-nguoc",
           "problem_name": "Tổng chữ số và số đảo ngược",
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "difficulty": null,
           "tags": [],
@@ -2399,8 +2213,6 @@
           "problem_name": "Số tròn chục",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2410,8 +2222,6 @@
           "problem_name": "Hiệu nhỏ nhất",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2421,8 +2231,6 @@
           "problem_name": "Số may mắn",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2432,8 +2240,6 @@
           "problem_name": "Thẻ thông minh",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2503,8 +2309,6 @@
           "problem_name": "Chuỗi online bạn bè",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2514,8 +2318,6 @@
           "problem_name": "Hành trình xe điện",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2525,8 +2327,6 @@
           "problem_name": "Trò chơi xếp chữ",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
@@ -2536,8 +2336,6 @@
           "problem_name": "Tối ưu giao dịch Blockchain",
           "difficulty": null,
           "tags": [],
-          "has_solution": false,
-          "solution_count": 0,
           "solutions": [],
           "testcases": [],
           "editorial": null
