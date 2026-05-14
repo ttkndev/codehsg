@@ -109,8 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
         pageItems.forEach(book => container.insertAdjacentHTML("beforeend", renderBookCard(book)));
 
         emptyEl.classList.toggle("d-none", processed.length > 0);
-        resultCountEl.textContent = processed.length;
-        totalCountEl.textContent = data.length;
+        resultCountEl.textContent = processed.length.toLocaleString("vi-VN");
+        totalCountEl.textContent = data.length.toLocaleString("vi-VN");
         sortLabelEl.textContent = sortLabels[state.sort] || sortLabels.newest;
 
         updateHeroStats(processed);
