@@ -4,57 +4,161 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById("exam-feature");
+      if (!container) return;
 
-      // Nếu đang ở index.html → chỉ lấy top 3
-      if (container && container.dataset.mode === "top") {
-        const topExams = data.sort((a, b) => b.view_count - a.view_count).slice(0, 3);
+      if (container.dataset.mode === "top") {
+        const topExams = [...data].sort((a, b) => b.view_count - a.view_count).slice(0, 3);
         topExams.forEach(exam => container.insertAdjacentHTML("beforeend", renderExamCard(exam)));
+        return;
       }
 
-      // Nếu đang ở exams.html → load tất cả + phân trang
-      if (container && container.dataset.mode === "all") {
-        const perPage = 9;
-        let currentPage = 1;
+      if (container.dataset.mode !== "all") return;
 
-        function renderPage(page) {
-          container.innerHTML = "";
-          const start = (page - 1) * perPage;
-          const end = start + perPage;
-          const pageItems = data.slice(start, end);
-          pageItems.forEach(exam => container.insertAdjacentHTML("beforeend", renderExamCard(exam)));
+      const state = {
+        perPage: 9,
+        currentPage: 1,
+        query: "",
+        grade: "",
+        year: "",
+        sort: "newest"
+      };
+
+      const searchEl = document.getElementById("exam-search");
+      const gradeEl = document.getElementById("exam-grade");
+      const yearEl = document.getElementById("exam-year");
+      const sortEl = document.getElementById("exam-sort");
+      const paginationEl = document.getElementById("exam-pagination");
+      const emptyEl = document.getElementById("exam-empty");
+      const resultCountEl = document.getElementById("exam-result-count");
+      const totalCountEl = document.getElementById("exam-total-count");
+      const sortLabelEl = document.getElementById("exam-sort-label");
+
+      const sortLabels = {
+        newest: "Mới nhất (năm giảm dần)",
+        views_desc: "Lượt xem cao nhất",
+        downloads_desc: "Lượt tải cao nhất",
+        title_asc: "Tên A → Z"
+      };
+
+      const grades = [...new Set(data.map(item => item.grade))].sort();
+      grades.forEach(grade => gradeEl.insertAdjacentHTML("beforeend", `<option value="${grade}">${grade}</option>`));
+
+      const years = [...new Set(data.map(item => item.year))].sort((a, b) => b - a);
+      years.forEach(year => yearEl.insertAdjacentHTML("beforeend", `<option value="${year}">${year}</option>`));
+
+      function updateHeroStats(items) {
+        const sum = (arr, key) => arr.reduce((acc, item) => acc + (Number(item[key]) || 0), 0);
+        const setText = (id, value) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = value.toLocaleString("vi-VN");
+        };
+
+        setText("hero-total-exams", items.length);
+        setText("hero-total-grades", new Set(items.map(item => item.grade)).size);
+        setText("hero-total-views", sum(items, "view_count"));
+        setText("hero-total-downloads", sum(items, "download_count"));
+      }
+
+      function getProcessedData() {
+        let filtered = [...data];
+
+        if (state.query) {
+          const q = state.query.toLowerCase();
+          filtered = filtered.filter(item =>
+            [item.title, item.organization, item.subject, item.grade]
+              .join(" ")
+              .toLowerCase()
+              .includes(q)
+          );
         }
 
-        // Render trang đầu
-        renderPage(currentPage);
+        if (state.grade) filtered = filtered.filter(item => item.grade === state.grade);
+        if (state.year) filtered = filtered.filter(item => String(item.year) === state.year);
 
-        // Tạo nút phân trang
-        const pagination = document.getElementById("exam-pagination");
-        const totalPages = Math.ceil(data.length / perPage);
+        filtered.sort((a, b) => {
+          if (state.sort === "views_desc") return b.view_count - a.view_count;
+          if (state.sort === "downloads_desc") return b.download_count - a.download_count;
+          if (state.sort === "title_asc") return a.title.localeCompare(b.title, "vi");
+          return b.year - a.year;
+        });
+
+        return filtered;
+      }
+
+      function renderPagination(totalPages) {
+        paginationEl.innerHTML = "";
+        if (totalPages <= 1) return;
+
         for (let i = 1; i <= totalPages; i++) {
           const btn = document.createElement("button");
-          btn.className = "btn btn-sm btn-outline-primary me-1";
+          btn.className = `btn btn-sm ${i === state.currentPage ? "btn-primary" : "btn-outline-primary"}`;
           btn.textContent = i;
           btn.addEventListener("click", () => {
-            currentPage = i;
-            renderPage(currentPage);
+            state.currentPage = i;
+            renderAll();
           });
-          pagination.appendChild(btn);
+          paginationEl.appendChild(btn);
         }
       }
+
+      function renderAll() {
+        const processed = getProcessedData();
+        const totalPages = Math.max(1, Math.ceil(processed.length / state.perPage));
+
+        if (state.currentPage > totalPages) state.currentPage = 1;
+
+        const start = (state.currentPage - 1) * state.perPage;
+        const pageItems = processed.slice(start, start + state.perPage);
+
+        container.innerHTML = "";
+        pageItems.forEach(exam => container.insertAdjacentHTML("beforeend", renderExamCard(exam)));
+
+        emptyEl.classList.toggle("d-none", processed.length > 0);
+        resultCountEl.textContent = processed.length;
+        totalCountEl.textContent = data.length;
+        sortLabelEl.textContent = sortLabels[state.sort] || sortLabels.newest;
+
+        updateHeroStats(processed);
+        renderPagination(totalPages);
+      }
+
+      searchEl.addEventListener("input", e => {
+        state.query = e.target.value.trim();
+        state.currentPage = 1;
+        renderAll();
+      });
+
+      gradeEl.addEventListener("change", e => {
+        state.grade = e.target.value;
+        state.currentPage = 1;
+        renderAll();
+      });
+
+      yearEl.addEventListener("change", e => {
+        state.year = e.target.value;
+        state.currentPage = 1;
+        renderAll();
+      });
+
+      sortEl.addEventListener("change", e => {
+        state.sort = e.target.value;
+        state.currentPage = 1;
+        renderAll();
+      });
+
+      renderAll();
     })
     .catch(err => console.error("Lỗi load exams:", err));
 });
 
 // Sự kiện click để mở Preview bằng hàm dùng chung
 document.addEventListener("click", e => {
-  // Kiểm tra nếu click vào ảnh hoặc nút có class 'exam-img' hoặc 'btn-preview'
   const target = e.target.closest(".exam-img, .btn-preview");
-  
+
   if (target) {
     const images = JSON.parse(target.getAttribute("data-images") || "[]");
     const title = target.getAttribute("data-title") || "Xem nhanh đề thi";
 
-    // Gọi hàm từ common-modal.js
     if (typeof openExamPreview === "function") {
       openExamPreview(title, images);
     } else {

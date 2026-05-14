@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHSG | Đề thi</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">CodeHSG</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="exams.html">Đề thi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="books.html">Học liệu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 mb-4 mb-md-0">
+                        <h1 class="fw-bold">Kho đề thi học sinh giỏi Tin học</h1>
+                        <p class="lead mb-2">Tra cứu nhanh theo năm, khối, đơn vị ra đề và mức độ phổ biến.</p>
+                        <p class="mb-0">Cập nhật liên tục đề thi THCS, THPT, chọn đội tuyển và đề luyện tập chất lượng.</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="row text-center" id="exam-hero-stats">
+                            <div class="col-6 col-lg-3 mb-3">
+                                <div class="p-3 bg-white shadow-sm rounded h-100">
+                                    <i class="bi bi-file-earmark-text fs-1 text-primary"></i>
+                                    <h2 class="fw-bold text-primary mb-1"><span id="hero-total-exams">0</span></h2>
+                                    <p class="mb-0">Tổng đề</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <div class="p-3 bg-white shadow-sm rounded h-100">
+                                    <i class="bi bi-mortarboard fs-1 text-success"></i>
+                                    <h2 class="fw-bold text-success mb-1"><span id="hero-total-grades">0</span></h2>
+                                    <p class="mb-0">Khối lớp</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <div class="p-3 bg-white shadow-sm rounded h-100">
+                                    <i class="bi bi-eye fs-1 text-danger"></i>
+                                    <h2 class="fw-bold text-danger mb-1"><span id="hero-total-views">0</span></h2>
+                                    <p class="mb-0">Lượt xem</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <div class="p-3 bg-white shadow-sm rounded h-100">
+                                    <i class="bi bi-download fs-1 text-warning"></i>
+                                    <h2 class="fw-bold text-warning mb-1"><span id="hero-total-downloads">0</span></h2>
+                                    <p class="mb-0">Lượt tải</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-12 col-lg-5">
+                                <label for="exam-search" class="form-label fw-semibold">Tìm kiếm</label>
+                                <input id="exam-search" type="search" class="form-control"
+                                    placeholder="Tên đề, đơn vị ra đề, môn học...">
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <label for="exam-grade" class="form-label fw-semibold">Khối</label>
+                                <select id="exam-grade" class="form-select">
+                                    <option value="">Tất cả</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <label for="exam-year" class="form-label fw-semibold">Năm</label>
+                                <select id="exam-year" class="form-select">
+                                    <option value="">Tất cả</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <label for="exam-sort" class="form-label fw-semibold">Sắp xếp</label>
+                                <select id="exam-sort" class="form-select">
+                                    <option value="newest">Mới nhất (năm giảm dần)</option>
+                                    <option value="views_desc">Lượt xem cao nhất</option>
+                                    <option value="downloads_desc">Lượt tải cao nhất</option>
+                                    <option value="title_asc">Tên A → Z</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                    <p class="mb-0 text-muted"><span id="exam-result-count">0</span>/<span id="exam-total-count">0</span> bản ghi</p>
+                    <p class="mb-0 text-muted">Kiểu sắp xếp: <span id="exam-sort-label">Mới nhất (năm giảm dần)</span></p>
+                </div>
+
+                <div class="row" id="exam-feature" data-mode="all"></div>
+                <div id="exam-empty" class="alert alert-warning d-none" role="alert">Không tìm thấy đề thi phù hợp bộ lọc.</div>
+
+                <nav class="mt-4" aria-label="Phân trang đề thi">
+                    <div id="exam-pagination" class="d-flex flex-wrap gap-2"></div>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 d-flex align-items-center justify-content-start">
+                    <p class="mb-0">&copy; 2026 - <span class="fw-bold text-light">ttkndev</span></p>
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        <a href="index.html" class="text-secondary text-decoration-none">Trang chủ</a>
+                        <a href="exams.html" class="text-secondary text-decoration-none">Đề thi</a>
+                        <a href="books.html" class="text-secondary text-decoration-none">Học liệu</a>
+                        <a href="contact.html" class="text-secondary text-decoration-none">Liên hệ</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-center justify-content-end">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                        <a href="https://facebook.com/codehsg.vn" target="_blank" class="text-secondary fs-5"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.youtube.com/@ttkndev" target="_blank" class="text-secondary fs-5"><i class="bi bi-youtube"></i></a>
+                        <a href="tel:+84775426999" class="text-secondary fs-5"><i class="bi bi-telephone"></i></a>
+                        <a href="mailto:ttkndev@gmail.com" class="text-secondary fs-5"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/render.js"></script>
+    <script src="assets/js/exams.js"></script>
+    <script src="assets/js/modal.js"></script>
+</body>
+
+</html>
