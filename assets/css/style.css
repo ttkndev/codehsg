@@ -89,3 +89,15 @@
         background-color: rgba(0, 0, 0, 0.5); /* Nền tối để nổi bật trên ảnh trắng */
     }
 }
+
+/* Class dùng chung cho cả ảnh đề thi và ảnh sách */
+.exam-img, .book-img {
+    transition: all 0.3s ease; /* Tạo chuyển động mượt mà */
+    cursor: zoom-in;           /* Đổi con trỏ chuột thành hình kính lúp dấu cộng */
+}
+
+.exam-img:hover, .book-img:hover {
+    transform: scale(1.05);    /* Phóng to 5% */
+    filter: brightness(1.1);   /* Tăng độ sáng lên 10% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ cho card nổi lên */
+}
