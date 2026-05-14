@@ -418,7 +418,7 @@
     "pages": 102
   },
   {
-    "is_ready": false,
+    "is_ready": true,
     "id": "book-scratch-buivietha-thietkephanmemvatrochoigiaoduc-450",
     "related_ids": [],
     "type": "book",
@@ -440,16 +440,16 @@
     "images": [
       "assets/images/book-scratch-buivietha-thietkephanmemvatrochoigiaoduc-450-cover.jpg"
     ],
-    "drive_file_id": null,
-    "drive_view": null,
-    "drive_download": null,
-    "uploaded_drive": false,
+    "drive_file_id": "121guBCst0lAzkPeqaaNWsuvo8knSBGGx",
+    "drive_view": "https://drive.google.com/file/d/121guBCst0lAzkPeqaaNWsuvo8knSBGGx/view",
+    "drive_download": "https://drive.google.com/uc?id=121guBCst0lAzkPeqaaNWsuvo8knSBGGx&export=download",
+    "uploaded_drive": true,
     "fb_post_id": null,
     "scheduled_time": null,
     "posted_fb": false,
     "is_featured": false,
     "date_added": "2026-05-01",
-    "last_updated": "2026-05-01",
+    "last_updated": "2026-05-14",
     "view_count": 209,
     "download_count": 43,
     "file_ext": "pdf",
