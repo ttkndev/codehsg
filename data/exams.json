@@ -1092,7 +1092,7 @@
     "file_size": "936.28 KB",
     "subject": "Tin học",
     "organization": "Sở GDĐT Nam Định",
-    "grade": "9",
+    "grade": "THCS",
     "problem_names": [
       "Số đặc biệt",
       "Nhầm lẫn",
@@ -1208,7 +1208,7 @@
     "file_size": "1.2 MB",
     "subject": "Tin học",
     "organization": "Sở GDĐT tỉnh Ninh Bình",
-    "grade": "9",
+    "grade": "THCS",
     "problem_names": [
       "HÌNH CHỮ NHẬT",
       "SỐ ĐẶC BIỆT",
@@ -1873,7 +1873,7 @@
     "id": "exam-tinhoc-olympictp-hcm-lop11-sogddt-tp-hcm-2025-2026",
     "related_ids": [],
     "type": "exam",
-    "title": "Cuộc thi Olympic Thành phố Hồ Chí Minh - Khối 11",
+    "title": "Cuộc thi Olympic TP Hồ Chí Minh - Khối 11",
     "description": "✍️ Đề thi chính thức có 03 bài:\n1️⃣ Bài 1: Di truyền\n2️⃣ Bài 2: Thu hoạch\n3️⃣ Bài 3: Bộ sưu tập\n⏱ Thời gian: 120 phút",
     "tags": [
       "olympic",
@@ -2345,7 +2345,7 @@
     "id": "exam-tinhoc-tht-tieuhoc-phuonghoakhanh-2025-2026",
     "related_ids": [],
     "type": "exam",
-    "title": "Hội thi Tin học trẻ cấp phường Bảng A | Tiểu học",
+    "title": "Hội thi Tin học trẻ Bảng A | Tiểu học",
     "description": "✍️ Đề thi chính thức có 04 bài:\n1️⃣ Bài 1: Số tròn chục\n2️⃣ Bài 2: Hiệu nhỏ nhất\n3️⃣ Bài 3: Số may mắn\n4️⃣ Bài 4: Thẻ thông minh\n⏱ Thời gian: 90 phút",
     "tags": [
       "tinhoc-tre",
@@ -2485,7 +2485,7 @@
     "file_size": "519.73 KB",
     "subject": "Tin học",
     "organization": "Trường PTNK ĐHQG-HCM",
-    "grade": "10 | THPT",
+    "grade": "THPT",
     "problem_names": [
       "Chuỗi online bạn bè",
       "Hành trình xe điện",
