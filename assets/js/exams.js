@@ -179,3 +179,21 @@ document.addEventListener("click", e => {
     }
   }
 });
+
+document.addEventListener("click", e => {
+  if (e.target.closest(".btn-copy-link")) {
+    e.preventDefault();
+    const btn = e.target.closest(".btn-copy-link");
+    const link = btn.getAttribute("data-link");
+
+    navigator.clipboard.writeText(link).then(() => {
+      // Thông báo nhỏ khi copy thành công
+      btn.textContent = "Đã copy!";
+      setTimeout(() => {
+        btn.innerHTML = '<i class="bi bi-share-fill"></i> Chia sẻ';
+      }, 1500);
+    }).catch(err => {
+      console.error("Không copy được:", err);
+    });
+  }
+});
