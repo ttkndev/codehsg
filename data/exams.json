@@ -226,7 +226,7 @@
     "file_size": "1.74 MB",
     "subject": "Tin học",
     "organization": "Sở GDĐT Thái Nguyên",
-    "grade": "10",
+    "grade": "THPT",
     "problem_names": [
       "Ước số chung",
       "Truy vấn giá",
@@ -330,7 +330,7 @@
     "file_size": "1.35 MB",
     "subject": "Tin học",
     "organization": "Sở GDĐT Bình Định",
-    "grade": "11 | THPT",
+    "grade": "THPT",
     "problem_names": [
       "Dãy phiến đá bí ẩn",
       "Hộp quà",
@@ -1389,7 +1389,7 @@
     "id": "exam-tinhoc-hsg-thcs-sogddt-vinhphuc-2020-2021",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Học sinh giỏi",
+    "title": "Kỳ thi chọn HSG cấp tỉnh lớp 9",
     "description": "✍️ Đề thi chính thức có 4 bài:\n1️⃣ Bài 1: Chia hết\n2️⃣ Bài 2: Đếm kí tự\n3️⃣ Bài 3: Giảm cân\n4️⃣ Bài 4: Chọn mua sách\n⏱ Thời gian: 150 phút",
     "tags": [
       "hsg",
@@ -1486,7 +1486,7 @@
     "id": "exam-tinhoc-hsg-thcs-sogddt-vinhphuc-2021-2022",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Học sinh giỏi",
+    "title": "Kỳ thi chọn HSG cấp tỉnh lớp 9",
     "description": "✍️ Đề thi chính thức có 3 bài:\n1️⃣ Bài 1: Số chia hết\n2️⃣ Bài 2: Số báo danh\n3️⃣ Bài 3: Chọn vị kem\n⏱ Thời gian: 150 phút",
     "tags": [
       "hsg",
@@ -1570,7 +1570,7 @@
     "id": "exam-tinhoc-hsg-thcs-sogddt-yenbai-2022-2023",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Học sinh giỏi",
+    "title": "Kỳ thi chọn HSG THCS cấp tỉnh",
     "description": "✍️ Đề thi chính thức có 4 bài:\n1️⃣ Bài 1: Số phong phú\n2️⃣ Bài 2: Nhanh trí\n3️⃣ Bài 3: Khiêu vũ\n4️⃣ Bài 4: Dãy hình nón\n⏱ Thời gian: 150 phút",
     "tags": [
       "hsg",
@@ -1667,7 +1667,7 @@
     "id": "exam-tinhoc-hsg-thpt-sogddt-yenbai-2022-2023",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Học sinh giỏi",
+    "title": "Kỳ thi chọn HSG THPT cấp tỉnh",
     "description": "✍️ Đề thi chính thức có 4 bài:\n1️⃣ Bài 1: Số nguyên tố\n2️⃣ Bài 2: Con đường đẹp\n3️⃣ Bài 3: Dãy ô liền kề\n4️⃣ Bài 4: Chọn quà\n⏱ Thời gian: 180 phút",
     "tags": [
       "hsg",
@@ -1763,7 +1763,7 @@
     "id": "exam-tinhoc-hsg-thpt-sogddt-yenbai-2023-2024",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Học sinh giỏi",
+    "title": "Kỳ thi chọn HSG THPT cấp tỉnh",
     "description": "✍️ Đề thi chính thức có 5 bài:\n1️⃣ Bài 1: Hình vuông\n2️⃣ Bài 2: Cặp số bạn bè\n3️⃣ Bài 3: Chữ X may mắn\n4️⃣ Bài 4: Bộ ba nghịch thế\n5️⃣ Bài 5: Liên thông\n⏱ Thời gian: 180 phút",
     "tags": [
       "hsg",
@@ -1911,7 +1911,7 @@
     "file_size": "2.16 MB",
     "subject": "Tin học",
     "organization": "Sở GDĐT TP. Hồ Chí Minh",
-    "grade": "11 | THPT",
+    "grade": "THPT",
     "problem_names": [
       "DI TRUYỀN",
       "THU HOẠCH",
@@ -2002,7 +2002,7 @@
     "file_size": "535.29 KB",
     "subject": "Tin học",
     "organization": "Trường THPT Chuyên Vĩnh Phúc",
-    "grade": "10",
+    "grade": "THPT",
     "problem_names": [
       "Dãy vô hạn",
       "Số mềm",
@@ -2151,7 +2151,7 @@
     "id": "exam-tinhoc-tht-thcs-thanhphonhatrang-2024",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Tin học trẻ",
+    "title": "Hội thi Tin học trẻ Bảng B | THCS",
     "description": "✍️ Đề thi chính thức có 4 bài:\n1️⃣ Bài 1: Tiền mặt\n2️⃣ Bài 2: Quân hậu\n3️⃣ Bài 3: Tích lớn nhất\n4️⃣ Bài 4: Leo cầu thang\n⏱ Thời gian: 120 phút",
     "tags": [
       "tht",
@@ -2248,7 +2248,7 @@
     "id": "exam-tinhoc-tht-thcs-thixabuonho-2018",
     "related_ids": [],
     "type": "exam",
-    "title": "Đề thi Tin học trẻ",
+    "title": "Hội thi Tin học trẻ Bảng B | THCS",
     "description": "✍️ Đề thi chính thức có 4 bài:\n1️⃣ Bài 1: Fibonacci\n2️⃣ Bài 2: Số học\n3️⃣ Bài 3: Xử lý mảng\n4️⃣ Bài 4: Tổng chữ số và số đảo ngược\n⏱ Thời gian: 120 phút",
     "tags": [
       "tht",
@@ -2345,7 +2345,7 @@
     "id": "exam-tinhoc-tht-tieuhoc-phuonghoakhanh-2025-2026",
     "related_ids": [],
     "type": "exam",
-    "title": "Hội thi Tin học trẻ cấp phường - Khối Tiểu học",
+    "title": "Hội thi Tin học trẻ cấp phường Bảng A | Tiểu học",
     "description": "✍️ Đề thi chính thức có 04 bài:\n1️⃣ Bài 1: Số tròn chục\n2️⃣ Bài 2: Hiệu nhỏ nhất\n3️⃣ Bài 3: Số may mắn\n4️⃣ Bài 4: Thẻ thông minh\n⏱ Thời gian: 90 phút",
     "tags": [
       "tinhoc-tre",
