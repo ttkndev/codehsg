@@ -25,9 +25,9 @@ FB_DEFAULT_TAGS = ["exam", "book", "programming", "algorithm", "dethi", "hoclieu
 FB_POST_DELAY_MINUTES = 10
 
 # Link website tổng hợp
-WEBSITE_URL = "https://ttkndev.github.io/luyencode-hsg/"  
+WEBSITE_URL = "https://ttkndev.github.io/codehsg/"  
 # URL chính của website
-PAGE_FACEBOOK_URL = "https://www.facebook.com/luyencode.hsg"  
+PAGE_FACEBOOK_URL = "https://www.facebook.com/codehsg.vn"  
 # URL fanpage Facebook
 
 # Cấu hình upload Google Drive

@@ -112,6 +112,7 @@ def schedule_time(index=0, delay_minutes=10):
 # =============================
 def generate_post(meta, type):
     title = meta.get("title") or "Tài liệu học tập"
+    year = meta.get("year") or ""
     author = meta.get("author") or ""
     desc = meta.get("description") or ""
     view = meta.get("drive_view") or ""
@@ -122,8 +123,10 @@ def generate_post(meta, type):
     tags = list(set(tags + config.FB_DEFAULT_TAGS))
 
     if type == "exam":
+        organization = meta.get("organization") or ""
         return (
-            f"📝 {title}\n\n"
+            f"📝 {title} năm {year}\n"
+            f"🏢 {organization}\n\n"
             f"{desc}\n\n"
             f"📖 Xem nhanh: {view}\n"
             f"⬇️ Tải PDF: {download}\n"
