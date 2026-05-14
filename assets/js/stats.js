@@ -10,7 +10,7 @@ function animateCount(element, target) {
       clearInterval(interval);
       element.classList.remove("running");
     }
-    element.textContent = current;
+    element.textContent = current.toLocaleString("vi-VN");
   }, 20); // mỗi 20ms tăng một lần
 }
 

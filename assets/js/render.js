@@ -1,5 +1,14 @@
 // assets/js/render.js
 
+function formatNumberVi(value) {
+  return (Number(value) || 0).toLocaleString("vi-VN");
+}
+
+function getShareLink(detailPage, id) {
+  const baseUrl = `${window.location.origin}${window.location.pathname.replace(/[^/]*$/, "")}`;
+  return `${baseUrl}${detailPage}?id=${encodeURIComponent(id)}`;
+}
+
 function renderExamCard(exam) {
   const pick = (...keys) => {
     for (const key of keys) {
@@ -57,21 +66,21 @@ function renderExamCard(exam) {
                 <p class="col-6 small text-muted mb-1"><i class="bi bi-hdd"></i> ${fileSize}</p>
               </div>
               <div class="row">
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-eye"></i> ${viewCount}</p>
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-download"></i> ${downloadCount}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-eye"></i> ${formatNumberVi(viewCount)}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-download"></i> ${formatNumberVi(downloadCount)}</p>
               </div>
               <div class="row">
                 <div class="col-6">
-                  <span class="badge bg-secondary w-100"><i class="bi bi-journal-text"></i> Lời giải: ${solutionCount}</span>
+                  <span class="badge bg-secondary w-100"><i class="bi bi-journal-text"></i> Lời giải: ${formatNumberVi(solutionCount)}</span>
                 </div>
                 <div class="col-6">
-                  <span class="badge bg-info text-dark w-100"><i class="bi bi-code-slash"></i> Testcase: ${testcaseCount}</span>
+                  <span class="badge bg-info text-dark w-100"><i class="bi bi-code-slash"></i> Testcase: ${formatNumberVi(testcaseCount)}</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="mt-2">
-            <span class="small text-muted mb-1"><i class="bi bi-files"></i> ${problemCount} bài: </span>
+            <span class="small text-muted mb-1"><i class="bi bi-files"></i> ${formatNumberVi(problemCount)} bài: </span>
             ${problemNames.map(p => `<span class="badge bg-light text-dark me-1">${p}</span>`).join("")}
           </div>
           <div class="mt-2">
@@ -82,7 +91,7 @@ function renderExamCard(exam) {
           <a href="exam-detail.html?id=${encodeURIComponent(exam.id)}" class="btn btn-outline-primary btn-sm"><i class="bi bi-info-circle"></i> Chi tiết</a>
           <a href="#" 
             class="btn btn-outline-secondary btn-sm btn-copy-link" 
-            data-link="https://ttkndev.github.io/codehsg/exam-detail.html?id=${encodeURIComponent(exam.id)}">
+            data-link="${getShareLink("exam-detail.html", exam.id)}">
             <i class="bi bi-share-fill"></i> Chia sẻ
           </a>
           <a href="${exam.drive_view}" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener"><i class="bi bi-eye"></i> Xem nhanh</a>
@@ -125,8 +134,8 @@ function renderBookCard(book) {
                 <p class="col-6 small text-muted mb-1"><i class="bi bi-hdd"></i> ${book.file_size}</p>
               </div>
               <div class="row">
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-eye"></i> ${book.view_count}</p>
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-download"></i> ${book.download_count}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-eye"></i> ${formatNumberVi(book.view_count)}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-download"></i> ${formatNumberVi(book.download_count)}</p>
               </div>
               <p class="col-12 small text-muted mb-1"><i class="bi bi-collection"></i> ${book.publisher}</p>
             </div>
@@ -142,7 +151,7 @@ function renderBookCard(book) {
           <a href="book-detail.html?id=${encodeURIComponent(book.id)}" class="btn btn-outline-primary btn-sm"><i class="bi bi-info-circle"></i> Chi tiết</a>
           <a href="#" 
             class="btn btn-outline-secondary btn-sm btn-copy-link" 
-            data-link="https://ttkndev.github.io/codehsg/book-detail.html?id=${encodeURIComponent(book.id)}">
+            data-link="${getShareLink("book-detail.html", book.id)}">
             <i class="bi bi-share-fill"></i> Chia sẻ
           </a>
           <a href="${book.drive_view}" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener"><i class="bi bi-eye"></i> Xem nhanh</a>
