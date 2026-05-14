@@ -27,7 +27,7 @@ FB_POST_DELAY_MINUTES = 10
 # Link website tổng hợp
 WEBSITE_URL = "https://ttkndev.github.io/codehsg/"  
 # URL chính của website
-PAGE_FACEBOOK_URL = "https://www.facebook.com/codehsg.vn"  
+PAGE_FACEBOOK_URL = "https://www.facebook.com/ttkndev.codehsg"  
 # URL fanpage Facebook
 
 # Cấu hình upload Google Drive
