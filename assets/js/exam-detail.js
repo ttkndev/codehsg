@@ -3,6 +3,89 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const examId = params.get("id");
 
+  const escapeHtml = value => String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+  const renderSolutionSection = exam => {
+    const detail = exam.solution_detail;
+
+    if (!detail || typeof detail !== "object") {
+      return '<div class="alert alert-secondary mb-4">Hiện chưa có dữ liệu hướng dẫn giải cho đề này.</div>';
+    }
+
+    const problems = Array.isArray(detail.problems) ? detail.problems : [];
+    const hasAnySolution = problems.some(problem => Array.isArray(problem.solutions) && problem.solutions.length > 0);
+
+    const metaBadges = `
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <span class="badge bg-${detail.verified ? "success" : "secondary"}-subtle text-${detail.verified ? "success" : "secondary"}-emphasis border">
+          <i class="bi bi-patch-check"></i> ${detail.verified ? "Đã xác minh" : "Chưa xác minh"}
+        </span>
+        ${detail.last_updated ? `<span class="badge bg-light text-dark border"><i class="bi bi-clock-history"></i> Cập nhật: ${escapeHtml(detail.last_updated)}</span>` : ""}
+        <span class="badge bg-light text-dark border"><i class="bi bi-list-task"></i> ${problems.length} bài</span>
+      </div>
+    `;
+
+    if (!hasAnySolution) {
+      return `${metaBadges}<div class="alert alert-secondary mb-4">Dữ liệu cấu trúc đã có nhưng chưa có lời giải chi tiết cho từng bài.</div>`;
+    }
+
+    const accordionId = `solution-accordion-${escapeHtml(exam.id)}`;
+    const items = problems.map((problem, idx) => {
+      const solutions = Array.isArray(problem.solutions) ? problem.solutions : [];
+      const itemId = `${accordionId}-${idx}`;
+
+      if (!solutions.length) {
+        return `
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-${itemId}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${itemId}" aria-expanded="false" aria-controls="collapse-${itemId}">
+                <strong class="me-2">Bài ${idx + 1}:</strong> ${escapeHtml(problem.problem_name || problem.problem_id || `Bài ${idx + 1}`)}
+              </button>
+            </h2>
+            <div id="collapse-${itemId}" class="accordion-collapse collapse" aria-labelledby="heading-${itemId}" data-bs-parent="#${accordionId}">
+              <div class="accordion-body text-muted">Chưa có lời giải cho bài này.</div>
+            </div>
+          </div>
+        `;
+      }
+
+      const solutionCards = solutions.map((sol, solutionIndex) => `
+        <div class="border rounded p-3 mb-3 bg-light-subtle">
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+            <span class="badge bg-primary">Lời giải ${solutionIndex + 1}</span>
+            ${sol.language ? `<span class="badge bg-dark-subtle text-dark-emphasis border">${escapeHtml(sol.language)}</span>` : ""}
+            ${sol.source ? `<span class="badge bg-info-subtle text-info-emphasis border">${escapeHtml(sol.source)}</span>` : ""}
+          </div>
+          ${sol.approach ? `<div class="mb-2"><strong>Ý tưởng:</strong><div class="mt-1">${escapeHtml(sol.approach)}</div></div>` : ""}
+          ${sol.complexity ? `<div class="mb-2"><strong>Độ phức tạp:</strong> ${escapeHtml(sol.complexity)}</div>` : ""}
+          ${sol.code ? `<details><summary class="fw-semibold">Xem mã nguồn</summary><pre class="mt-2 mb-0 p-2 bg-white border rounded"><code>${escapeHtml(sol.code)}</code></pre></details>` : ""}
+          ${sol.notes ? `<div class="mt-2 text-muted">${escapeHtml(sol.notes)}</div>` : ""}
+        </div>
+      `).join("");
+
+      return `
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-${itemId}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${itemId}" aria-expanded="false" aria-controls="collapse-${itemId}">
+              <strong class="me-2">Bài ${idx + 1}:</strong> ${escapeHtml(problem.problem_name || problem.problem_id || `Bài ${idx + 1}`)}
+              <span class="badge bg-success-subtle text-success-emphasis border ms-2">${solutions.length} lời giải</span>
+            </button>
+          </h2>
+          <div id="collapse-${itemId}" class="accordion-collapse collapse" aria-labelledby="heading-${itemId}" data-bs-parent="#${accordionId}">
+            <div class="accordion-body">${solutionCards}</div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    return `${metaBadges}<div class="accordion mb-4" id="${accordionId}">${items}</div>`;
+  };
+
   if (!examId) {
     container.innerHTML = `<div class="alert alert-warning">Thiếu mã đề thi. Vui lòng quay lại danh sách đề thi.</div>`;
     return;
@@ -68,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2 class="h5 fw-bold">Danh sách bài toán</h2>
             <ul class="list-group mb-4">${problems || '<li class="list-group-item">Chưa cập nhật danh sách bài.</li>'}</ul>
             <h2 class="h5 fw-bold">Hướng dẫn giải</h2>
-            <div class="alert alert-secondary mb-4">${exam.solution_detail ? exam.solution_detail : 'Hiện chưa có dữ liệu hướng dẫn giải cho đề này.'}</div>
+            ${renderSolutionSection(exam)}
             <h2 class="h5 fw-bold">Testcase</h2>
             <ul class="list-group mb-4">${(exam.testcases || []).length ? exam.testcases.map((tc, i) => `<li class="list-group-item">Test ${i + 1}: ${tc}</li>`).join("") : '<li class="list-group-item text-muted">Hiện chưa có dữ liệu testcase.</li>'}</ul>
             <h2 class="h5 fw-bold">Tags</h2>
