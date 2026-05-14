@@ -43,7 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const grades = [...new Set(data.map(item => item.grade))].sort();
       grades.forEach(grade => gradeEl.insertAdjacentHTML("beforeend", `<option value="${grade}">${grade}</option>`));
 
-      const years = [...new Set(data.map(item => Number(item.year)).filter(year => Number.isFinite(year)))].sort((a, b) => b - a);
+      const getYearSortValue = year => {
+        const match = String(year || "").match(/\d{4}/);
+        return match ? Number(match[0]) : Number.POSITIVE_INFINITY;
+      };
+
+      const years = [...new Set(data.map(item => String(item.year || "").trim()).filter(Boolean))]
+        .sort((a, b) => getYearSortValue(a) - getYearSortValue(b) || a.localeCompare(b, "vi"));
       years.forEach(year => yearEl.insertAdjacentHTML("beforeend", `<option value="${year}">${year}</option>`));
 
       function updateHeroStats(items) {
@@ -78,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (state.query) {
           const q = state.query.toLowerCase();
           filtered = filtered.filter(item =>
-            [item.title, item.organization, item.subject, item.grade]
+            [item.title, item.organization, item.subject, item.grade, item.contributor]
               .join(" ")
               .toLowerCase()
               .includes(q)
