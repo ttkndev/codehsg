@@ -8,6 +8,18 @@ from post_social import post_to_facebook, generate_post
 from parse_filename import parse_book_filename, parse_exam_filename
 from datetime import datetime
 
+def normalize_contributors(raw_contributor):
+    if not raw_contributor:
+        return []
+
+    if isinstance(raw_contributor, str):
+        return [name.strip() for name in raw_contributor.split(",") if name.strip()]
+
+    if isinstance(raw_contributor, list):
+        return [str(name).strip() for name in raw_contributor if str(name).strip()]
+
+    return [str(raw_contributor).strip()] if str(raw_contributor).strip() else []
+
 def run_pipeline():
     convert_docx()
 
@@ -30,8 +42,8 @@ def run_pipeline():
             index += 1
         
         # 👈 cập nhật contributor ngay khi duyệt
-        if meta.get("contributor"):
-            contributors[meta["contributor"]] += 1
+        for contributor in normalize_contributors(meta.get("contributor")):
+            contributors[contributor] += 1
 
     build_data(exams, books, contributors)
     
@@ -158,11 +170,9 @@ def build_data(exams, books, contributors):
     json.dump(exams, open(f"{config.DATA_DIR}/exams.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     json.dump(books, open(f"{config.DATA_DIR}/books.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
-    # Đếm số lượng đóng góp
-    counter = Counter(contributors)
     contributors_data = [
         {"name": name, "resources": resources, "bio": None}
-        for name, resources in counter.items()
+        for name, resources in contributors.items()
     ]
     json.dump(contributors_data, open(f"{config.DATA_DIR}/contributors.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
