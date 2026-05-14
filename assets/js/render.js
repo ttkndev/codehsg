@@ -1,6 +1,34 @@
 // assets/js/render.js
 
 function renderExamCard(exam) {
+  const pick = (...keys) => {
+    for (const key of keys) {
+      const value = exam?.[key];
+      if (value !== undefined && value !== null && value !== "") return value;
+    }
+    return "";
+  };
+
+  const images = pick("images", "image_urls", "imageUrls", "thumbnails") || [];
+  const cover = images[0] || "assets/images/ltc-banner.png";
+  const organization = pick("organization", "organizer", "source");
+  const year = pick("year", "school_year", "schoolYear");
+  const grade = pick("grade", "level_name", "levelName");
+  const subject = pick("subject", "category", "topic");
+  const duration = pick("duration", "time_limit", "timeLimit");
+  const fileExt = String(pick("file_ext", "fileExt", "ext") || "pdf").toUpperCase();
+  const fileSize = pick("file_size", "fileSize", "size");
+  const viewCount = Number(pick("view_count", "viewCount", "views") || 0);
+  const downloadCount = Number(pick("download_count", "downloadCount", "downloads") || 0);
+  const problemNames = pick("problem_names", "problemNames", "problems") || [];
+  const problemCount = Number(pick("problem_count", "problemCount") || problemNames.length || 0);
+  const solutionDetail = pick("solution_detail", "solutionDetail", "solutions");
+  const testcaseCount = Array.isArray(exam?.testcases)
+    ? exam.testcases.length
+    : Array.isArray(solutionDetail?.problems)
+      ? solutionDetail.problems.reduce((acc, item) => acc + (item.testcases?.length || 0), 0)
+      : 0;
+
   return `
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100 shadow-sm">
@@ -10,39 +38,39 @@ function renderExamCard(exam) {
         <div class="card-body">
           <div class="row mb-2">
             <div class="col-4">
-              <img src="${exam.images[0]}" class="img-fluid rounded border exam-img" alt="Exam cover" data-images='${JSON.stringify(exam.images)}'>
+              <img src="${cover}" class="img-fluid rounded border exam-img" alt="Exam cover" data-images='${JSON.stringify(images)}'>
             </div>
             <div class="col-8">
-              <h6 class="card-title mb-2"><i class="bi bi-building"></i> ${exam.organization}</h6>
+              <h6 class="card-title mb-2"><i class="bi bi-building"></i> ${organization}</h6>
               <div class="row">
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-calendar-event"></i> ${exam.year}</p>
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-mortarboard"></i> ${exam.grade}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-calendar-event"></i> ${year}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-mortarboard"></i> ${grade}</p>
               </div>
               <div class="row">
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-book"></i> ${exam.subject}</p>
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-clock"></i> ${exam.duration}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-book"></i> ${subject}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-clock"></i> ${duration}</p>
               </div>
               <div class="row">
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-file-earmark-pdf" ></i> ${exam.file_ext.toUpperCase()}</p>
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-hdd"></i> ${exam.file_size}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-file-earmark-pdf" ></i> ${fileExt}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-hdd"></i> ${fileSize}</p>
               </div>
               <div class="row">
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-eye"></i> ${exam.view_count}</p>
-                <p class="col-6 small text-muted mb-1"><i class="bi bi-download"></i> ${exam.download_count}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-eye"></i> ${viewCount}</p>
+                <p class="col-6 small text-muted mb-1"><i class="bi bi-download"></i> ${downloadCount}</p>
               </div>
               <div class="row">
                 <div class="col-6">
-                  <span class="badge bg-secondary w-100"><i class="bi bi-journal-text"></i> Lời giải: ${exam.solution_detail ? "Có" : "0"}</span>
+                  <span class="badge bg-secondary w-100"><i class="bi bi-journal-text"></i> Lời giải: ${solutionDetail ? "Có" : "0"}</span>
                 </div>
                 <div class="col-6">
-                  <span class="badge bg-info text-dark w-100"><i class="bi bi-code-slash"></i> Testcase: ${exam.testcases.length}</span>
+                  <span class="badge bg-info text-dark w-100"><i class="bi bi-code-slash"></i> Testcase: ${testcaseCount}</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="mt-2">
-            <span class="small text-muted mb-1"><i class="bi bi-files"></i> ${exam.problem_count} bài: </span>
-            ${exam.problem_names.map(p => `<span class="badge bg-light text-dark me-1">${p}</span>`).join("")}
+            <span class="small text-muted mb-1"><i class="bi bi-files"></i> ${problemCount} bài: </span>
+            ${problemNames.map(p => `<span class="badge bg-light text-dark me-1">${p}</span>`).join("")}
           </div>
           <div class="mt-2">
             <span class="small text-muted mb-1"><i class="bi bi-share-fill"></i> ${exam.contributor}</span>
